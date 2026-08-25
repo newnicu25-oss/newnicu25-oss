@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ballard & Lubchenco Presisi</title>
+
+<style>
+
+body{
+  font-family:Arial;
+  padding:15px;
+  background:#f5f7fb;
+}
+
+h2{
+  color:#1565c0;
+  margin-bottom:10px;
+}
+
+h3{
+  margin-top:25px;
+  color:#0d47a1;
+}
+
+label{
+  font-size:14px;
+  font-weight:bold;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  margin-bottom:12px;
+  box-sizing:border-box;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  background:#1565c0;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#0d47a1;
+}
+
+#hasil{
+  margin-top:20px;
+  padding:15px;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  line-height:1.8;
+  font-size:15px;
+}
+
+#lubWrap{
+  position:relative;
+  width:125%;
+  margin-top:20px;
+  margin-left:-12.5%;
+}
+
+#lubImage{
+  width:100%;
+  border-radius:12px;
+  display:block;
+  cursor:crosshair;
+}
+
+#babyDot{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  border:2px solid white;
+  box-shadow:0 0 8px rgba(0,0,0,0.5);
+  transform:translate(-50%,-50%);
+  display:none;
+  z-index:10;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>👶 Ballard & Lubchenco Presisi</h2>
+
+<h3>Neuromuskular</h3>
+
+<label>Posture</label>
+<input type="number" id="posture">
+
+<label>Square Window</label>
+<input type="number" id="square">
+
+<label>Arm Recoil</label>
+<input type="number" id="recoil">
+
+<label>Popliteal Angle</label>
+<input type="number" id="popliteal">
+
+<label>Scarf Sign</label>
+<input type="number" id="scarf">
+
+<label>Heel To Ear</label>
+<input type="number" id="heel">
+
+<hr>
+
+<h3>Fisik</h3>
+
+<label>Kulit</label>
+<input type="number" id="skin">
+
+<label>Lanugo</label>
+<input type="number" id="lanugo">
+
+<label>Plantar Surface</label>
+<input type="number" id="plantar">
+
+<label>Breast</label>
+<input type="number" id="breast">
+
+<label>Mata / Telinga</label>
+<input type="number" id="eye">
+
+<label>Genitalia</label>
+<input type="number" id="genital">
+
+<label>Berat Badan (gram)</label>
+<input type="number" id="bb">
+
+<button type="button" onclick="hitung()">
+HITUNG
+</button>
+
+<div id="hasil"></div>
+
+<div style="
+  margin-top:15px;
+  margin-bottom:8px;
+  padding:10px;
+  background:#fff8e1;
+  border-left:4px solid #ffb300;
+  border-radius:6px;
+  font-size:13px;
+  color:#5d4037;
+">
+
+ℹ️ <b>Validasi Grafik Lubchenco</b><br>
+Posisi titik ditentukan secara otomatis berdasarkan hasil Ballard dan berat badan lahir. Apabila posisi titik belum sesuai dengan kurva referensi, titik dapat digeser secara manual untuk membantu validasi visual.
+</div>
+
+<div id="lubWrap">
+
+<img
+  id="lubImage"
+  src="https://lh3.googleusercontent.com/d/1SIM7KYP8ZlT87bczGBZ3GYlUSG6Ajr3s"
+>
+
+<div id="babyDot"></div>
+
+</div>
+
+<script>
+
+// ======================================
+// ERROR DEBUG
+// ======================================
+
+window.onerror = function(msg, url, line){
+
+  alert(
+    "ERROR:\n" +
+    msg +
+    "\nLine: " +
+    line
+  );
+
+};
+
+// ======================================
+// AMBIL BARIS AKTIF
+// ======================================
+
+let selectedRow = 0;
+
+if(
+  typeof google !== "undefined" &&
+  google.script &&
+  google.script.run
+){
+
+  google.script.run
+    .withSuccessHandler(function(row){
+
+      selectedRow = row;
+
+    })
+    .getSelectedRow();
+
+}
+
+// ======================================
+// DATA LUBCHENCO
+// ======================================
+
+const lubchenco = {
+
+24:{p10:500,p25:650,p50:820,p75:1020,p90:1260},
+25:{p10:550,p25:700,p50:880,p75:1090,p90:1320},
+26:{p10:620,p25:780,p50:970,p75:1180,p90:1410},
+27:{p10:700,p25:880,p50:1080,p75:1300,p90:1530},
+28:{p10:800,p25:1000,p50:1210,p75:1450,p90:1690},
+29:{p10:920,p25:1120,p50:1360,p75:1620,p90:1880},
+30:{p10:1050,p25:1280,p50:1530,p75:1820,p90:2100},
+31:{p10:1200,p25:1450,p50:1720,p75:2040,p90:2340},
+32:{p10:1380,p25:1640,p50:1940,p75:2280,p90:2600},
+33:{p10:1560,p25:1850,p50:2170,p75:2520,p90:2860},
+34:{p10:1760,p25:2060,p50:2400,p75:2760,p90:3120},
+35:{p10:1960,p25:2260,p50:2620,p75:2990,p90:3360},
+36:{p10:2160,p25:2460,p50:2830,p75:3200,p90:3570},
+37:{p10:2350,p25:2640,p50:3010,p75:3380,p90:3740},
+38:{p10:2500,p25:2780,p50:3150,p75:3510,p90:3870},
+39:{p10:2610,p25:2880,p50:3240,p75:3590,p90:3950},
+40:{p10:2680,p25:2940,p50:3290,p75:3640,p90:3990},
+41:{p10:2710,p25:2970,p50:3310,p75:3660,p90:4010},
+42:{p10:2740,p25:2990,p50:3320,p75:3670,p90:4020},
+43:{p10:2760,p25:3010,p50:3330,p75:3680,p90:4030}
+
+};
+
+// ======================================
+// INTERPOLASI
+// ======================================
+
+function lerp(a,b,t){
+
+  return a + ((b-a) * t);
+
+}
+
+// ======================================
+// KONVERSI UK BALLARD
+// ======================================
+
+function getUKBallard(score){
+
+  const map = {
+
+    "35":{label:"38",plot:38},
+    "36":{label:"38/39",plot:38.5},
+    "37":{label:"38/39",plot:38.5},
+    "38":{label:"39/40",plot:39.5},
+    "39":{label:"39/40",plot:39.5},
+    "40":{label:"40",plot:40},
+    "41":{label:"40/41",plot:40.5},
+    "42":{label:"41",plot:41},
+    "43":{label:"41/42",plot:41.5},
+    "44":{label:"42",plot:42},
+    "45":{label:"42/43",plot:42.5},
+    "46":{label:"43",plot:43},
+    "47":{label:"43/44",plot:43.5},
+    "48":{label:"44",plot:44},
+    "49":{label:"44/45",plot:44.5},
+    "50":{label:"44",plot:44}
+
+  };
+
+  if(map[score]){
+    return map[score];
+  }
+
+  const ukAsli =
+    ((2 * score) + 120) / 5;
+
+  return {
+
+    label: ukAsli.toFixed(1),
+    plot: ukAsli
+
+  };
+
+}
+
+// ======================================
+// INTERPOLASI DATA
+// ======================================
+
+function getInterpolatedData(uk){
+
+  if(uk < 24){
+    uk = 24;
+  }
+
+  if(uk > 43){
+    uk = 43;
+  }
+
+  const low =
+    Math.floor(uk);
+
+  const high =
+    Math.ceil(uk);
+
+  if(low == high){
+
+    return lubchenco[low];
+
+  }
+
+  const t =
+    uk - low;
+
+  return {
+
+    p10: lerp(lubchenco[low].p10,lubchenco[high].p10,t),
+    p25: lerp(lubchenco[low].p25,lubchenco[high].p25,t),
+    p50: lerp(lubchenco[low].p50,lubchenco[high].p50,t),
+    p75: lerp(lubchenco[low].p75,lubchenco[high].p75,t),
+    p90: lerp(lubchenco[low].p90,lubchenco[high].p90,t)
+
+  };
+
+}
+
+// ======================================
+// KATEGORI
+// ======================================
+
+function kategoriPercentile(uk,bb){
+
+  const p =
+    getInterpolatedData(uk);
+
+  if(bb < p.p10){
+
+    return "< P10";
+
+  }
+  else if(bb < p.p25){
+
+    return "P10 - P25";
+
+  }
+  else if(bb < p.p50){
+
+    return "P25 - P50";
+
+  }
+  else if(bb < p.p75){
+
+    return "P50 - P75";
+
+  }
+  else if(bb < p.p90){
+
+    return "P75 - P90";
+
+  }
+  else{
+
+    return "> P90";
+
+  }
+
+}
+
+// ======================================
+// HITUNG
+// ======================================
+
+function hitung(){
+
+  const posture =
+    Number(document.getElementById("posture").value || 0);
+
+  const square =
+    Number(document.getElementById("square").value || 0);
+
+  const recoil =
+    Number(document.getElementById("recoil").value || 0);
+
+  const popliteal =
+    Number(document.getElementById("popliteal").value || 0);
+
+  const scarf =
+    Number(document.getElementById("scarf").value || 0);
+
+  const heel =
+    Number(document.getElementById("heel").value || 0);
+
+  const skin =
+    Number(document.getElementById("skin").value || 0);
+
+  const lanugo =
+    Number(document.getElementById("lanugo").value || 0);
+
+  const plantar =
+    Number(document.getElementById("plantar").value || 0);
+
+  const breast =
+    Number(document.getElementById("breast").value || 0);
+
+  const eye =
+    Number(document.getElementById("eye").value || 0);
+
+  const genital =
+    Number(document.getElementById("genital").value || 0);
+
+  const bb =
+    Number(document.getElementById("bb").value || 0);
+
+  // ======================================
+
+  const score =
+
+    posture +
+    square +
+    recoil +
+    popliteal +
+    scarf +
+    heel +
+    skin +
+    lanugo +
+    plantar +
+    breast +
+    eye +
+    genital;
+
+  // ======================================
+
+  const ukAsli =
+    ((2 * score) + 120) / 5;
+
+  const ballard =
+    getUKBallard(score);
+
+  const ukKlinis =
+    ballard.label;
+
+  const ukPlot =
+    ballard.plot;
+
+  // ======================================
+
+  let interpretasi = "";
+
+  if(ukPlot < 37){
+
+  interpretasi = "Prematur";
+
+}
+
+else if(ukPlot <= 41){
+
+  interpretasi = "Cukup Bulan";
+
+}
+
+else{
+
+  interpretasi = "Post Term";
+
+}
+  // ======================================
+
+  const kategori =
+    kategoriPercentile(
+  Math.round(ukPlot),
+  bb
+)
+
+  // ======================================
+
+  const dot =
+    document.getElementById("babyDot");
+
+  if(kategori == "< P10"){
+
+    dot.style.background = "red";
+
+  }
+  else if(kategori == "> P90"){
+
+    dot.style.background = "orange";
+
+  }
+  else{
+
+    dot.style.background = "green";
+
+  }
+
+  // ======================================
+  // NOTE
+  // ======================================
+
+  const rincian = `
+
+=== NEUROMUSKULAR ===
+
+Posture : ${posture}
+Square Window : ${square}
+Arm Recoil : ${recoil}
+Popliteal Angle : ${popliteal}
+Scarf Sign : ${scarf}
+Heel To Ear : ${heel}
+
+=== FISIK ===
+
+Kulit : ${skin}
+Lanugo : ${lanugo}
+Plantar Surface : ${plantar}
+Breast : ${breast}
+Mata / Telinga : ${eye}
+Genitalia : ${genital}
+
+=====================
+
+TOTAL SCORE : ${score}
+
+UK BALLARD : ${ukKlinis} minggu
+UK ASLI : ${ukAsli.toFixed(1)} minggu
+
+BB : ${bb} gram
+
+KATEGORI :
+${kategori}
+
+`;
+
+  // ======================================
+  // HASIL
+  // ======================================
+
+  document.getElementById("hasil").innerHTML = `
+
+  <b>Total Score Ballard:</b>
+  ${score}<br>
+
+  <b>Usia Kehamilan:</b>
+  ${ukKlinis} minggu
+  (${ukAsli.toFixed(1)})<br>
+
+  <b>Interpretasi:</b>
+  ${interpretasi}<br>
+
+  <b>Berat Badan:</b>
+  ${bb} gram<br>
+
+  <b>Kategori Lubchenco:</b>
+  ${kategori}
+
+  `;
+
+  // ======================================
+  // GRAFIK
+  // ======================================
+
+  const img =
+    document.getElementById("lubImage");
+
+  if(img.complete){
+
+    gambarLubchenco(ukPlot,bb);
+
+  }
+  else{
+
+    img.onload = function(){
+
+      gambarLubchenco(ukPlot,bb);
+
+    };
+
+  }
+
+  // ======================================
+  // SIMPAN SPREADSHEET
+  // ======================================
+
+  if(
+    typeof google !== "undefined" &&
+    google.script &&
+    google.script.run
+  ){
+
+    google.script.run
+      .withSuccessHandler(function(html){
+
+        document.getElementById("hasil").innerHTML = html;
+
+      })
+      .prosesBallard(
+
+        score,
+        bb,
+
+        posture,
+        square,
+        recoil,
+        popliteal,
+        scarf,
+        heel,
+
+        skin,
+        lanugo,
+        plantar,
+        breast,
+        eye,
+        genital,
+
+        selectedRow
+
+      );
+
+  }
+
+}
+
+// ======================================
+// GRAFIK
+// ======================================
+
+function gambarLubchenco(uk,bb){
+
+  const dot =
+    document.getElementById("babyDot");
+
+  const img =
+    document.getElementById("lubImage");
+
+  const width =
+    img.clientWidth;
+
+  const height =
+    img.clientHeight;
+
+  // ======================================
+
+  const graphLeft =
+    width * 0.125;
+
+  const graphRight =
+    width * 0.948;
+
+  const graphTop =
+    height * 0.075;
+
+  const graphBottom =
+    height * 0.915;
+
+  // ======================================
+
+  const minUK = 24;
+  const maxUK = 43;
+
+  const minBB = 500;
+  const maxBB = 4500;
+
+  // ======================================
+
+  const ukClamp =
+    Math.max(
+      minUK,
+      Math.min(uk,maxUK)
+    );
+
+  const bbClamp =
+    Math.max(
+      minBB,
+      Math.min(bb,maxBB)
+    );
+
+  // ======================================
+
+  const xRatio =
+    (ukClamp - minUK) /
+    (maxUK - minUK);
+
+  const x =
+    graphLeft +
+    (
+      xRatio *
+      (graphRight - graphLeft)
+    );
+
+  // ======================================
+
+  const yRatio =
+  Math.pow(
+    (bbClamp - minBB) /
+    (maxBB - minBB),
+    0.92
+  );
+
+  const y =
+    graphBottom -
+    (
+      yRatio *
+      (graphBottom - graphTop)
+    );
+
+  // ======================================
+
+  dot.style.left =
+    x + "px";
+
+  dot.style.top =
+    y + "px";
+
+  dot.style.display =
+    "block";
+
+}
+
+// ======================================
+// KLIK GRAFIK UNTUK GESER TITIK
+// ======================================
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  const img =
+    document.getElementById("lubImage");
+
+  const dot =
+    document.getElementById("babyDot");
+
+  img.addEventListener("click",function(e){
+
+    const rect =
+      img.getBoundingClientRect();
+
+    const x =
+      e.clientX - rect.left;
+
+    const y =
+      e.clientY - rect.top;
+
+    dot.style.left =
+      x + "px";
+
+    dot.style.top =
+      y + "px";
+
+    dot.style.display =
+      "block";
+
+  });
+
+});
+</script>
+
+</body>
+</html>

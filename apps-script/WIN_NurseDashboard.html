@@ -1,0 +1,4103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>WIN — Dashboard Perawat</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+
+      margin: 0;
+      padding: 0;
+
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: #f3fbfa;
+
+      color: #334155;
+
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    /* ==================================================
+       HEADER
+       ================================================== */
+
+    .header {
+
+      background:
+        linear-gradient(
+          135deg,
+          #dff4f1,
+          #edf9f7
+        );
+
+      padding: 20px 28px;
+
+      border-bottom:
+        1px solid #cfe9e5;
+
+    }
+
+    .header-inner {
+
+      max-width: 1150px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+    }
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+    }
+
+    .logo {
+
+      width: 55px;
+
+      height: 55px;
+
+      border-radius: 17px;
+
+      background: #ffffff;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-weight: bold;
+
+      font-size: 20px;
+
+      color: #419991;
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,.07);
+
+    }
+
+    .brand-title {
+
+      font-weight: bold;
+
+      font-size: 18px;
+
+      color: #317b75;
+
+    }
+
+    .brand-subtitle {
+
+      font-size: 12px;
+
+      color: #64748b;
+
+      margin-top: 3px;
+
+    }
+
+    .logout {
+
+      border: none;
+
+      background: rgba(255,255,255,.8);
+
+      color: #317b75;
+
+      padding: 10px 15px;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+    }
+
+    /* ==================================================
+       MAIN
+       ================================================== */
+
+    .main {
+
+      max-width: 1150px;
+
+      margin: auto;
+
+      padding: 28px 20px 60px;
+
+    }
+
+    .page-title {
+
+      margin-bottom: 22px;
+
+    }
+
+    .page-title h1 {
+
+      margin: 0;
+
+      font-size: 28px;
+
+      color: #317b75;
+
+    }
+
+    .page-title p {
+
+      margin: 7px 0 0;
+
+      color: #64748b;
+
+      font-size: 14px;
+
+    }
+
+    /* ==================================================
+       SEARCH
+       ================================================== */
+
+    .search-card {
+
+      background: #ffffff;
+
+      border-radius: 22px;
+
+      padding: 24px;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.06);
+
+      margin-bottom: 22px;
+
+    }
+
+    .section-title {
+
+      margin: 0 0 5px;
+
+      font-size: 19px;
+
+      color: #475569;
+
+    }
+
+    .section-subtitle {
+
+      margin: 0 0 18px;
+
+      font-size: 12px;
+
+      color: #94a3b8;
+
+    }
+
+    .search-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr auto auto;
+
+      gap: 12px;
+
+      align-items: end;
+
+    }
+
+    .field {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+    .field label {
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      color: #475569;
+
+      margin-bottom: 7px;
+
+    }
+
+    .field input,
+    .field select {
+
+      width: 100%;
+
+      padding: 13px;
+
+      border:
+        1px solid #dbe5e4;
+
+      border-radius: 11px;
+
+      font-size: 14px;
+
+      outline: none;
+
+      background: #ffffff;
+
+    }
+
+    .field input:focus,
+    .field select:focus {
+
+      border-color: #67b9b0;
+
+      box-shadow:
+        0 0 0 4px rgba(65,153,145,.10);
+
+    }
+
+    .button {
+
+      border: none;
+
+      padding: 13px 17px;
+
+      border-radius: 11px;
+
+      font-size: 13px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      white-space: nowrap;
+
+    }
+
+    .button-primary {
+
+      background: #419991;
+
+      color: #ffffff;
+
+    }
+
+    .button-primary:hover {
+
+      background: #34877f;
+
+    }
+
+    .button-secondary {
+
+      background: #eef5f4;
+
+      color: #317b75;
+
+    }
+
+    .button-secondary:hover {
+
+      background: #dfeeed;
+
+    }
+
+    .button-pink {
+
+      background: #c96383;
+
+      color: #ffffff;
+
+    }
+
+    .button-pink:hover {
+
+      background: #b95374;
+
+    }
+
+    .button:disabled {
+
+      background: #e2e8f0;
+
+      color: #94a3b8;
+
+      cursor: default;
+
+    }
+
+    /* ==================================================
+       MESSAGE
+       ================================================== */
+
+    .message {
+
+      display: none;
+
+      margin-bottom: 20px;
+
+      padding: 14px 16px;
+
+      border-radius: 12px;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+
+      background: #ecfdf5;
+
+      color: #047857;
+
+    }
+
+    .message.error {
+
+      background: #fff1f2;
+
+      color: #be123c;
+
+    }
+
+    .message.info {
+
+      background: #eff6ff;
+
+      color: #1d4ed8;
+
+    }
+
+    /* ==================================================
+       PATIENT
+       ================================================== */
+
+    .patient-card {
+
+      display: none;
+
+      background: #ffffff;
+
+      border-radius: 22px;
+
+      padding: 24px;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.06);
+
+      margin-bottom: 22px;
+
+    }
+
+    .patient-card.show {
+      display: block;
+    }
+
+    .patient-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .patient-name {
+
+      margin: 0;
+
+      font-size: 22px;
+
+      color: #317b75;
+
+    }
+
+    .patient-meta {
+
+      margin-top: 5px;
+
+      font-size: 13px;
+
+      color: #64748b;
+
+    }
+
+    .status-badge {
+
+      padding: 7px 12px;
+
+      border-radius: 20px;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      background: #fef3c7;
+
+      color: #92400e;
+
+      white-space: nowrap;
+
+    }
+
+    .status-badge.complete {
+
+      background: #ecfdf5;
+
+      color: #047857;
+
+    }
+
+    /* ==================================================
+       MODULE GRID
+       ================================================== */
+
+    .module-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 17px;
+
+    }
+
+    .module {
+
+      border:
+        1px solid #e5eeee;
+
+      border-radius: 18px;
+
+      padding: 20px;
+
+      background: #ffffff;
+
+    }
+
+    .module-top {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 13px;
+
+    }
+
+    .module-icon {
+
+      width: 50px;
+
+      height: 50px;
+
+      border-radius: 15px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 24px;
+
+      background: #edf9f7;
+
+      flex-shrink: 0;
+
+    }
+
+    .module h3 {
+
+      margin: 0;
+
+      font-size: 16px;
+
+      color: #475569;
+
+    }
+
+    .module p {
+
+      margin: 5px 0 0;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+
+      color: #94a3b8;
+
+    }
+
+    .module-status {
+
+      margin-top: 16px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+    }
+
+    .module-status-text {
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      color: #64748b;
+
+    }
+
+    /* ==================================================
+       DETAIL
+       ================================================== */
+
+    .detail-section {
+
+      margin-top: 22px;
+
+    }
+
+    .detail-card {
+
+      background: #ffffff;
+
+      border-radius: 20px;
+
+      padding: 22px;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.05);
+
+      margin-bottom: 18px;
+
+    }
+
+    .detail-card h2 {
+
+      margin: 0 0 5px;
+
+      font-size: 18px;
+
+      color: #475569;
+
+    }
+
+    .detail-card-subtitle {
+
+      margin: 0 0 17px;
+
+      color: #94a3b8;
+
+      font-size: 12px;
+
+    }
+
+    .empty-state {
+
+      padding: 20px;
+
+      border-radius: 13px;
+
+      background: #f8fafc;
+
+      color: #64748b;
+
+      font-size: 13px;
+
+      text-align: center;
+
+    }
+
+    /* ==================================================
+       FOLLOW UP
+       ================================================== */
+
+    .followup-card {
+
+      display: none;
+
+      border:
+        2px solid #d7ece9;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #f5fbfa
+        );
+
+    }
+
+    .followup-card.show {
+      display: block;
+    }
+
+    .followup-header {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+    }
+
+    .followup-title {
+
+      display: flex;
+
+      gap: 13px;
+
+      align-items: flex-start;
+
+    }
+
+    .followup-big-icon {
+
+      width: 54px;
+
+      height: 54px;
+
+      border-radius: 16px;
+
+      background: #e6f6f3;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 27px;
+
+      flex-shrink: 0;
+
+    }
+
+    .followup-title h2 {
+
+      margin: 0;
+
+      color: #317b75;
+
+    }
+
+    .followup-title p {
+
+      margin: 5px 0 0;
+
+      font-size: 12px;
+
+      color: #64748b;
+
+    }
+
+    .followup-status {
+
+      padding: 7px 12px;
+
+      border-radius: 20px;
+
+      background: #fff7ed;
+
+      color: #c2410c;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      white-space: nowrap;
+
+    }
+
+    .followup-status.complete {
+
+      background: #ecfdf5;
+
+      color: #047857;
+
+    }
+
+    .followup-info {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+
+      margin-top: 20px;
+
+    }
+
+    .followup-info-box {
+
+      padding: 13px;
+
+      border-radius: 12px;
+
+      background: #f8fbfb;
+
+    }
+
+    .followup-label {
+
+      font-size: 10px;
+
+      color: #94a3b8;
+
+      margin-bottom: 5px;
+
+    }
+
+    .followup-value {
+
+      font-size: 13px;
+
+      font-weight: bold;
+
+      color: #475569;
+
+      word-break: break-word;
+
+    }
+
+    .followup-actions {
+
+      margin-top: 20px;
+
+      display: flex;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+    }
+
+    /* ==================================================
+       FORM
+       ================================================== */
+
+    .followup-form {
+
+      display: none;
+
+      margin-top: 20px;
+
+      padding: 20px;
+
+      border-radius: 16px;
+
+      background: #f8fbfb;
+
+      border:
+        1px solid #dcefed;
+
+    }
+
+    .followup-form.show {
+      display: block;
+    }
+
+    .followup-form-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 14px;
+
+    }
+
+    .radio-group {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+
+    }
+
+    .radio-card {
+
+      border:
+        1px solid #dbe5e4;
+
+      border-radius: 12px;
+
+      padding: 13px;
+
+      cursor: pointer;
+
+      background: #ffffff;
+
+    }
+
+    .radio-card input {
+
+      margin-right: 7px;
+
+    }
+
+    .radio-card strong {
+
+      font-size: 13px;
+
+    }
+
+    .radio-card span {
+
+      display: block;
+
+      margin-top: 4px;
+
+      margin-left: 22px;
+
+      font-size: 10px;
+
+      color: #94a3b8;
+
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    /* ==================================================
+       CONTROL CARD
+       ================================================== */
+
+    .control-card {
+
+      display: none;
+
+      margin-top: 20px;
+
+      padding: 22px;
+
+      border-radius: 18px;
+
+      background: #ffffff;
+
+      border:
+        1px solid #cfe9e5;
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,.05);
+
+    }
+
+    .control-card.show {
+      display: block;
+    }
+
+    .control-header {
+
+      text-align: center;
+
+      padding-bottom: 16px;
+
+      border-bottom:
+        1px dashed #cbd5e1;
+
+    }
+
+    .control-icon {
+      font-size: 34px;
+    }
+
+    .control-header h2 {
+
+      margin: 7px 0 4px;
+
+      color: #317b75;
+
+      font-size: 21px;
+
+    }
+
+    .control-header p {
+
+      margin: 0;
+
+      color: #64748b;
+
+      font-size: 12px;
+
+    }
+
+    .control-body {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 12px;
+
+      margin-top: 18px;
+
+    }
+
+    .control-item {
+
+      padding: 13px;
+
+      border-radius: 11px;
+
+      background: #f8fafc;
+
+    }
+
+    .control-item-label {
+
+      font-size: 10px;
+
+      color: #94a3b8;
+
+      margin-bottom: 4px;
+
+    }
+
+    .control-item-value {
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+      color: #334155;
+
+      word-break: break-word;
+
+    }
+
+    .control-queue {
+
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      background: #edf9f7;
+
+      padding: 18px;
+
+    }
+
+    .control-queue .control-item-label {
+
+      color: #4d8c86;
+
+    }
+
+    .control-queue .control-item-value {
+
+      font-size: 28px;
+
+      color: #317b75;
+
+    }
+
+    .print-area {
+
+      margin-top: 18px;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+    }
+
+    /* ==================================================
+       LOADING
+       ================================================== */
+
+    .loading {
+
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(255,255,255,.93);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      z-index: 999;
+
+    }
+
+    .loading.hidden {
+      display: none;
+    }
+
+    .loading-box {
+
+      text-align: center;
+
+      color: #317b75;
+
+    }
+
+    .spinner {
+
+      width: 40px;
+
+      height: 40px;
+
+      border:
+        4px solid #dcefed;
+
+      border-top-color:
+        #419991;
+
+      border-radius: 50%;
+
+      animation:
+        spin 1s linear infinite;
+
+      margin: 0 auto 14px;
+
+    }
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+    /* ==================================================
+       PRINT
+       ================================================== */
+
+    @media print {
+
+      body {
+        background: #ffffff;
+      }
+
+      .header,
+      .page-title,
+      .search-card,
+      .patient-card,
+      .detail-section > .detail-card:not(.followup-card),
+      .followup-actions,
+      .followup-form,
+      .print-area {
+
+        display: none !important;
+
+      }
+
+      .main {
+
+        max-width: 100%;
+
+        padding: 0;
+
+      }
+
+      .followup-card {
+
+        display: block !important;
+
+        border: none;
+
+        box-shadow: none;
+
+      }
+
+      .control-card {
+
+        display: block !important;
+
+        box-shadow: none;
+
+        border:
+          1px solid #cbd5e1;
+
+      }
+
+    }
+
+    /* ==================================================
+       RESPONSIVE
+       ================================================== */
+
+    @media(max-width: 850px) {
+
+      .search-grid {
+
+        grid-template-columns:
+          1fr 1fr;
+
+      }
+
+      .module-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+    }
+
+    @media(max-width: 650px) {
+
+      .header-inner {
+
+        align-items: flex-start;
+
+      }
+
+      .search-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .followup-info {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .followup-form-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .control-body {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .control-queue {
+
+        grid-column: auto;
+
+      }
+
+      .patient-header,
+      .followup-header {
+
+        flex-direction: column;
+
+      }
+
+      .radio-group {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOADING
+     ===================================================== -->
+
+<div
+  id="loading"
+  class="loading"
+>
+
+  <div class="loading-box">
+
+    <div class="spinner"></div>
+
+    <div>
+      Memuat Dashboard Perawat...
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">
+        WIN
+      </div>
+
+      <div>
+
+        <div class="brand-title">
+          WIN — Discharge Planning Perinatologi
+        </div>
+
+        <div class="brand-subtitle">
+          Dashboard Perawat
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+      class="logout"
+      type="button"
+      onclick="logout()"
+    >
+      Keluar
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="main">
+
+
+  <div class="page-title">
+
+    <h1>
+      Dashboard Perawat
+    </h1>
+
+    <p>
+      Monitoring, verifikasi, dan evaluasi kesiapan
+      pulang ibu dan bayi.
+    </p>
+
+  </div>
+
+
+  <!-- MESSAGE -->
+
+  <div
+    id="messageBox"
+    class="message"
+  ></div>
+
+
+  <!-- ===================================================
+       SEARCH
+       =================================================== -->
+
+  <section class="search-card">
+
+    <h2 class="section-title">
+      🔎 Cari Episode Pasien
+    </h2>
+
+    <p class="section-subtitle">
+      Masukkan No. RM dan Episode ID untuk melihat
+      seluruh data discharge planning.
+    </p>
+
+    <div class="search-grid">
+
+      <div class="field">
+
+        <label>
+          No. RM
+        </label>
+
+        <input
+          id="inputNoRM"
+          type="text"
+          placeholder="Contoh: TEST001"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Episode ID
+        </label>
+
+        <input
+          id="inputEpisodeId"
+          type="text"
+          placeholder="Contoh: EP-TEST-001"
+        >
+
+      </div>
+
+      <button
+        id="btnCari"
+        type="button"
+        class="button button-primary"
+        onclick="cariPasien()"
+      >
+        🔎 Tampilkan Data
+      </button>
+
+      <button
+        type="button"
+        class="button button-secondary"
+        onclick="resetPasien()"
+      >
+        ↻ Reset
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       PATIENT CARD
+       =================================================== -->
+
+  <section
+    id="patientCard"
+    class="patient-card"
+  >
+
+    <div class="patient-header">
+
+      <div>
+
+        <h2
+          id="patientName"
+          class="patient-name"
+        >
+          Data Pasien
+        </h2>
+
+        <div
+          id="patientMeta"
+          class="patient-meta"
+        >
+          No. RM: - | Episode: -
+        </div>
+
+      </div>
+
+      <div
+        id="patientStatus"
+        class="status-badge"
+      >
+        DALAM PROSES
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MODULE GRID
+         ================================================= -->
+
+    <div class="module-grid">
+
+
+      <!-- LMS -->
+
+      <div class="module">
+
+        <div class="module-top">
+
+          <div class="module-icon">
+            📚
+          </div>
+
+          <div>
+
+            <h3>
+              Edukasi / LMS
+            </h3>
+
+            <p>
+              Progress materi edukasi ibu dan bayi.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="module-status">
+
+          <span
+            id="lmsStatus"
+            class="module-status-text"
+          >
+            Memuat...
+          </span>
+
+          <span
+            id="lmsProgress"
+            class="module-status-text"
+          >
+            0%
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRAKTIK -->
+
+      <div class="module">
+
+        <div class="module-top">
+
+          <div class="module-icon">
+            👐
+          </div>
+
+          <div>
+
+            <h3>
+              Praktik
+            </h3>
+
+            <p>
+              Verifikasi keterampilan perawatan ibu
+              dan bayi.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="module-status">
+
+          <span
+            id="praktikStatus"
+            class="module-status-text"
+          >
+            Memuat...
+          </span>
+
+          <button
+            type="button"
+            class="button button-secondary"
+            onclick="bukaVerifikasiPraktik()"
+          >
+            Verifikasi
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- EVALUASI -->
+
+      <div class="module">
+
+        <div class="module-top">
+
+          <div class="module-icon">
+            📝
+          </div>
+
+          <div>
+
+            <h3>
+              Evaluasi
+            </h3>
+
+            <p>
+              Hasil evaluasi discharge planning.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="module-status">
+
+          <span
+            id="evaluasiStatus"
+            class="module-status-text"
+          >
+            Memuat...
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- SERTIFIKAT -->
+
+      <div class="module">
+
+        <div class="module-top">
+
+          <div class="module-icon">
+            🏆
+          </div>
+
+          <div>
+
+            <h3>
+              Sertifikat
+            </h3>
+
+            <p>
+              Status penerbitan sertifikat.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="module-status">
+
+          <span
+            id="certificateStatus"
+            class="module-status-text"
+          >
+            BELUM
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       DETAIL
+       =================================================== -->
+
+  <section
+    id="detailSection"
+    class="detail-section"
+  >
+
+
+    <!-- DATA IBU & BAYI -->
+
+    <div class="detail-card">
+
+      <h2>
+        👩‍🍼 Data Ibu & Bayi
+      </h2>
+
+      <p class="detail-card-subtitle">
+        Identitas episode pasien.
+      </p>
+
+      <div
+        id="dataIbuBayi"
+        class="empty-state"
+      >
+        Belum ada data yang ditampilkan.
+      </div>
+
+    </div>
+
+
+    <!-- EVALUASI -->
+
+    <div class="detail-card">
+
+      <h2>
+        📊 Hasil Evaluasi
+      </h2>
+
+      <p class="detail-card-subtitle">
+        Hasil evaluasi discharge planning.
+      </p>
+
+      <div
+        id="dataEvaluasi"
+        class="empty-state"
+      >
+        Belum ada hasil evaluasi.
+      </div>
+
+    </div>
+
+
+    <!-- PRAKTIK -->
+
+    <div class="detail-card">
+
+      <h2>
+        👐 Verifikasi Praktik
+      </h2>
+
+      <p class="detail-card-subtitle">
+        Status keterampilan yang telah diverifikasi.
+      </p>
+
+      <div
+        id="dataPraktik"
+        class="empty-state"
+      >
+        Belum ada data praktik yang dapat ditampilkan.
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOLLOW UP KONTROL
+         HANYA MUNCUL JIKA SUDAH ADA DATA
+         ================================================= -->
+
+    <div
+      id="followupCard"
+      class="detail-card followup-card"
+    >
+
+      <div class="followup-header">
+
+        <div class="followup-title">
+
+          <div class="followup-big-icon">
+            🏥
+          </div>
+
+          <div>
+
+            <h2>
+              Follow Up Kontrol
+            </h2>
+
+            <p>
+              Pendaftaran kontrol setelah ibu pulang.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          id="followupStatus"
+          class="followup-status"
+        >
+          TERDAFTAR
+        </div>
+
+      </div>
+
+
+      <!-- INFO FOLLOW UP -->
+
+      <div class="followup-info">
+
+        <div class="followup-info-box">
+
+          <div class="followup-label">
+            JENIS KONTROL
+          </div>
+
+          <div
+            id="followupJenis"
+            class="followup-value"
+          >
+            -
+          </div>
+
+        </div>
+
+        <div class="followup-info-box">
+
+          <div class="followup-label">
+            FASILITAS
+          </div>
+
+          <div
+            id="followupFasilitas"
+            class="followup-value"
+          >
+            -
+          </div>
+
+        </div>
+
+        <div class="followup-info-box">
+
+          <div class="followup-label">
+            NOMOR ANTREAN
+          </div>
+
+          <div
+            id="followupAntrean"
+            class="followup-value"
+          >
+            -
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACTION -->
+
+      <div class="followup-actions">
+
+        <button
+          type="button"
+          class="button button-primary"
+          onclick="bukaPendaftaranOnline()"
+        >
+          🏥 Buka eHealth Surabaya
+        </button>
+
+        <button
+          id="btnInputFollowup"
+          type="button"
+          class="button button-secondary"
+          onclick="toggleFollowupForm()"
+        >
+          ✏️ Input Hasil Pendaftaran
+        </button>
+
+        <button
+          id="btnLihatKartu"
+          type="button"
+          class="button button-pink"
+          onclick="scrollToKartu()"
+        >
+          🪪 Lihat Kartu Kontrol
+        </button>
+
+      </div>
+
+
+      <!-- =================================================
+           FORM INPUT
+           ================================================= -->
+
+      <div
+        id="followupForm"
+        class="followup-form"
+      >
+
+        <h3
+          style="
+            margin:0 0 5px;
+            color:#317b75;
+            font-size:17px;
+          "
+        >
+          Input Hasil Pendaftaran Kontrol
+        </h3>
+
+        <p
+          style="
+            margin:0 0 18px;
+            color:#94a3b8;
+            font-size:12px;
+          "
+        >
+          Setelah pendaftaran selesai di eHealth
+          Surabaya, masukkan hasil pendaftaran
+          dan nomor antrean di bawah ini.
+        </p>
+
+        <div class="followup-form-grid">
+
+
+          <!-- JENIS -->
+
+          <div class="field form-full">
+
+            <label>
+              Jenis Kontrol
+            </label>
+
+            <div class="radio-group">
+
+              <label class="radio-card">
+
+                <input
+                  type="radio"
+                  name="jenisKontrol"
+                  value="RS"
+                >
+
+                <strong>
+                  🏥 Rumah Sakit
+                </strong>
+
+                <span>
+                  Kontrol di fasilitas rumah sakit.
+                </span>
+
+              </label>
+
+              <label class="radio-card">
+
+                <input
+                  type="radio"
+                  name="jenisKontrol"
+                  value="PUSKESMAS"
+                >
+
+                <strong>
+                  🏥 Puskesmas
+                </strong>
+
+                <span>
+                  Kontrol di fasilitas puskesmas.
+                </span>
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <!-- FASILITAS -->
+
+          <div class="field">
+
+            <label>
+              Nama Fasilitas Pelayanan Kesehatan
+            </label>
+
+            <input
+              id="inputFasilitas"
+              type="text"
+              placeholder="Contoh: Puskesmas XXX"
+            >
+
+          </div>
+
+
+          <!-- ANTREAN -->
+
+          <div class="field">
+
+            <label>
+              Nomor Antrean
+            </label>
+
+            <input
+              id="inputAntrean"
+              type="text"
+              placeholder="Contoh: A123"
+            >
+
+          </div>
+
+
+          <div class="form-full">
+
+            <button
+              id="btnSimpanFollowup"
+              type="button"
+              class="button button-primary"
+              onclick="simpanFollowup()"
+            >
+              💾 Simpan & Generate Kartu Kontrol
+            </button>
+
+            <button
+              type="button"
+              class="button button-secondary"
+              onclick="toggleFollowupForm()"
+              style="margin-left:8px;"
+            >
+              Batal
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           KARTU KONTROL
+           ================================================= -->
+
+      <div
+        id="controlCard"
+        class="control-card"
+      >
+
+        <div class="control-header">
+
+          <div class="control-icon">
+            🏥
+          </div>
+
+          <h2>
+            KARTU KONTROL SETELAH PULANG
+          </h2>
+
+          <p>
+            WIN — Discharge Planning Perinatologi
+          </p>
+
+        </div>
+
+        <div class="control-body">
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              NAMA IBU
+            </div>
+
+            <div
+              id="cardNamaIbu"
+              class="control-item-value"
+            >
+              -
+            </div>
+
+          </div>
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              NO. RM
+            </div>
+
+            <div
+              id="cardNoRM"
+              class="control-item-value"
+            >
+              -
+            </div>
+
+          </div>
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              EPISODE ID
+            </div>
+
+            <div
+              id="cardEpisode"
+              class="control-item-value"
+            >
+              -
+            </div>
+
+          </div>
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              JENIS KONTROL
+            </div>
+
+            <div
+              id="cardJenis"
+              class="control-item-value"
+            >
+              -
+            </div>
+
+          </div>
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              FASILITAS
+            </div>
+
+            <div
+              id="cardFasilitas"
+              class="control-item-value"
+            >
+              -
+            </div>
+
+          </div>
+
+          <div class="control-item control-queue">
+
+            <div class="control-item-label">
+              NOMOR ANTREAN
+            </div>
+
+            <div
+              id="cardAntrean"
+              class="control-item-value"
+            >
+              -
+            </div>
+
+          </div>
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              STATUS
+            </div>
+
+            <div
+              id="cardStatus"
+              class="control-item-value"
+            >
+              TERDAFTAR
+            </div>
+
+          </div>
+
+          <div class="control-item">
+
+            <div class="control-item-label">
+              DIPROSES OLEH
+            </div>
+
+            <div
+              id="cardPerawat"
+              class="control-item-value"
+            >
+              Perawat WIN
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="print-area">
+
+          <button
+            type="button"
+            class="button button-primary"
+            onclick="cetakKartu()"
+          >
+            🖨️ Cetak Kartu Kontrol
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SERTIFIKAT -->
+
+    <div class="detail-card">
+
+      <h2>
+        🏆 Sertifikat
+      </h2>
+
+      <p class="detail-card-subtitle">
+        Status penerbitan sertifikat discharge planning.
+      </p>
+
+      <div
+        id="dataCertificate"
+        class="empty-state"
+      >
+        Sertifikat belum diterbitkan.
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+var WIN_SESSION = null;
+
+var CURRENT_NO_RM = '';
+
+var CURRENT_EPISODE_ID = '';
+
+var CURRENT_PATIENT = null;
+
+var CURRENT_FOLLOWUP = null;
+
+
+/* =========================================================
+   SESSION
+   ========================================================= */
+
+function getSession() {
+
+  try {
+
+    var raw =
+      sessionStorage.getItem(
+        'WIN_SESSION'
+      );
+
+    if (!raw) {
+      return null;
+    }
+
+    return JSON.parse(raw);
+
+  }
+
+  catch(error) {
+
+    console.log(
+      'Session error:',
+      error
+    );
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    WIN_SESSION =
+      getSession();
+
+    if (
+      !WIN_SESSION ||
+      WIN_SESSION.role !== 'PERAWAT'
+    ) {
+
+      hideLoading();
+
+      showMessage(
+        'Session perawat tidak ditemukan. Silakan login kembali.',
+        'error'
+      );
+
+      return;
+
+    }
+
+    resetFollowUpView();
+
+    hideLoading();
+
+  }
+);
+
+
+/* =========================================================
+   CARI PASIEN
+   ========================================================= */
+
+function cariPasien() {
+
+  var noRM =
+    document
+      .getElementById('inputNoRM')
+      .value
+      .trim();
+
+  var episodeId =
+    document
+      .getElementById('inputEpisodeId')
+      .value
+      .trim();
+
+  if (!noRM || !episodeId) {
+
+    showMessage(
+      'No. RM dan Episode ID wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+  CURRENT_NO_RM =
+    noRM;
+
+  CURRENT_EPISODE_ID =
+    episodeId;
+
+  resetFollowUpView();
+
+  showLoading();
+
+  showMessage(
+    'Memuat data pasien...',
+    'info'
+  );
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        hideLoading();
+
+        prosesDataPasien(
+          result
+        );
+
+        /*
+        * Follow Up dimuat terpisah.
+        * Kegagalan Follow Up tidak boleh
+        * membuat Dashboard Perawat stuck.
+        */
+
+        setTimeout(
+          function() {
+
+            loadFollowUp();
+
+          },
+          100
+        );
+
+    }
+)
+
+    .withFailureHandler(
+      function(error) {
+
+        hideLoading();
+
+        showMessage(
+          'Gagal memuat data pasien: ' +
+          getErrorMessage(error),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getNurseDashboard(
+      episodeId,
+      noRM
+    );
+
+}
+
+
+/* =========================================================
+   PROSES DATA PASIEN
+   ========================================================= */
+
+function prosesDataPasien(data) {
+
+  if (
+    !data ||
+    !data.success
+  ) {
+
+    showMessage(
+      data && data.message
+        ? data.message
+        : 'Data pasien tidak ditemukan.',
+      'error'
+    );
+
+    return;
+
+  }
+
+  CURRENT_PATIENT =
+    data;
+
+  document
+    .getElementById('patientCard')
+    .classList.add('show');
+
+  var nama =
+    ambilNamaPasien(data);
+
+  document
+    .getElementById('patientName')
+    .textContent =
+      nama;
+
+  document
+    .getElementById('patientMeta')
+    .textContent =
+      'No. RM: ' +
+      CURRENT_NO_RM +
+      ' | Episode: ' +
+      CURRENT_EPISODE_ID;
+
+
+  /* LMS */
+
+  var lms =
+    data.lms || {};
+
+  var lmsProgress =
+    Number(
+      lms.persentase ||
+      lms.progress ||
+      0
+    );
+
+  document
+    .getElementById('lmsProgress')
+    .textContent =
+      lmsProgress + '%';
+
+  document
+    .getElementById('lmsStatus')
+    .textContent =
+      lmsProgress >= 100
+        ? 'Selesai'
+        : (
+            lmsProgress > 0
+              ? 'Sedang berjalan'
+              : 'Belum dimulai'
+          );
+
+
+  /* PRAKTIK */
+
+  var praktik =
+    data.praktik || {};
+
+  var praktikDone =
+    praktik.selesaiSemua === true;
+
+  document
+    .getElementById('praktikStatus')
+    .textContent =
+      praktikDone
+        ? 'Semua selesai'
+        : 'Belum semua selesai';
+
+
+  /* EVALUASI */
+
+  var evaluasi =
+    data.evaluasi || {};
+
+  var evaluasiLulus =
+    evaluasi.lulus === true;
+
+  document
+    .getElementById('evaluasiStatus')
+    .textContent =
+      evaluasiLulus
+        ? 'Lulus'
+        : 'Belum lulus';
+
+
+  /* CERTIFICATE */
+
+  var certificate =
+    data.certificate || {};
+
+  var certificateReady =
+    !!certificate.certificate;
+
+  document
+    .getElementById('certificateStatus')
+    .textContent =
+      certificateReady
+        ? 'TERSEDIA'
+        : 'BELUM';
+
+
+  tampilkanDataIbuBayi(data);
+
+  tampilkanEvaluasi(evaluasi);
+
+  tampilkanPraktik(praktik);
+
+  tampilkanCertificate(certificate);
+
+  updateStatusGlobal(
+    lmsProgress,
+    praktikDone,
+    evaluasiLulus,
+    certificateReady
+  );
+
+}
+
+
+/* =========================================================
+   NAMA PASIEN
+   ========================================================= */
+
+function ambilNamaPasien(data) {
+
+  if (data.namaIbu) {
+    return data.namaIbu;
+  }
+
+  if (
+    data.data &&
+    data.data.namaIbu
+  ) {
+    return data.data.namaIbu;
+  }
+
+  if (
+    data.ibu &&
+    data.ibu.namaIbu
+  ) {
+    return data.ibu.namaIbu;
+  }
+
+  if (
+    data.dataIbu &&
+    data.dataIbu.namaIbu
+  ) {
+    return data.dataIbu.namaIbu;
+  }
+
+  return 'Pasien';
+
+}
+
+
+/* =========================================================
+   DATA IBU BAYI
+   ========================================================= */
+
+function tampilkanDataIbuBayi(data) {
+
+  var box =
+    document.getElementById(
+      'dataIbuBayi'
+    );
+
+  var obj =
+    data.dataIbuBayi ||
+    data.ibuBayi ||
+    data.data ||
+    null;
+
+  if (
+    !obj ||
+    typeof obj !== 'object'
+  ) {
+
+    box.textContent =
+      'Data ibu dan bayi belum tersedia.';
+
+    return;
+
+  }
+
+  var html =
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
+
+  html +=
+    '<div><b>No. RM</b><br>' +
+    escapeHtml(CURRENT_NO_RM) +
+    '</div>';
+
+  html +=
+    '<div><b>Episode ID</b><br>' +
+    escapeHtml(CURRENT_EPISODE_ID) +
+    '</div>';
+
+  if (obj.namaIbu) {
+
+    html +=
+      '<div><b>Nama Ibu</b><br>' +
+      escapeHtml(obj.namaIbu) +
+      '</div>';
+
+  }
+
+  if (obj.namaBayi) {
+
+    html +=
+      '<div><b>Nama Bayi</b><br>' +
+      escapeHtml(obj.namaBayi) +
+      '</div>';
+
+  }
+
+  html += '</div>';
+
+  box.innerHTML =
+    html;
+
+}
+
+
+/* =========================================================
+   EVALUASI
+   ========================================================= */
+
+function tampilkanEvaluasi(evaluasi) {
+
+  var box =
+    document.getElementById(
+      'dataEvaluasi'
+    );
+
+  if (
+    !evaluasi ||
+    Object.keys(evaluasi).length === 0
+  ) {
+
+    box.textContent =
+      'Belum ada hasil evaluasi.';
+
+    return;
+
+  }
+
+  var lulus =
+    evaluasi.lulus === true;
+
+  box.innerHTML =
+
+    '<div style="font-size:16px;font-weight:bold;color:' +
+    (
+      lulus
+        ? '#047857'
+        : '#be123c'
+    ) +
+    ';">' +
+
+    (
+      lulus
+        ? '✓ LULUS'
+        : 'Belum lulus'
+    ) +
+
+    '</div>';
+
+}
+
+
+/* =========================================================
+   PRAKTIK
+   ========================================================= */
+
+function tampilkanPraktik(praktik) {
+
+  var box =
+    document.getElementById(
+      'dataPraktik'
+    );
+
+  if (
+    !praktik ||
+    Object.keys(praktik).length === 0
+  ) {
+
+    box.textContent =
+      'Belum ada data praktik yang dapat ditampilkan.';
+
+    return;
+
+  }
+
+  if (
+    praktik.selesaiSemua === true
+  ) {
+
+    box.innerHTML =
+      '✓ Semua praktik telah selesai diverifikasi.';
+
+    return;
+
+  }
+
+  box.innerHTML =
+    'Praktik masih dalam proses verifikasi.';
+
+}
+
+
+/* =========================================================
+   CERTIFICATE
+   ========================================================= */
+
+function tampilkanCertificate(certificate) {
+
+  var box =
+    document.getElementById(
+      'dataCertificate'
+    );
+
+  if (
+    certificate &&
+    certificate.certificate
+  ) {
+
+    box.innerHTML =
+      '✓ Sertifikat telah diterbitkan.';
+
+    return;
+
+  }
+
+  box.textContent =
+    'Sertifikat belum diterbitkan.';
+
+}
+
+
+/* =========================================================
+   STATUS GLOBAL
+   ========================================================= */
+
+function updateStatusGlobal(
+  lmsProgress,
+  praktikDone,
+  evaluasiLulus,
+  certificateReady
+) {
+
+  var complete =
+    lmsProgress >= 100 &&
+    praktikDone &&
+    evaluasiLulus &&
+    certificateReady;
+
+  var status =
+    document.getElementById(
+      'patientStatus'
+    );
+
+  if (complete) {
+
+    status.textContent =
+      'SELESAI';
+
+    status.className =
+      'status-badge complete';
+
+  }
+
+  else {
+
+    status.textContent =
+      'DALAM PROSES';
+
+    status.className =
+      'status-badge';
+
+  }
+
+}
+
+
+/* =========================================================
+   LOAD FOLLOW UP
+   ========================================================= */
+
+function loadFollowUp() {
+
+  if (
+    !CURRENT_EPISODE_ID ||
+    !CURRENT_NO_RM
+  ) {
+
+    console.log(
+      'FOLLOW UP: parameter kosong'
+    );
+
+    resetFollowUpView();
+
+    return;
+
+  }
+
+
+  console.log(
+    '======================================'
+  );
+
+  console.log(
+    'WIN NURSE LOAD FOLLOW UP'
+  );
+
+  console.log(
+    'episodeId =',
+    CURRENT_EPISODE_ID
+  );
+
+  console.log(
+    'noRM =',
+    CURRENT_NO_RM
+  );
+
+  console.log(
+    '======================================'
+  );
+
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'FOLLOW UP RESULT:',
+          result
+        );
+
+
+        prosesFollowUp(
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'FOLLOW UP ERROR:',
+          error
+        );
+
+
+        resetFollowUpView();
+
+
+        showMessage(
+          'Data Follow Up belum dapat dimuat. Data pasien tetap dapat digunakan.',
+          'info'
+        );
+
+      }
+    )
+
+    .WIN_FOLLOWUP_getDashboardData(
+
+      CURRENT_EPISODE_ID,
+
+      CURRENT_NO_RM
+
+    );
+
+}
+
+
+/* =========================================================
+   PROSES FOLLOW UP
+   ========================================================= */
+
+function prosesFollowUp(result) {
+
+  console.log(
+    'WIN FOLLOW UP RESULT:',
+    result
+  );
+
+
+  /* -------------------------------------------------------
+     VALIDASI RESPONSE
+     ------------------------------------------------------- */
+
+  if (
+    !result ||
+    result.success !== true
+  ) {
+
+    resetFollowUpView();
+
+    return;
+
+  }
+
+
+  /* -------------------------------------------------------
+     BACKEND MENGEMBALIKAN DATA DI result.data
+     ------------------------------------------------------- */
+
+  var data =
+    result.data ||
+    result.followUp ||
+    null;
+
+
+  if (
+    !data ||
+    typeof data !== 'object'
+  ) {
+
+    resetFollowUpView();
+
+    return;
+
+  }
+
+
+  CURRENT_FOLLOWUP =
+    data;
+
+
+  /* -------------------------------------------------------
+     TAMPILKAN DATA FOLLOW UP
+     ------------------------------------------------------- */
+
+  document
+    .getElementById(
+      'followupJenis'
+    )
+    .textContent =
+      formatJenis(
+        data.jenisKontrol
+      );
+
+
+  document
+    .getElementById(
+      'followupFasilitas'
+    )
+    .textContent =
+      data.fasilitasKontrol ||
+      '-';
+
+
+  document
+    .getElementById(
+      'followupAntrean'
+    )
+    .textContent =
+      data.noAntrean ||
+      '-';
+
+
+  /* -------------------------------------------------------
+     STATUS
+     ------------------------------------------------------- */
+
+  var status =
+    document.getElementById(
+      'followupStatus'
+    );
+
+
+  var selesai =
+    String(
+      data.status ||
+      ''
+    ).toUpperCase() ===
+    'SELESAI';
+
+
+  if (selesai) {
+
+    status.textContent =
+      'TERDAFTAR ✓';
+
+    status.className =
+      'followup-status complete';
+
+
+    /* -----------------------------------------------------
+       DATA SUDAH TERDAFTAR
+       ----------------------------------------------------- */
+
+    document
+      .getElementById(
+        'btnLihatKartu'
+      )
+      .style.display =
+        'inline-block';
+
+
+    /* -----------------------------------------------------
+       ISI FORM DENGAN DATA LAMA
+       ----------------------------------------------------- */
+
+    isiFormFollowUp(
+      data
+    );
+
+
+    /* -----------------------------------------------------
+       GENERATE KARTU
+       ----------------------------------------------------- */
+
+    generateKartuKontrol(
+      data
+    );
+
+  }
+
+  else {
+
+    status.textContent =
+      'BELUM LENGKAP';
+
+    status.className =
+      'followup-status';
+
+
+    document
+      .getElementById(
+        'btnLihatKartu'
+      )
+      .style.display =
+        'none';
+
+
+    document
+      .getElementById(
+        'controlCard'
+      )
+      .classList.remove(
+        'show'
+      );
+
+  }
+
+}
+/* =========================================================
+   RESET FOLLOW UP
+   ========================================================= */
+
+function resetFollowUpView() {
+
+  CURRENT_FOLLOWUP =
+    null;
+
+
+  /*
+   * KUNCI UTAMA:
+   * kartu Follow Up disembunyikan
+   * jika belum ada data.
+   */
+
+  var followupCard =
+    document.getElementById(
+      'followupCard'
+    );
+
+  if (followupCard) {
+
+    followupCard.classList.remove(
+      'show'
+    );
+
+  }
+
+
+  document
+    .getElementById(
+      'followupJenis'
+    )
+    .textContent =
+      '-';
+
+
+  document
+    .getElementById(
+      'followupFasilitas'
+    )
+    .textContent =
+      '-';
+
+
+  document
+    .getElementById(
+      'followupAntrean'
+    )
+    .textContent =
+      '-';
+
+
+  document
+    .getElementById(
+      'followupStatus'
+    )
+    .textContent =
+      'TERDAFTAR';
+
+
+  document
+    .getElementById(
+      'followupStatus'
+    )
+    .className =
+      'followup-status';
+
+
+  document
+    .getElementById(
+      'btnInputFollowup'
+    )
+    .style.display =
+      'inline-block';
+
+
+  document
+    .getElementById(
+      'btnLihatKartu'
+    )
+    .style.display =
+      'none';
+
+
+  document
+    .getElementById(
+      'followupForm'
+    )
+    .classList.remove(
+      'show'
+    );
+
+
+  document
+    .getElementById(
+      'controlCard'
+    )
+    .classList.remove(
+      'show'
+    );
+
+
+  /*
+   * Bersihkan form.
+   */
+
+  var radios =
+    document.querySelectorAll(
+      'input[name="jenisKontrol"]'
+    );
+
+  for (
+    var i = 0;
+    i < radios.length;
+    i++
+  ) {
+
+    radios[i].checked =
+      false;
+
+  }
+
+
+  document
+    .getElementById(
+      'inputFasilitas'
+    )
+    .value =
+      '';
+
+
+  document
+    .getElementById(
+      'inputAntrean'
+    )
+    .value =
+      '';
+
+}
+
+
+/* =========================================================
+   ISI FORM FOLLOW UP
+   ========================================================= */
+
+function isiFormFollowUp(data) {
+
+  var radios =
+    document.querySelectorAll(
+      'input[name="jenisKontrol"]'
+    );
+
+  for (
+    var i = 0;
+    i < radios.length;
+    i++
+  ) {
+
+    radios[i].checked =
+      radios[i].value ===
+      data.jenisKontrol;
+
+  }
+
+  document
+    .getElementById(
+      'inputFasilitas'
+    )
+    .value =
+      data.fasilitasKontrol ||
+      '';
+
+  document
+    .getElementById(
+      'inputAntrean'
+    )
+    .value =
+      data.noAntrean ||
+      '';
+
+}
+
+
+/* =========================================================
+   DAFTAR ONLINE
+   ========================================================= */
+
+function bukaPendaftaranOnline() {
+
+  window.open(
+    'https://ehealth.surabaya.go.id/pendaftaranv2/',
+    '_blank'
+  );
+
+}
+
+
+/* =========================================================
+   TOGGLE FORM
+   ========================================================= */
+
+function toggleFollowupForm() {
+
+  var form =
+    document.getElementById(
+      'followupForm'
+    );
+
+
+  if (
+    form.classList.contains(
+      'show'
+    )
+  ) {
+
+    form.classList.remove(
+      'show'
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * Jangan membuka form jika Follow Up
+   * sudah SELESAI.
+   */
+
+  if (
+    CURRENT_FOLLOWUP &&
+    CURRENT_FOLLOWUP.status ===
+      'SELESAI'
+  ) {
+
+    showMessage(
+      'Follow Up sudah terdaftar. Data pendaftaran tidak perlu diinput ulang.',
+      'info'
+    );
+
+    return;
+
+  }
+
+
+  form.classList.add(
+    'show'
+  );
+
+
+  form.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
+}
+
+
+/* =========================================================
+   SIMPAN FOLLOW UP
+   ========================================================= */
+
+function simpanFollowup() {
+
+  if (
+    !CURRENT_EPISODE_ID ||
+    !CURRENT_NO_RM
+  ) {
+
+    showMessage(
+      'Silakan cari pasien terlebih dahulu.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  var jenis =
+    document.querySelector(
+      'input[name="jenisKontrol"]:checked'
+    );
+
+
+  var fasilitas =
+    document
+      .getElementById(
+        'inputFasilitas'
+      )
+      .value
+      .trim();
+
+
+  var noAntrean =
+    document
+      .getElementById(
+        'inputAntrean'
+      )
+      .value
+      .trim();
+
+
+  if (!jenis) {
+
+    showMessage(
+      'Silakan pilih Rumah Sakit atau Puskesmas.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (!fasilitas) {
+
+    showMessage(
+      'Nama fasilitas pelayanan kesehatan wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (!noAntrean) {
+
+    showMessage(
+      'Nomor antrean wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  var namaIbu =
+    ambilNamaPasien(
+      CURRENT_PATIENT || {}
+    );
+
+
+  var data = {
+
+    episodeId:
+      CURRENT_EPISODE_ID,
+
+    noRM:
+      CURRENT_NO_RM,
+
+    namaIbu:
+      namaIbu,
+
+    jenisKontrol:
+      jenis.value,
+
+    fasilitasKontrol:
+      fasilitas,
+
+    noAntrean:
+      noAntrean
+
+  };
+
+
+  var button =
+    document.getElementById(
+      'btnSimpanFollowup'
+    );
+
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    'Menyimpan...';
+
+
+  showMessage(
+    'Menyimpan hasil pendaftaran...',
+    'info'
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          '💾 Simpan & Generate Kartu Kontrol';
+
+
+        if (
+          !result ||
+          !result.success
+        ) {
+
+          showMessage(
+            result && result.message
+              ? result.message
+              : 'Gagal menyimpan Follow Up.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        /*
+         * Jangan langsung menganggap data browser
+         * sebagai data final.
+         *
+         * Setelah save berhasil,
+         * ambil ulang dari server.
+         */
+
+        showMessage(
+          '✓ Pendaftaran berhasil disimpan. Memuat data Follow Up...',
+          'success'
+        );
+
+
+        document
+          .getElementById(
+            'followupForm'
+          )
+          .classList.remove(
+            'show'
+          );
+
+
+        loadFollowUp();
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          '💾 Simpan & Generate Kartu Kontrol';
+
+
+        showMessage(
+          'Gagal menyimpan Follow Up: ' +
+          getErrorMessage(error),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_FOLLOWUP_save(
+      data
+    );
+
+}
+
+
+/* =========================================================
+   GENERATE KARTU
+   ========================================================= */
+
+function generateKartuKontrol(data) {
+
+  if (!data) {
+    return;
+  }
+
+
+  document
+    .getElementById(
+      'cardNamaIbu'
+    )
+    .textContent =
+      data.namaIbu ||
+      ambilNamaPasien(
+        CURRENT_PATIENT || {}
+      ) ||
+      '-';
+
+
+  document
+    .getElementById(
+      'cardNoRM'
+    )
+    .textContent =
+      data.noRM ||
+      CURRENT_NO_RM ||
+      '-';
+
+
+  document
+    .getElementById(
+      'cardEpisode'
+    )
+    .textContent =
+      data.episodeId ||
+      CURRENT_EPISODE_ID ||
+      '-';
+
+
+  document
+    .getElementById(
+      'cardJenis'
+    )
+    .textContent =
+      formatJenis(
+        data.jenisKontrol
+      );
+
+
+  document
+    .getElementById(
+      'cardFasilitas'
+    )
+    .textContent =
+      data.fasilitasKontrol ||
+      '-';
+
+
+  document
+    .getElementById(
+      'cardAntrean'
+    )
+    .textContent =
+      data.noAntrean ||
+      '-';
+
+
+  document
+    .getElementById(
+      'cardStatus'
+    )
+    .textContent =
+      data.status === 'SELESAI'
+        ? 'TERDAFTAR'
+        : (
+            data.status ||
+            'TERDAFTAR'
+          );
+
+
+  document
+    .getElementById(
+      'cardPerawat'
+    )
+    .textContent =
+      (
+        WIN_SESSION &&
+        WIN_SESSION.namaPerawat
+      )
+        ? WIN_SESSION.namaPerawat
+        : 'Perawat WIN';
+
+
+  document
+    .getElementById(
+      'controlCard'
+    )
+    .classList.add(
+      'show'
+    );
+
+
+  document
+    .getElementById(
+      'btnLihatKartu'
+    )
+    .style.display =
+      'inline-block';
+
+}
+
+
+/* =========================================================
+   LIHAT KARTU
+   ========================================================= */
+
+function scrollToKartu() {
+
+  var card =
+    document.getElementById(
+      'controlCard'
+    );
+
+
+  if (
+    !CURRENT_FOLLOWUP
+  ) {
+
+    showMessage(
+      'Data Follow Up belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  card.classList.add(
+    'show'
+  );
+
+
+  card.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
+}
+
+
+/* =========================================================
+   CETAK KARTU
+   ========================================================= */
+
+function cetakKartu() {
+
+  if (
+    !CURRENT_FOLLOWUP
+  ) {
+
+    showMessage(
+      'Kartu kontrol belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+  window.print();
+
+}
+
+
+/* =========================================================
+   VERIFIKASI PRAKTIK
+   ========================================================= */
+
+function bukaVerifikasiPraktik() {
+
+  if (
+    !CURRENT_EPISODE_ID ||
+    !CURRENT_NO_RM
+  ) {
+
+    showMessage(
+      'Silakan cari pasien terlebih dahulu.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (!url) {
+
+          showMessage(
+            'URL Web App tidak ditemukan.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        window.top.location.href =
+          url +
+          '?page=praktik' +
+          '&episodeId=' +
+          encodeURIComponent(
+            CURRENT_EPISODE_ID
+          ) +
+          '&noRM=' +
+          encodeURIComponent(
+            CURRENT_NO_RM
+          );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        showMessage(
+          'Gagal membuka halaman praktik: ' +
+          getErrorMessage(error),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+function resetPasien() {
+
+  CURRENT_NO_RM = '';
+
+  CURRENT_EPISODE_ID = '';
+
+  CURRENT_PATIENT = null;
+
+  CURRENT_FOLLOWUP = null;
+
+
+  document
+    .getElementById(
+      'inputNoRM'
+    )
+    .value = '';
+
+
+  document
+    .getElementById(
+      'inputEpisodeId'
+    )
+    .value = '';
+
+
+  document
+    .getElementById(
+      'patientCard'
+    )
+    .classList.remove(
+      'show'
+    );
+
+
+  document
+    .getElementById(
+      'dataIbuBayi'
+    )
+    .textContent =
+      'Belum ada data yang ditampilkan.';
+
+
+  document
+    .getElementById(
+      'dataEvaluasi'
+    )
+    .textContent =
+      'Belum ada hasil evaluasi.';
+
+
+  document
+    .getElementById(
+      'dataPraktik'
+    )
+    .textContent =
+      'Belum ada data praktik yang dapat ditampilkan.';
+
+
+  document
+    .getElementById(
+      'dataCertificate'
+    )
+    .textContent =
+      'Sertifikat belum diterbitkan.';
+
+
+  resetFollowUpView();
+
+  clearMessage();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+function logout() {
+
+  try {
+
+    sessionStorage.removeItem(
+      'WIN_SESSION'
+    );
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (url) {
+
+          window.top.location.href =
+            url +
+            '?page=login';
+
+        }
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+function showMessage(
+  text,
+  type
+) {
+
+  var box =
+    document.getElementById(
+      'messageBox'
+    );
+
+
+  box.textContent =
+    text;
+
+
+  box.className =
+    'message show ' +
+    (
+      type ||
+      'info'
+    );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+}
+
+
+function clearMessage() {
+
+  var box =
+    document.getElementById(
+      'messageBox'
+    );
+
+
+  box.textContent =
+    '';
+
+  box.className =
+    'message';
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+function showLoading() {
+
+  document
+    .getElementById(
+      'loading'
+    )
+    .classList.remove(
+      'hidden'
+    );
+
+}
+
+
+function hideLoading() {
+
+  document
+    .getElementById(
+      'loading'
+    )
+    .classList.add(
+      'hidden'
+    );
+
+}
+
+
+/* =========================================================
+   FORMAT
+   ========================================================= */
+
+function formatJenis(jenis) {
+
+  if (jenis === 'RS') {
+    return 'Rumah Sakit';
+  }
+
+  if (jenis === 'PUSKESMAS') {
+    return 'Puskesmas';
+  }
+
+  return jenis || '-';
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+function getErrorMessage(error) {
+
+  if (
+    error &&
+    error.message
+  ) {
+
+    return error.message;
+
+  }
+
+  return String(
+    error ||
+    'Terjadi kesalahan.'
+  );
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHtml(value) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+
+    return '';
+
+  }
+
+  return String(value)
+
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+
+    .replace(
+      /</g,
+      '&lt;'
+    )
+
+    .replace(
+      />/g,
+      '&gt;'
+    )
+
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+
+    .replace(
+      /'/g,
+      '&#039;'
+    );
+
+}
+
+
+/* =========================================================
+   ENTER KEY
+   ========================================================= */
+
+document.addEventListener(
+  'keydown',
+  function(event) {
+
+    if (
+      event.key === 'Enter'
+    ) {
+
+      var active =
+        document.activeElement;
+
+
+      if (
+        active &&
+        (
+          active.id === 'inputNoRM' ||
+          active.id === 'inputEpisodeId'
+        )
+      ) {
+
+        cariPasien();
+
+      }
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>WIN — Evaluasi</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff8fb;
+      color: #333;
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .header {
+      background: linear-gradient(135deg, #d982a5, #e6a5bc);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: white;
+      color: #c66e91;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .back-btn {
+      border: none;
+      background: white;
+      color: #b95f82;
+      padding: 9px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* =====================================================
+       CONTAINER
+       ===================================================== */
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    /* =====================================================
+       WELCOME
+       ===================================================== */
+
+    .welcome {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .welcome h2 {
+      margin: 0 0 7px;
+      color: #b95f82;
+    }
+
+    .welcome p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* =====================================================
+       ALERT
+       ===================================================== */
+
+    .alert {
+      display: none;
+      padding: 13px 15px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .alert.success {
+      display: block;
+      background: #e6f7ef;
+      color: #287b5c;
+    }
+
+    .alert.error {
+      display: block;
+      background: #fde8ed;
+      color: #a43b55;
+    }
+
+    .alert.info {
+      display: block;
+      background: #f7edf2;
+      color: #8b5068;
+    }
+
+    /* =====================================================
+       PROGRESS
+       ===================================================== */
+
+    .progress-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      height: 12px;
+      background: #f0e2e8;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #d982a5;
+      border-radius: 20px;
+      transition: width .3s ease;
+    }
+
+    /* =====================================================
+       QUESTION
+       ===================================================== */
+
+    .question-card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      margin-bottom: 18px;
+    }
+
+    .question-number {
+      font-size: 12px;
+      font-weight: bold;
+      color: #c16d8d;
+      margin-bottom: 10px;
+    }
+
+    .question-text {
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    /* =====================================================
+       OPTIONS
+       ===================================================== */
+
+    .option {
+      border: 2px solid #eadde3;
+      border-radius: 13px;
+      padding: 13px 14px;
+      margin-bottom: 11px;
+      cursor: pointer;
+      transition: .2s;
+      background: white;
+    }
+
+    .option:hover {
+      border-color: #d99ab2;
+      background: #fff9fb;
+    }
+
+    .option.selected {
+      border-color: #d982a5;
+      background: #fff1f6;
+    }
+
+    .option-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .option-letter {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: #f4e7ec;
+      color: #a95d7c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .option.selected .option-letter {
+      background: #d982a5;
+      color: white;
+    }
+
+    .option-text {
+      font-size: 14px;
+      line-height: 1.5;
+      padding-top: 4px;
+    }
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #d982a5;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #eee7ea;
+      color: #68565e;
+    }
+
+    .btn-success {
+      background: #55a982;
+      color: white;
+    }
+
+    .btn-warning {
+      background: #d89a4b;
+      color: white;
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    /* =====================================================
+       RESULT
+       ===================================================== */
+
+    .result-card {
+      display: none;
+      background: white;
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 3px 14px rgba(0,0,0,.09);
+      margin-bottom: 18px;
+    }
+
+    .result-icon {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #e3f5eb;
+      color: #4b9b78;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 35px;
+    }
+
+    .result-icon.fail {
+      background: #fde9ee;
+      color: #b85c76;
+    }
+
+    .result-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .result-score {
+      font-size: 42px;
+      font-weight: bold;
+      color: #c66d8e;
+      margin: 12px 0;
+    }
+
+    .result-message {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    .loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: #9a7a87;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f0dfe7;
+      border-top-color: #d982a5;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 11px;
+      padding: 25px 10px;
+    }
+
+    @media(max-width:650px) {
+
+      .header {
+        padding: 13px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .subtitle {
+        font-size: 10px;
+      }
+
+      .container {
+        padding: 11px;
+      }
+
+      .question-text {
+        font-size: 16px;
+      }
+
+      .navigation {
+        flex-direction: column;
+      }
+
+      .navigation .btn {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<div class="header">
+
+  <div class="header-left">
+
+    <div class="header-icon">
+      📝
+    </div>
+
+    <div>
+
+      <div class="title">
+        Evaluasi
+      </div>
+
+      <div class="subtitle">
+        WIN — Discharge Planning Perinatologi
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="back-btn"
+    onclick="goDashboard()">
+
+    ← Dashboard
+
+  </button>
+
+</div>
+
+
+
+<div class="container">
+
+
+  <!-- ===================================================
+       WELCOME
+       =================================================== -->
+
+  <div class="welcome">
+
+    <h2>
+      Evaluasi Pemahaman
+    </h2>
+
+    <p>
+
+      Jawablah setiap pertanyaan berdasarkan materi
+      edukasi yang telah dipelajari. Pilih satu jawaban
+      yang paling tepat.
+
+    </p>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       ALERT
+       =================================================== -->
+
+  <div
+    id="alert"
+    class="alert">
+  </div>
+
+
+
+  <!-- ===================================================
+       PROGRESS
+       =================================================== -->
+
+  <div
+    id="progressCard"
+    class="progress-card">
+
+    <div class="progress-top">
+
+      <span>
+        Progress Evaluasi
+      </span>
+
+      <span id="progressText">
+        0 / 0
+      </span>
+
+    </div>
+
+
+    <div class="progress-track">
+
+      <div
+        id="progressBar"
+        class="progress-bar">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       QUESTION AREA
+       =================================================== -->
+
+  <div
+    id="questionArea">
+
+    <div class="loading">
+
+      <div class="spinner"></div>
+
+      Memuat soal evaluasi...
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       NAVIGATION
+       =================================================== -->
+
+  <div
+    id="navigation"
+    class="navigation"
+    style="display:none;">
+
+    <button
+      id="btnPrev"
+      class="btn btn-secondary"
+      onclick="previousQuestion()">
+
+      ← Sebelumnya
+
+    </button>
+
+
+    <button
+      id="btnNext"
+      class="btn btn-primary"
+      onclick="nextQuestion()">
+
+      Berikutnya →
+
+    </button>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       RESULT
+       =================================================== -->
+
+  <div
+    id="resultCard"
+    class="result-card">
+
+    <div
+      id="resultIcon"
+      class="result-icon">
+
+      ✓
+
+    </div>
+
+
+    <div
+      id="resultTitle"
+      class="result-title">
+
+      Evaluasi Selesai
+
+    </div>
+
+
+    <div
+      id="resultScore"
+      class="result-score">
+
+      0
+
+    </div>
+
+
+    <div
+      id="resultMessage"
+      class="result-message">
+
+    </div>
+
+
+    <div class="result-actions">
+
+      <button
+        id="btnCertificate"
+        class="btn btn-success"
+        onclick="goCertificate()"
+        style="display:none;">
+
+        🏆 Lanjut ke Sertifikat
+
+      </button>
+
+
+      <button
+        id="btnRetry"
+        class="btn btn-warning"
+        onclick="retryEvaluation()"
+        style="display:none;">
+
+        ↻ Ulangi Evaluasi
+
+      </button>
+
+
+      <button
+        class="btn btn-secondary"
+        onclick="goDashboard()">
+
+        ← Kembali ke Dashboard
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="footer">
+
+  WIN — Discharge Planning Perinatologi
+
+  <br>
+
+  Evaluasi Pemahaman Ibu
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   SESSION
+   ===================================================== */
+
+let episodeId = '';
+
+let noRM = '';
+
+let namaIbu = '';
+
+
+
+/* =====================================================
+   QUESTION DATA
+   ===================================================== */
+
+let questions = [];
+
+let answers = {};
+
+let currentQuestion = 0;
+
+let evaluationSubmitted = false;
+
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    loadSession();
+
+    loadQuestions();
+
+  }
+);
+
+
+
+/* =====================================================
+   LOAD SESSION
+   ===================================================== */
+
+function loadSession() {
+
+  try {
+
+    episodeId =
+      localStorage.getItem(
+        'WIN_episodeId'
+      ) || '';
+
+    noRM =
+      localStorage.getItem(
+        'WIN_noRM'
+      ) || '';
+
+    namaIbu =
+      localStorage.getItem(
+        'WIN_namaIbu'
+      ) || '';
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+
+  if (!episodeId || !noRM) {
+
+    showAlert(
+      'Data sesi belum lengkap. Silakan kembali ke Dashboard.',
+      'error'
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOAD QUESTIONS
+   ===================================================== */
+
+function loadQuestions() {
+
+  showAlert(
+    'Memuat soal evaluasi...',
+    'info'
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'WIN EVALUASI QUESTIONS:',
+          result
+        );
+
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          questions =
+            extractQuestions(
+              result
+            );
+
+
+          if (
+            questions.length === 0
+          ) {
+
+            showEmptyQuestions();
+
+            return;
+
+          }
+
+
+          renderQuestion();
+
+          hideAlert();
+
+        }
+
+        else {
+
+          showAlert(
+            result &&
+            result.message
+              ? result.message
+              : 'Soal evaluasi belum tersedia.',
+            'error'
+          );
+
+          showEmptyQuestions();
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'LOAD QUESTIONS ERROR:',
+          error
+        );
+
+
+        showAlert(
+          'Gagal memuat soal: ' +
+          (
+            error.message ||
+            error
+          ),
+          'error'
+        );
+
+
+        showEmptyQuestions();
+
+      }
+    )
+
+    .WIN_WEBAPP_getQuestions(
+      episodeId,
+      noRM
+    );
+
+}
+
+
+
+/* =====================================================
+   EXTRACT QUESTIONS
+   ===================================================== */
+
+function extractQuestions(result) {
+
+  if (
+    Array.isArray(result.questions)
+  ) {
+
+    return result.questions;
+
+  }
+
+
+  if (
+    Array.isArray(result.soal)
+  ) {
+
+    return result.soal;
+
+  }
+
+
+  if (
+    Array.isArray(result.data)
+  ) {
+
+    return result.data;
+
+  }
+
+
+  if (
+    Array.isArray(result.items)
+  ) {
+
+    return result.items;
+
+  }
+
+
+  if (
+    Array.isArray(result.evaluasi)
+  ) {
+
+    return result.evaluasi;
+
+  }
+
+
+  return [];
+
+}
+
+
+
+/* =====================================================
+   RENDER QUESTION
+   ===================================================== */
+
+function renderQuestion() {
+
+  const area =
+    document.getElementById(
+      'questionArea'
+    );
+
+
+  const navigation =
+    document.getElementById(
+      'navigation'
+    );
+
+
+  if (
+    !questions.length
+  ) {
+
+    showEmptyQuestions();
+
+    return;
+
+  }
+
+
+  const question =
+    questions[
+      currentQuestion
+    ];
+
+
+  const number =
+    currentQuestion + 1;
+
+
+  const total =
+    questions.length;
+
+
+  const questionText =
+    question.question ||
+    question.questionText ||
+    question.pertanyaan ||
+    question.soal ||
+    question.text ||
+    (
+      'Pertanyaan ' +
+      number
+    );
+
+
+  const options =
+    getOptions(question);
+
+
+  let optionsHtml = '';
+
+
+  options.forEach(
+    function(option,index) {
+
+      const optionData =
+        normalizeOption(
+          option,
+          index
+        );
+
+
+      const selected =
+        answers[
+          getQuestionId(
+            question,
+            currentQuestion
+          )
+        ] ===
+        optionData.value;
+
+
+      optionsHtml += `
+
+        <div
+          class="option ${
+            selected
+              ? 'selected'
+              : ''
+          }"
+          onclick="selectAnswer(
+            '${escapeJs(
+              optionData.value
+            )}'
+          )">
+
+          <div class="option-row">
+
+            <div class="option-letter">
+
+              ${
+                optionData.letter
+              }
+
+            </div>
+
+            <div class="option-text">
+
+              ${
+                escapeHtml(
+                  optionData.text
+                )
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  );
+
+
+  area.innerHTML = `
+
+    <div class="question-card">
+
+      <div class="question-number">
+
+        SOAL ${number} DARI ${total}
+
+      </div>
+
+
+      <div class="question-text">
+
+        ${escapeHtml(questionText)}
+
+      </div>
+
+
+      <div>
+
+        ${optionsHtml}
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  navigation.style.display =
+    'flex';
+
+
+  updateNavigation();
+
+  updateProgress();
+
+}
+
+
+
+/* =====================================================
+   GET OPTIONS
+   ===================================================== */
+
+function getOptions(question) {
+
+  if (
+    Array.isArray(
+      question.options
+    )
+  ) {
+
+    return question.options;
+
+  }
+
+
+  if (
+    Array.isArray(
+      question.pilihan
+    )
+  ) {
+
+    return question.pilihan;
+
+  }
+
+
+  if (
+    Array.isArray(
+      question.answers
+    )
+  ) {
+
+    return question.answers;
+
+  }
+
+
+  /*
+   * Format A/B/C/D yang mungkin disimpan
+   * sebagai field terpisah.
+   */
+
+  const possible = [
+
+    question.a,
+    question.b,
+    question.c,
+    question.d,
+    question.e
+
+  ];
+
+
+  const result =
+    possible.filter(
+      function(item) {
+
+        return (
+          item !== undefined &&
+          item !== null &&
+          String(item).trim() !== ''
+        );
+
+      }
+    );
+
+
+  return result;
+
+}
+
+
+
+/* =====================================================
+   NORMALIZE OPTION
+   ===================================================== */
+
+function normalizeOption(
+  option,
+  index
+) {
+
+  const letters =
+    [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F'
+    ];
+
+
+  if (
+    typeof option === 'object' &&
+    option !== null
+  ) {
+
+    return {
+
+      letter:
+        option.letter ||
+        option.huruf ||
+        letters[index],
+
+      value:
+        String(
+          option.value !== undefined
+            ? option.value
+            : option.id !== undefined
+              ? option.id
+              : option.kode !== undefined
+                ? option.kode
+                : option.answer !== undefined
+                  ? option.answer
+                  : option.jawaban !== undefined
+                    ? option.jawaban
+                    : option.text !== undefined
+                      ? option.text
+                      : ''
+        ),
+
+      text:
+        option.text ||
+        option.label ||
+        option.option ||
+        option.jawaban ||
+        option.value ||
+        ''
+
+    };
+
+  }
+
+
+  return {
+
+    letter:
+      letters[index],
+
+    value:
+      String(option),
+
+    text:
+      String(option)
+
+  };
+
+}
+
+
+
+/* =====================================================
+   QUESTION ID
+   ===================================================== */
+
+function getQuestionId(
+  question,
+  index
+) {
+
+  return String(
+
+    question.evaluasiId ||
+    question.questionId ||
+    question.soalId ||
+    question.id ||
+    question.kode ||
+    (
+      'SOAL_' +
+      String(index + 1)
+        .padStart(3,'0')
+    )
+
+  );
+
+}
+
+
+
+/* =====================================================
+   SELECT ANSWER
+   ===================================================== */
+
+function selectAnswer(
+  value
+) {
+
+  const question =
+    questions[
+      currentQuestion
+    ];
+
+
+  const id =
+    getQuestionId(
+      question,
+      currentQuestion
+    );
+
+
+  answers[id] =
+    value;
+
+
+  saveCurrentAnswer(
+    id,
+    value
+  );
+
+
+  renderQuestion();
+
+}
+
+
+
+/* =====================================================
+   SAVE ANSWER
+   ===================================================== */
+
+function saveCurrentAnswer(
+  evaluasiId,
+  jawaban
+) {
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'ANSWER SAVED:',
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'SAVE ANSWER ERROR:',
+          error
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_saveAnswer(
+      episodeId,
+      noRM,
+      evaluasiId,
+      jawaban
+    );
+
+}
+
+
+
+/* =====================================================
+   PREVIOUS
+   ===================================================== */
+
+function previousQuestion() {
+
+  if (
+    currentQuestion <= 0
+  ) {
+
+    return;
+
+  }
+
+
+  currentQuestion--;
+
+  renderQuestion();
+
+}
+
+
+
+/* =====================================================
+   NEXT
+   ===================================================== */
+
+function nextQuestion() {
+
+  const question =
+    questions[
+      currentQuestion
+    ];
+
+
+  const id =
+    getQuestionId(
+      question,
+      currentQuestion
+    );
+
+
+  if (
+    answers[id] === undefined
+  ) {
+
+    showAlert(
+      'Silakan pilih jawaban terlebih dahulu.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    currentQuestion <
+    questions.length - 1
+  ) {
+
+    currentQuestion++;
+
+    renderQuestion();
+
+    return;
+
+  }
+
+
+  submitEvaluation();
+
+}
+
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+function updateNavigation() {
+
+  const prev =
+    document.getElementById(
+      'btnPrev'
+    );
+
+
+  const next =
+    document.getElementById(
+      'btnNext'
+    );
+
+
+  if (!prev || !next) {
+    return;
+  }
+
+
+  prev.disabled =
+    currentQuestion === 0;
+
+
+  if (
+    currentQuestion ===
+    questions.length - 1
+  ) {
+
+    next.textContent =
+      '✓ Submit Evaluasi';
+
+    next.className =
+      'btn btn-success';
+
+  }
+
+  else {
+
+    next.textContent =
+      'Berikutnya →';
+
+    next.className =
+      'btn btn-primary';
+
+  }
+
+}
+
+
+
+/* =====================================================
+   PROGRESS
+   ===================================================== */
+
+function updateProgress() {
+
+  const total =
+    questions.length;
+
+
+  let answered = 0;
+
+
+  questions.forEach(
+    function(question,index) {
+
+      const id =
+        getQuestionId(
+          question,
+          index
+        );
+
+
+      if (
+        answers[id] !== undefined
+      ) {
+
+        answered++;
+
+      }
+
+    }
+  );
+
+
+  const percentage =
+    total > 0
+      ? Math.round(
+          (
+            answered /
+            total
+          ) * 100
+        )
+      : 0;
+
+
+  const bar =
+    document.getElementById(
+      'progressBar'
+    );
+
+
+  const text =
+    document.getElementById(
+      'progressText'
+    );
+
+
+  if (bar) {
+
+    bar.style.width =
+      percentage + '%';
+
+  }
+
+
+  if (text) {
+
+    text.textContent =
+      answered +
+      ' / ' +
+      total +
+      ' (' +
+      percentage +
+      '%)';
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SUBMIT
+   ===================================================== */
+
+function submitEvaluation() {
+
+  if (
+    evaluationSubmitted
+  ) {
+
+    return;
+
+  }
+
+
+  /*
+   * Pastikan seluruh soal dijawab.
+   */
+
+  const unanswered = [];
+
+
+  questions.forEach(
+    function(question,index) {
+
+      const id =
+        getQuestionId(
+          question,
+          index
+        );
+
+
+      if (
+        answers[id] === undefined
+      ) {
+
+        unanswered.push(
+          index + 1
+        );
+
+      }
+
+    }
+  );
+
+
+  if (
+    unanswered.length > 0
+  ) {
+
+    showAlert(
+      'Masih ada soal yang belum dijawab: ' +
+      unanswered.join(', '),
+      'error'
+    );
+
+
+    currentQuestion =
+      unanswered[0] - 1;
+
+
+    renderQuestion();
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      'Semua soal sudah dijawab. Apakah Anda yakin ingin mengirim evaluasi?'
+    );
+
+
+  if (!confirmed) {
+
+    return;
+
+  }
+
+
+  evaluationSubmitted =
+    true;
+
+
+  showAlert(
+    'Mengirim hasil evaluasi...',
+    'info'
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'SUBMIT EVALUASI:',
+          result
+        );
+
+
+        handleEvaluationResult(
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'SUBMIT EVALUASI ERROR:',
+          error
+        );
+
+
+        evaluationSubmitted =
+          false;
+
+
+        showAlert(
+          'Gagal mengirim evaluasi: ' +
+          (
+            error.message ||
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_submitEvaluasi(
+      episodeId,
+      noRM,
+      namaIbu
+    );
+
+}
+
+
+
+/* =====================================================
+   HANDLE RESULT
+   ===================================================== */
+
+function handleEvaluationResult(
+  result
+) {
+
+  document.getElementById(
+    'questionArea'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'navigation'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'progressCard'
+  ).style.display =
+    'none';
+
+
+  const card =
+    document.getElementById(
+      'resultCard'
+    );
+
+
+  card.style.display =
+    'block';
+
+
+  hideAlert();
+
+
+  /*
+   * Ambil nilai dari berbagai kemungkinan
+   * struktur backend.
+   */
+
+  const score =
+    getResultValue(
+      result,
+      [
+        'nilai',
+        'score',
+        'skor',
+        'persentase',
+        'percentage'
+      ]
+    );
+
+
+  const passed =
+    getPassedValue(
+      result
+    );
+
+
+  const scoreText =
+    score !== null
+      ? formatScore(score)
+      : passed
+        ? 'LULUS'
+        : 'SELESAI';
+
+
+  document.getElementById(
+    'resultScore'
+  ).textContent =
+    scoreText;
+
+
+  const icon =
+    document.getElementById(
+      'resultIcon'
+    );
+
+
+  const title =
+    document.getElementById(
+      'resultTitle'
+    );
+
+
+  const message =
+    document.getElementById(
+      'resultMessage'
+    );
+
+
+  const certificateButton =
+    document.getElementById(
+      'btnCertificate'
+    );
+
+
+  const retryButton =
+    document.getElementById(
+      'btnRetry'
+    );
+
+
+  if (passed) {
+
+    icon.className =
+      'result-icon';
+
+    icon.textContent =
+      '✓';
+
+
+    title.textContent =
+      'Evaluasi LULUS';
+
+
+    message.textContent =
+      getResultMessage(
+        result,
+        'Selamat! Anda telah menyelesaikan evaluasi dengan hasil yang memenuhi kriteria. Anda dapat melanjutkan ke tahap sertifikat.'
+      );
+
+
+    certificateButton.style.display =
+      'inline-block';
+
+
+    retryButton.style.display =
+      'none';
+
+
+    showAlert(
+      '✓ Evaluasi berhasil diselesaikan dan Anda dinyatakan LULUS.',
+      'success'
+    );
+
+  }
+
+  else {
+
+    icon.className =
+      'result-icon fail';
+
+    icon.textContent =
+      '↻';
+
+
+    title.textContent =
+      'Evaluasi Belum Lulus';
+
+
+    message.textContent =
+      getResultMessage(
+        result,
+        'Evaluasi telah selesai, tetapi hasil belum memenuhi kriteria kelulusan. Silakan pelajari kembali materi dan ulangi evaluasi.'
+      );
+
+
+    certificateButton.style.display =
+      'none';
+
+
+    retryButton.style.display =
+      'inline-block';
+
+
+    showAlert(
+      'Evaluasi selesai. Hasil belum memenuhi kriteria kelulusan.',
+      'error'
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   RESULT VALUE
+   ===================================================== */
+
+function getResultValue(
+  result,
+  keys
+) {
+
+  if (!result) {
+    return null;
+  }
+
+
+  for (
+    let i = 0;
+    i < keys.length;
+    i++
+  ) {
+
+    const key =
+      keys[i];
+
+
+    if (
+      result[key] !== undefined &&
+      result[key] !== null
+    ) {
+
+      return result[key];
+
+    }
+
+  }
+
+
+  if (
+    result.data &&
+    typeof result.data === 'object'
+  ) {
+
+    for (
+      let i = 0;
+      i < keys.length;
+      i++
+    ) {
+
+      const key =
+        keys[i];
+
+
+      if (
+        result.data[key] !== undefined &&
+        result.data[key] !== null
+      ) {
+
+        return result.data[key];
+
+      }
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+
+/* =====================================================
+   PASSED
+   ===================================================== */
+
+function getPassedValue(
+  result
+) {
+
+  if (!result) {
+    return false;
+  }
+
+
+  const candidates = [
+
+    result.lulus,
+    result.passed,
+    result.isPassed,
+    result.berhasil,
+    result.status === 'LULUS',
+    result.status === 'PASSED'
+
+  ];
+
+
+  for (
+    let i = 0;
+    i < candidates.length;
+    i++
+  ) {
+
+    if (
+      candidates[i] === true
+    ) {
+
+      return true;
+
+    }
+
+  }
+
+
+  /*
+   * Jika backend mengirim nilai,
+   * gunakan threshold 80 sebagai fallback.
+   *
+   * Nilai ini hanya fallback tampilan.
+   * Keputusan utama tetap dari backend.
+   */
+
+  const score =
+    getResultValue(
+      result,
+      [
+        'nilai',
+        'score',
+        'skor',
+        'persentase'
+      ]
+    );
+
+
+  if (
+    score !== null &&
+    !isNaN(
+      Number(score)
+    )
+  ) {
+
+    return Number(score) >= 80;
+
+  }
+
+
+  return false;
+
+}
+
+
+
+/* =====================================================
+   RESULT MESSAGE
+   ===================================================== */
+
+function getResultMessage(
+  result,
+  fallback
+) {
+
+  if (
+    result &&
+    result.message
+  ) {
+
+    return String(
+      result.message
+    );
+
+  }
+
+
+  if (
+    result &&
+    result.pesan
+  ) {
+
+    return String(
+      result.pesan
+    );
+
+  }
+
+
+  return fallback;
+
+}
+
+
+
+/* =====================================================
+   FORMAT SCORE
+   ===================================================== */
+
+function formatScore(
+  score
+) {
+
+  const number =
+    Number(score);
+
+
+  if (
+    isNaN(number)
+  ) {
+
+    return String(score);
+
+  }
+
+
+  return (
+    Math.round(
+      number * 10
+    ) / 10
+  ) + '';
+
+}
+
+
+
+/* =====================================================
+   RETRY
+   ===================================================== */
+
+function retryEvaluation() {
+
+  const confirmed =
+    confirm(
+      'Apakah Anda ingin mengulangi evaluasi?'
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  answers = {};
+
+  currentQuestion = 0;
+
+  evaluationSubmitted = false;
+
+
+  document.getElementById(
+    'resultCard'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'progressCard'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'questionArea'
+  ).style.display =
+    'block';
+
+
+  loadQuestions();
+
+}
+
+
+
+/* =====================================================
+   GO CERTIFICATE
+   ===================================================== */
+
+function goCertificate() {
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=certificate';
+
+}
+
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function goDashboard() {
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=dashboard';
+
+}
+
+
+
+/* =====================================================
+   WEB APP URL
+   ===================================================== */
+
+function getWebAppUrl() {
+
+  return 'https://script.google.com/macros/s/AKfycbwy8TG3BVMWbEsS0OUejMOAmc8Bn4ewYXPNmG1B1P92S21YHa1id_YH__zFegsADVs2/exec';
+
+}
+
+
+
+/* =====================================================
+   ALERT
+   ===================================================== */
+
+function showAlert(
+  message,
+  type
+) {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.textContent =
+    message;
+
+
+  el.className =
+    'alert ' +
+    (
+      type ||
+      'info'
+    );
+
+}
+
+
+
+/* =====================================================
+   HIDE ALERT
+   ===================================================== */
+
+function hideAlert() {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.style.display =
+    'none';
+
+}
+
+
+
+/* =====================================================
+   EMPTY QUESTIONS
+   ===================================================== */
+
+function showEmptyQuestions() {
+
+  document.getElementById(
+    'questionArea'
+  ).innerHTML = `
+
+    <div class="question-card">
+
+      <div class="question-text">
+
+        Soal evaluasi belum tersedia.
+
+      </div>
+
+      <div style="
+        color:#777;
+        font-size:14px;
+        line-height:1.6;
+      ">
+
+        Pastikan data soal sudah tersedia
+        pada engine WIN_06_EVALUASI.gs.
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  document.getElementById(
+    'navigation'
+  ).style.display =
+    'none';
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+  .replace(
+    /&/g,
+    '&amp;'
+  )
+  .replace(
+    /</g,
+    '&lt;'
+  )
+  .replace(
+    />/g,
+    '&gt;'
+  )
+  .replace(
+    /"/g,
+    '&quot;'
+  )
+  .replace(
+    /'/g,
+    '&#039;'
+  );
+
+}
+
+
+
+/* =====================================================
+   ESCAPE JAVASCRIPT
+   ===================================================== */
+
+function escapeJs(
+  value
+) {
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+  .replace(
+    /\\/g,
+    '\\\\'
+  )
+  .replace(
+    /'/g,
+    "\\'"
+  )
+  .replace(
+    /\r/g,
+    ''
+  )
+  .replace(
+    /\n/g,
+    '\\n'
+  );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

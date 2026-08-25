@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>WIN — Edukasi</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff5f8;
+      color: #333;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #f78fb3, #f6a6c1);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon {
+      width: 42px;
+      height: 42px;
+      background: white;
+      color: #d84e7b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .back-btn {
+      border: none;
+      background: white;
+      color: #d84e7b;
+      padding: 9px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .welcome h2 {
+      margin: 0 0 7px;
+      color: #d84e7b;
+    }
+
+    .welcome p {
+      margin: 0;
+      color: #666;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .progress-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .progress-track {
+      height: 12px;
+      background: #f1e2e8;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #e85b8a;
+      border-radius: 20px;
+      transition: width .3s ease;
+    }
+
+    .materi-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .materi-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      border: 2px solid transparent;
+    }
+
+    .materi-card.active {
+      border-color: #f2abc2;
+    }
+
+    .materi-card.completed {
+      border-color: #9bd5c0;
+      background: #fbfffd;
+    }
+
+    .materi-head {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .materi-number {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 50%;
+      background: #fde0ea;
+      color: #c84872;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .materi-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .materi-category {
+      font-size: 11px;
+      color: #c84872;
+      margin-top: 4px;
+    }
+
+    .materi-description {
+      margin-top: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .video-box {
+      margin-top: 15px;
+      min-height: 190px;
+      background: #f8eef2;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: #888;
+    }
+
+    .video-icon {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .video-note {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .video-frame {
+      width: 100%;
+      min-height: 300px;
+      border: none;
+      border-radius: 14px;
+      display: none;
+    }
+
+    .material-link {
+      display: none;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .material-link a {
+      color: #d84e7b;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .materi-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .btn {
+      border: none;
+      padding: 11px 16px;
+      border-radius: 11px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #e85b8a;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #f2e8ed;
+      color: #555;
+    }
+
+    .btn-success {
+      background: #55a98b;
+      color: white;
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 9px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .status-belum {
+      background: #f4edf0;
+      color: #888;
+    }
+
+    .status-proses {
+      background: #fff0d9;
+      color: #a66a18;
+    }
+
+    .status-selesai {
+      background: #e3f6ed;
+      color: #347b5b;
+    }
+
+    .alert {
+      display: none;
+      padding: 13px 15px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .alert.success {
+      display: block;
+      background: #e6f7ef;
+      color: #277c58;
+    }
+
+    .alert.error {
+      display: block;
+      background: #fde8ed;
+      color: #a43755;
+    }
+
+    .alert.info {
+      display: block;
+      background: #eef6ff;
+      color: #35658f;
+    }
+
+    .bottom-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .next-box {
+      background: #f0fbfa;
+      border: 1px solid #ccebe7;
+      border-radius: 14px;
+      padding: 15px;
+      color: #357b76;
+      margin-bottom: 15px;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 11px;
+      padding: 25px 10px;
+    }
+
+    @media(max-width:650px) {
+
+      .header {
+        padding: 13px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .subtitle {
+        font-size: 10px;
+      }
+
+      .container {
+        padding: 11px;
+      }
+
+      .video-frame {
+        min-height: 220px;
+      }
+
+      .materi-actions {
+        flex-direction: column;
+      }
+
+      .materi-actions .btn {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<div class="header">
+
+  <div class="header-left">
+
+    <div class="header-icon">
+      📚
+    </div>
+
+    <div>
+
+      <div class="title">
+        Edukasi Ibu
+      </div>
+
+      <div class="subtitle">
+        WIN — Discharge Planning Perinatologi
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="back-btn"
+    onclick="goDashboard()">
+
+    ← Kembali
+
+  </button>
+
+</div>
+
+
+
+<div class="container">
+
+
+  <!-- ===================================================
+       WELCOME
+       =================================================== -->
+
+  <div class="welcome">
+
+    <h2>
+      Edukasi Sebelum Pulang
+    </h2>
+
+    <p>
+
+      Pelajari materi edukasi secara berurutan.
+      Setelah memahami materi, tandai materi sebagai
+      selesai untuk melanjutkan ke tahap praktik.
+
+    </p>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       ALERT
+       =================================================== -->
+
+  <div
+    id="alert"
+    class="alert">
+  </div>
+
+
+
+  <!-- ===================================================
+       PROGRESS
+       =================================================== -->
+
+  <div class="progress-card">
+
+    <div class="progress-top">
+
+      <span>
+        Progress Edukasi
+      </span>
+
+      <span id="progressText">
+        0%
+      </span>
+
+    </div>
+
+
+    <div class="progress-track">
+
+      <div
+        id="progressBar"
+        class="progress-bar">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       MATERI
+       =================================================== -->
+
+  <div
+    id="materiList"
+    class="materi-list">
+
+    <!-- Diisi JavaScript -->
+
+  </div>
+
+
+
+  <!-- ===================================================
+       BOTTOM
+       =================================================== -->
+
+  <div class="bottom-card">
+
+
+    <div class="next-box">
+
+      <strong>
+        Tahap berikutnya
+      </strong>
+
+      <br>
+
+      Setelah seluruh materi edukasi selesai,
+      Ibu dapat melanjutkan ke tahap
+      <strong>Praktik</strong>.
+
+    </div>
+
+
+    <button
+      id="btnLanjutPraktik"
+      class="btn btn-success"
+      onclick="continueToPraktik()"
+      disabled>
+
+      Lanjut ke Praktik →
+
+    </button>
+
+
+  </div>
+
+
+</div>
+
+
+
+<div class="footer">
+
+  WIN — Discharge Planning Perinatologi
+
+  <br>
+
+  Edukasi Ibu
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   SESSION
+   ===================================================== */
+
+let episodeId = '';
+
+let noRM = '';
+
+let namaIbu = '';
+
+let materiList = [];
+
+let completedMateri = [];
+
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    loadSession();
+
+    loadMateri();
+
+  }
+);
+
+
+
+/* =====================================================
+   LOAD SESSION
+   ===================================================== */
+
+function loadSession() {
+
+  try {
+
+    episodeId =
+      localStorage.getItem(
+        'WIN_episodeId'
+      ) || '';
+
+    noRM =
+      localStorage.getItem(
+        'WIN_noRM'
+      ) || '';
+
+    namaIbu =
+      localStorage.getItem(
+        'WIN_namaIbu'
+      ) || '';
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOAD MATERI DARI BACKEND
+   ===================================================== */
+
+function loadMateri() {
+
+  showAlert(
+    'Memuat materi edukasi...',
+    'info'
+  );
+
+
+  /*
+   * Panggil WIN_04_LMS.gs
+   *
+   * Bila backend sudah tersedia,
+   * data materi akan digunakan.
+   */
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'WIN LMS RESULT:',
+          result
+        );
+
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          if (
+            Array.isArray(
+              result.materi
+            )
+          ) {
+
+            materiList =
+              result.materi;
+
+          }
+
+          else if (
+            Array.isArray(
+              result.data
+            )
+          ) {
+
+            materiList =
+              result.data;
+
+          }
+
+          else {
+
+            materiList =
+              [];
+
+          }
+
+
+          renderMateri();
+
+
+          hideAlert();
+
+        }
+
+        else {
+
+          /*
+           * Backend belum mengembalikan
+           * materi. Gunakan fallback.
+           */
+
+          useFallbackMateri();
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'WIN LMS ERROR:',
+          error
+        );
+
+
+        /*
+         * Jangan membuat layar putih.
+         *
+         * Bila fungsi backend belum cocok,
+         * halaman tetap tampil.
+         */
+
+        useFallbackMateri();
+
+      }
+    )
+
+    .WIN_WEBAPP_getLMS(
+      episodeId,
+      noRM
+    );
+
+}
+
+
+
+/* =====================================================
+   FALLBACK MATERI
+   ===================================================== */
+
+function useFallbackMateri() {
+
+  materiList = [
+
+    {
+      materiId: 'LMS_001',
+      urutan: 1,
+      kategori: 'MENYUSUI',
+      judul: 'Persiapan Menyusui',
+      deskripsi:
+        'Pelajari persiapan ibu dan bayi sebelum menyusui.'
+    },
+
+    {
+      materiId: 'LMS_002',
+      urutan: 2,
+      kategori: 'MENYUSUI',
+      judul: 'Posisi dan Pelekatan Menyusui',
+      deskripsi:
+        'Pelajari posisi ibu dan bayi serta cara pelekatan yang benar.'
+    },
+
+    {
+      materiId: 'LMS_003',
+      urutan: 3,
+      kategori: 'PERAWATAN_BAYI',
+      judul: 'Perawatan Bayi Baru Lahir',
+      deskripsi:
+        'Pelajari perawatan dasar bayi baru lahir di rumah.'
+    },
+
+    {
+      materiId: 'LMS_004',
+      urutan: 4,
+      kategori: 'PERAWATAN_BAYI',
+      judul: 'Perawatan Tali Pusat',
+      deskripsi:
+        'Pelajari cara menjaga kebersihan dan perawatan tali pusat.'
+    },
+
+    {
+      materiId: 'LMS_005',
+      urutan: 5,
+      kategori: 'PERAWATAN_IBU',
+      judul: 'Perawatan Ibu Setelah Persalinan',
+      deskripsi:
+        'Pelajari kebersihan diri dan perawatan ibu setelah persalinan.'
+    },
+
+    {
+      materiId: 'LMS_006',
+      urutan: 6,
+      kategori: 'TANDA_BAHAYA',
+      judul: 'Tanda Bahaya Ibu dan Bayi',
+      deskripsi:
+        'Kenali tanda bahaya yang membutuhkan pertolongan segera.'
+    },
+
+    {
+      materiId: 'LMS_007',
+      urutan: 7,
+      kategori: 'PERSIAPAN_PULANG',
+      judul: 'Persiapan Pulang',
+      deskripsi:
+        'Pelajari rencana perawatan ibu dan bayi di rumah.'
+    }
+
+  ];
+
+
+  renderMateri();
+
+
+  showAlert(
+    'Materi edukasi siap dipelajari.',
+    'info'
+  );
+
+}
+
+
+
+/* =====================================================
+   RENDER MATERI
+   ===================================================== */
+
+function renderMateri() {
+
+
+  const container =
+    document.getElementById(
+      'materiList'
+    );
+
+
+  container.innerHTML = '';
+
+
+  if (
+    !materiList ||
+    materiList.length === 0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="materi-card">
+
+        <div class="materi-title">
+          Materi edukasi belum tersedia
+        </div>
+
+        <div class="materi-description">
+          Materi dapat ditambahkan melalui
+          konfigurasi LMS.
+        </div>
+
+      </div>
+
+    `;
+
+    updateProgress();
+
+    return;
+
+  }
+
+
+  /*
+   * Urutkan materi
+   */
+
+  materiList.sort(
+    function(a,b) {
+
+      return (
+        Number(a.urutan || 0) -
+        Number(b.urutan || 0)
+      );
+
+    }
+  );
+
+
+  materiList.forEach(
+    function(materi,index) {
+
+      const id =
+        getMateriId(materi,index);
+
+
+      const selesai =
+        completedMateri
+          .indexOf(id) !== -1;
+
+
+      const card =
+        document.createElement(
+          'div'
+        );
+
+
+      card.className =
+        'materi-card ' +
+        (
+          selesai
+            ? 'completed'
+            : ''
+        );
+
+
+      const judul =
+        materi.judul ||
+        materi.namaMateri ||
+        materi.item ||
+        (
+          'Materi ' +
+          (index + 1)
+        );
+
+
+      const kategori =
+        materi.kategori ||
+        materi.category ||
+        'EDUKASI';
+
+
+      const deskripsi =
+        materi.deskripsi ||
+        materi.instruksi ||
+        materi.description ||
+        'Materi edukasi discharge planning.';
+
+
+      /*
+       * Video
+       */
+
+      const videoUrl =
+        materi.videoUrl ||
+        materi.video ||
+        materi.urlVideo ||
+        '';
+
+
+      /*
+       * PPT / materi
+       */
+
+      const materialUrl =
+        materi.materialUrl ||
+        materi.pptUrl ||
+        materi.fileUrl ||
+        '';
+
+
+      card.innerHTML = `
+
+        <div class="materi-head">
+
+          <div class="materi-number">
+            ${index + 1}
+          </div>
+
+          <div>
+
+            <div class="materi-title">
+              ${escapeHtml(judul)}
+            </div>
+
+            <div class="materi-category">
+              ${escapeHtml(kategori)}
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="materi-description">
+
+          ${escapeHtml(deskripsi)}
+
+        </div>
+
+
+        <div class="video-box"
+             id="videoBox_${index}">
+
+          <div
+            class="video-icon">
+            ▶️
+          </div>
+
+          <div class="video-note">
+
+            Video edukasi akan ditempatkan
+            di sini.
+
+            <br><br>
+
+            <strong>
+              Link video belum tersedia.
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <iframe
+          id="videoFrame_${index}"
+          class="video-frame"
+          allowfullscreen>
+        </iframe>
+
+
+        <div
+          id="materialLink_${index}"
+          class="material-link">
+
+          <a
+            id="materialAnchor_${index}"
+            href="#"
+            target="_blank">
+
+            📄 Buka Materi / PPT
+
+          </a>
+
+        </div>
+
+
+        <div class="materi-actions">
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="openMateri(${index})">
+
+            📖 Pelajari
+
+          </button>
+
+
+          <button
+            type="button"
+            class="btn btn-success"
+            id="complete_${index}"
+            onclick="completeMateri(${index})"
+            ${selesai ? 'disabled' : ''}>
+
+            ${
+              selesai
+                ? '✓ Sudah Selesai'
+                : '✓ Tandai Selesai'
+            }
+
+          </button>
+
+        </div>
+
+
+        <div
+          id="status_${index}"
+          class="status ${
+            selesai
+              ? 'status-selesai'
+              : 'status-belum'
+          }">
+
+          ${
+            selesai
+              ? 'SELESAI'
+              : 'BELUM DIPELAJARI'
+          }
+
+        </div>
+
+      `;
+
+
+      container.appendChild(card);
+
+
+      /*
+       * Jika URL video sudah tersedia,
+       * tampilkan iframe.
+       */
+
+      if (videoUrl) {
+
+        setVideo(
+          index,
+          videoUrl
+        );
+
+      }
+
+
+      /*
+       * Jika file materi sudah tersedia
+       */
+
+      if (materialUrl) {
+
+        setMaterialLink(
+          index,
+          materialUrl
+        );
+
+      }
+
+    }
+  );
+
+
+  updateProgress();
+
+}
+
+
+
+/* =====================================================
+   GET MATERI ID
+   ===================================================== */
+
+function getMateriId(
+  materi,
+  index
+) {
+
+  return String(
+
+    materi.materiId ||
+    materi.id ||
+    materi.kode ||
+    (
+      'LMS_' +
+      String(index + 1)
+        .padStart(3,'0')
+    )
+
+  );
+
+}
+
+
+
+/* =====================================================
+   BUKA MATERI
+   ===================================================== */
+
+function openMateri(index) {
+
+  const materi =
+    materiList[index];
+
+
+  const id =
+    getMateriId(
+      materi,
+      index
+    );
+
+
+  /*
+   * Tandai sedang dipelajari
+   */
+
+  const status =
+    document.getElementById(
+      'status_' + index
+    );
+
+
+  if (status) {
+
+    status.className =
+      'status status-proses';
+
+    status.textContent =
+      'SEDANG DIPELAJARI';
+
+  }
+
+
+  /*
+   * Panggil backend jika tersedia.
+   */
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'OPEN LMS:',
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.log(
+          'OPEN LMS ERROR:',
+          error
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_openLMS(
+      episodeId,
+      noRM,
+      namaIbu,
+      id
+    );
+
+
+
+  showAlert(
+    'Materi dibuka. Silakan pelajari sampai selesai.',
+    'info'
+  );
+
+}
+
+
+
+/* =====================================================
+   SELESAIKAN MATERI
+   ===================================================== */
+
+function completeMateri(index) {
+
+  const materi =
+    materiList[index];
+
+
+  const id =
+    getMateriId(
+      materi,
+      index
+    );
+
+
+  /*
+   * Hindari duplikasi
+   */
+
+  if (
+    completedMateri
+      .indexOf(id) !== -1
+  ) {
+
+    return;
+
+  }
+
+
+  /*
+   * Panggil backend
+   */
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'COMPLETE LMS:',
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.log(
+          'COMPLETE LMS ERROR:',
+          error
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_completeLMS(
+      episodeId,
+      noRM,
+      id
+    );
+
+
+  /*
+   * Simpan status lokal
+   */
+
+  completedMateri.push(id);
+
+
+  try {
+
+    localStorage.setItem(
+      getCompletionKey(),
+      JSON.stringify(
+        completedMateri
+      )
+    );
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+
+  /*
+   * Update tampilan
+   */
+
+  const button =
+    document.getElementById(
+      'complete_' + index
+    );
+
+
+  if (button) {
+
+    button.disabled = true;
+
+    button.textContent =
+      '✓ Sudah Selesai';
+
+  }
+
+
+  const status =
+    document.getElementById(
+      'status_' + index
+    );
+
+
+  if (status) {
+
+    status.className =
+      'status status-selesai';
+
+    status.textContent =
+      'SELESAI';
+
+  }
+
+
+  const card =
+    button
+      ? button.closest(
+          '.materi-card'
+        )
+      : null;
+
+
+  if (card) {
+
+    card.classList.add(
+      'completed'
+    );
+
+  }
+
+
+  updateProgress();
+
+
+  showAlert(
+    '✓ Materi berhasil diselesaikan.',
+    'success'
+  );
+
+}
+
+
+
+/* =====================================================
+   PROGRESS
+   ===================================================== */
+
+function updateProgress() {
+
+  const total =
+    materiList.length;
+
+
+  const selesai =
+    completedMateri.length;
+
+
+  let percentage = 0;
+
+
+  if (total > 0) {
+
+    percentage =
+      Math.round(
+        (
+          selesai /
+          total
+        ) * 100
+      );
+
+  }
+
+
+  const bar =
+    document.getElementById(
+      'progressBar'
+    );
+
+
+  const text =
+    document.getElementById(
+      'progressText'
+    );
+
+
+  if (bar) {
+
+    bar.style.width =
+      percentage + '%';
+
+  }
+
+
+  if (text) {
+
+    text.textContent =
+      percentage + '%';
+
+  }
+
+
+  const button =
+    document.getElementById(
+      'btnLanjutPraktik'
+    );
+
+
+  if (button) {
+
+    button.disabled =
+      !(
+        total > 0 &&
+        selesai >= total
+      );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOAD COMPLETION
+   ===================================================== */
+
+function loadCompletion() {
+
+  try {
+
+    const raw =
+      localStorage.getItem(
+        getCompletionKey()
+      );
+
+
+    if (raw) {
+
+      const data =
+        JSON.parse(raw);
+
+
+      if (
+        Array.isArray(data)
+      ) {
+
+        completedMateri =
+          data;
+
+      }
+
+    }
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   COMPLETION KEY
+   ===================================================== */
+
+function getCompletionKey() {
+
+  return (
+
+    'WIN_LMS_COMPLETED_' +
+
+    (
+      episodeId ||
+      noRM ||
+      'DEFAULT'
+    )
+
+  );
+
+}
+
+
+
+/* =====================================================
+   VIDEO
+   ===================================================== */
+
+function setVideo(
+  index,
+  url
+) {
+
+  const box =
+    document.getElementById(
+      'videoBox_' + index
+    );
+
+
+  const frame =
+    document.getElementById(
+      'videoFrame_' + index
+    );
+
+
+  if (
+    !frame ||
+    !url
+  ) {
+
+    return;
+
+  }
+
+
+  frame.src =
+    convertVideoUrl(url);
+
+
+  frame.style.display =
+    'block';
+
+
+  if (box) {
+
+    box.style.display =
+      'none';
+
+  }
+
+}
+
+
+
+/* =====================================================
+   VIDEO URL
+   ===================================================== */
+
+function convertVideoUrl(url) {
+
+  /*
+   * YouTube biasa:
+   *
+   * https://www.youtube.com/watch?v=XXXXX
+   *
+   * diubah menjadi:
+   *
+   * https://www.youtube.com/embed/XXXXX
+   */
+
+  try {
+
+    const parsed =
+      new URL(url);
+
+
+    if (
+      parsed.hostname
+        .includes('youtube.com')
+    ) {
+
+      const id =
+        parsed.searchParams
+          .get('v');
+
+
+      if (id) {
+
+        return
+          'https://www.youtube.com/embed/' +
+          id;
+
+      }
+
+    }
+
+
+    if (
+      parsed.hostname
+        .includes('youtu.be')
+    ) {
+
+      const id =
+        parsed.pathname
+          .replace(
+            '/',
+            ''
+          );
+
+
+      if (id) {
+
+        return
+          'https://www.youtube.com/embed/' +
+          id;
+
+      }
+
+    }
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+
+  return url;
+
+}
+
+
+
+/* =====================================================
+   MATERIAL LINK
+   ===================================================== */
+
+function setMaterialLink(
+  index,
+  url
+) {
+
+  const box =
+    document.getElementById(
+      'materialLink_' + index
+    );
+
+
+  const anchor =
+    document.getElementById(
+      'materialAnchor_' + index
+    );
+
+
+  if (
+    box &&
+    anchor &&
+    url
+  ) {
+
+    anchor.href =
+      url;
+
+    box.style.display =
+      'block';
+
+  }
+
+}
+
+
+
+/* =====================================================
+   CONTINUE TO PRAKTIK
+   ===================================================== */
+
+function continueToPraktik() {
+
+  if (
+    materiList.length === 0
+  ) {
+
+    showAlert(
+      'Materi edukasi belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    completedMateri.length <
+    materiList.length
+  ) {
+
+    showAlert(
+      'Selesaikan seluruh materi edukasi terlebih dahulu.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=praktik';
+
+}
+
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function goDashboard() {
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=dashboard';
+
+}
+
+
+
+/* =====================================================
+   WEB APP URL
+   ===================================================== */
+
+function getWebAppUrl() {
+
+  return 'https://script.google.com/macros/s/AKfycbwy8TG3BVMWbEsS0OUejMOAmc8Bn4ewYXPNmG1B1P92S21YHa1id_YH__zFegsADVs2/exec';
+
+}
+
+
+
+/* =====================================================
+   ALERT
+   ===================================================== */
+
+function showAlert(
+  message,
+  type
+) {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.textContent =
+    message;
+
+
+  el.className =
+    'alert ' +
+    (
+      type ||
+      'info'
+    );
+
+}
+
+
+
+/* =====================================================
+   HIDE ALERT
+   ===================================================== */
+
+function hideAlert() {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.className =
+    'alert';
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHtml(value) {
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+  .replace(
+    /&/g,
+    '&amp;'
+  )
+  .replace(
+    /</g,
+    '&lt;'
+  )
+  .replace(
+    />/g,
+    '&gt;'
+  )
+  .replace(
+    /"/g,
+    '&quot;'
+  )
+  .replace(
+    /'/g,
+    '&#039;'
+  );
+
+}
+
+
+
+/* =====================================================
+   LOAD COMPLETION SETELAH SESSION
+   ===================================================== */
+
+setTimeout(
+  function() {
+
+    loadCompletion();
+
+  },
+  100
+);
+
+
+</script>
+
+
+</body>
+
+</html>

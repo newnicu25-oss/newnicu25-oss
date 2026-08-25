@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>WIN — Kartu Kontrol</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+
+      margin: 0;
+      padding: 0;
+
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        #fff7fa;
+
+      color:
+        #334155;
+
+    }
+
+
+    body {
+      min-height: 100vh;
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .header {
+
+      background:
+        linear-gradient(
+          135deg,
+          #f7d7e2,
+          #fcecf2
+        );
+
+      padding:
+        18px 25px;
+
+      border-bottom:
+        1px solid #f1d6df;
+
+    }
+
+
+    .header-inner {
+
+      max-width:
+        1100px;
+
+      margin:
+        auto;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        15px;
+
+    }
+
+
+    .brand {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+    }
+
+
+    .logo {
+
+      width:
+        52px;
+
+      height:
+        52px;
+
+      border-radius:
+        16px;
+
+      background:
+        #ffffff;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-weight:
+        bold;
+
+      font-size:
+        19px;
+
+      color:
+        #c45d7d;
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.07);
+
+    }
+
+
+    .brand-title {
+
+      font-weight:
+        bold;
+
+      font-size:
+        17px;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .brand-subtitle {
+
+      margin-top:
+        3px;
+
+      font-size:
+        11px;
+
+      color:
+        #7c6470;
+
+    }
+
+
+    .back-button {
+
+      border:
+        none;
+
+      background:
+        rgba(255,255,255,.85);
+
+      color:
+        #8f4b67;
+
+      padding:
+        10px 15px;
+
+      border-radius:
+        10px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .back-button:hover {
+
+      background:
+        #ffffff;
+
+    }
+
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    .main {
+
+      max-width:
+        900px;
+
+      margin:
+        auto;
+
+      padding:
+        28px 20px 50px;
+
+    }
+
+
+    /* =====================================================
+       PAGE TITLE
+       ===================================================== */
+
+    .page-title {
+
+      background:
+        #ffffff;
+
+      border-radius:
+        22px;
+
+      padding:
+        24px;
+
+      margin-bottom:
+        20px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .page-title h1 {
+
+      margin:
+        0;
+
+      font-size:
+        25px;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .page-title p {
+
+      margin:
+        8px 0 0;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.6;
+
+      color:
+        #64748b;
+
+    }
+
+
+    /* =====================================================
+       EPISODE CARD
+       ===================================================== */
+
+    .episode-card {
+
+      background:
+        #ffffff;
+
+      border-radius:
+        20px;
+
+      padding:
+        20px;
+
+      margin-bottom:
+        20px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .section-title {
+
+      margin:
+        0 0 15px;
+
+      font-size:
+        17px;
+
+      color:
+        #475569;
+
+    }
+
+
+    .episode-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap:
+        12px;
+
+    }
+
+
+    .episode-box {
+
+      background:
+        #fff7fa;
+
+      padding:
+        14px;
+
+      border-radius:
+        13px;
+
+    }
+
+
+    .episode-label {
+
+      font-size:
+        10px;
+
+      color:
+        #94a3b8;
+
+      margin-bottom:
+        5px;
+
+    }
+
+
+    .episode-value {
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      color:
+        #475569;
+
+      word-break:
+        break-word;
+
+    }
+
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    .loading {
+
+      background:
+        #ffffff;
+
+      border-radius:
+        20px;
+
+      padding:
+        35px;
+
+      text-align:
+        center;
+
+      box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .spinner {
+
+      width:
+        38px;
+
+      height:
+        38px;
+
+      margin:
+        0 auto 14px;
+
+      border:
+        4px solid #f2d9e1;
+
+      border-top-color:
+        #c96383;
+
+      border-radius:
+        50%;
+
+      animation:
+        spin 1s linear infinite;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform:
+          rotate(360deg);
+      }
+
+    }
+
+
+    /* =====================================================
+       EMPTY STATE
+       ===================================================== */
+
+    .empty {
+
+      display:
+        none;
+
+      background:
+        #ffffff;
+
+      border-radius:
+        22px;
+
+      padding:
+        35px 25px;
+
+      text-align:
+        center;
+
+      box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .empty-icon {
+
+      width:
+        70px;
+
+      height:
+        70px;
+
+      margin:
+        0 auto 18px;
+
+      border-radius:
+        22px;
+
+      background:
+        #fff0f5;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-size:
+        34px;
+
+    }
+
+
+    .empty h2 {
+
+      margin:
+        0;
+
+      font-size:
+        20px;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .empty p {
+
+      max-width:
+        550px;
+
+      margin:
+        10px auto 0;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.6;
+
+      color:
+        #64748b;
+
+    }
+
+
+    .waiting {
+
+      margin-top:
+        20px;
+
+      padding:
+        13px;
+
+      border-radius:
+        12px;
+
+      background:
+        #fff8e8;
+
+      color:
+        #92400e;
+
+      font-size:
+        12px;
+
+    }
+
+
+    /* =====================================================
+       CARD KONTROL
+       ===================================================== */
+
+    .control-card {
+
+      display:
+        none;
+
+      background:
+        #ffffff;
+
+      border-radius:
+        24px;
+
+      overflow:
+        hidden;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.09);
+
+      margin-bottom:
+        20px;
+
+    }
+
+
+    .control-head {
+
+      padding:
+        25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f7d7e2,
+          #e8f7f5
+        );
+
+      text-align:
+        center;
+
+    }
+
+
+    .control-icon {
+
+      width:
+        70px;
+
+      height:
+        70px;
+
+      margin:
+        0 auto 12px;
+
+      border-radius:
+        22px;
+
+      background:
+        #ffffff;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-size:
+        34px;
+
+      box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .control-head h2 {
+
+      margin:
+        0;
+
+      color:
+        #8f4b67;
+
+      font-size:
+        22px;
+
+    }
+
+
+    .control-head p {
+
+      margin:
+        6px 0 0;
+
+      font-size:
+        12px;
+
+      color:
+        #6b5260;
+
+    }
+
+
+    .control-body {
+
+      padding:
+        25px;
+
+    }
+
+
+    .control-status {
+
+      display:
+        inline-block;
+
+      padding:
+        7px 12px;
+
+      border-radius:
+        20px;
+
+      background:
+        #ecfdf5;
+
+      color:
+        #047857;
+
+      font-size:
+        11px;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        18px;
+
+    }
+
+
+    .control-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        14px;
+
+    }
+
+
+    .control-field {
+
+      border:
+        1px solid #f1e6ea;
+
+      border-radius:
+        15px;
+
+      padding:
+        15px;
+
+      background:
+        #fffafb;
+
+    }
+
+
+    .control-field.full {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    .control-label {
+
+      font-size:
+        10px;
+
+      color:
+        #94a3b8;
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .control-value {
+
+      font-size:
+        15px;
+
+      font-weight:
+        bold;
+
+      color:
+        #475569;
+
+      word-break:
+        break-word;
+
+    }
+
+
+    .queue-box {
+
+      margin-top:
+        18px;
+
+      padding:
+        22px;
+
+      border-radius:
+        18px;
+
+      background:
+        #fff0f5;
+
+      text-align:
+        center;
+
+    }
+
+
+    .queue-label {
+
+      font-size:
+        11px;
+
+      color:
+        #8f4b67;
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .queue-number {
+
+      font-size:
+        34px;
+
+      font-weight:
+        bold;
+
+      letter-spacing:
+        1px;
+
+      color:
+        #b95374;
+
+    }
+
+
+    .control-note {
+
+      margin-top:
+        18px;
+
+      padding:
+        14px;
+
+      border-radius:
+        12px;
+
+      background:
+        #f8fafc;
+
+      color:
+        #64748b;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.6;
+
+    }
+
+
+    /* =====================================================
+       ACTION
+       ===================================================== */
+
+    .actions {
+
+      display:
+        none;
+
+      gap:
+        12px;
+
+      margin-bottom:
+        20px;
+
+    }
+
+
+    .action-button {
+
+      flex:
+        1;
+
+      border:
+        none;
+
+      padding:
+        13px;
+
+      border-radius:
+        12px;
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .print-button {
+
+      background:
+        #c96383;
+
+      color:
+        #ffffff;
+
+    }
+
+
+    .print-button:hover {
+
+      background:
+        #b95374;
+
+    }
+
+
+    .refresh-button {
+
+      background:
+        #edf9f7;
+
+      color:
+        #287b74;
+
+    }
+
+
+    /* =====================================================
+       ERROR
+       ===================================================== */
+
+    .error {
+
+      display:
+        none;
+
+      padding:
+        15px;
+
+      margin-bottom:
+        20px;
+
+      border-radius:
+        12px;
+
+      background:
+        #fff1f2;
+
+      color:
+        #be123c;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+
+      text-align:
+        center;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        10px;
+
+      margin-top:
+        25px;
+
+    }
+
+
+    /* =====================================================
+       PRINT
+       ===================================================== */
+
+    @media print {
+
+      body {
+
+        background:
+          #ffffff;
+
+      }
+
+
+      .header,
+      .page-title,
+      .episode-card,
+      .empty,
+      .actions,
+      .footer,
+      .error {
+
+        display:
+          none !important;
+
+      }
+
+
+      .main {
+
+        padding:
+          0;
+
+        max-width:
+          100%;
+
+      }
+
+
+      .control-card {
+
+        display:
+          block !important;
+
+        box-shadow:
+          none;
+
+        border:
+          1px solid #ddd;
+
+      }
+
+
+      .control-head {
+
+        -webkit-print-color-adjust:
+          exact;
+
+        print-color-adjust:
+          exact;
+
+      }
+
+
+      .queue-box {
+
+        -webkit-print-color-adjust:
+          exact;
+
+        print-color-adjust:
+          exact;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media(max-width: 700px) {
+
+      .header-inner {
+
+        align-items:
+          flex-start;
+
+      }
+
+
+      .brand-title {
+
+        font-size:
+          15px;
+
+      }
+
+
+      .episode-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .control-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .control-field.full {
+
+        grid-column:
+          auto;
+
+      }
+
+
+      .actions {
+
+        flex-direction:
+          column;
+
+      }
+
+
+      .queue-number {
+
+        font-size:
+          30px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">
+        WIN
+      </div>
+
+      <div>
+
+        <div class="brand-title">
+          Discharge Planning Perinatologi
+        </div>
+
+        <div class="brand-subtitle">
+          Kartu Kontrol Setelah Pulang
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="back-button"
+      type="button"
+      onclick="kembaliDashboard()"
+    >
+      ← Dashboard
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="main">
+
+
+  <!-- ERROR -->
+
+  <div
+    id="errorBox"
+    class="error"
+  ></div>
+
+
+  <!-- TITLE -->
+
+  <section class="page-title">
+
+    <h1>
+      🏥 Rencana Kontrol Setelah Pulang
+    </h1>
+
+    <p>
+      Halaman ini menampilkan hasil pendaftaran
+      kontrol yang telah dilakukan oleh perawat.
+      Ibu tidak perlu mengisi nomor antrean.
+    </p>
+
+  </section>
+
+
+  <!-- EPISODE -->
+
+  <section class="episode-card">
+
+    <h2 class="section-title">
+      Data Episode
+    </h2>
+
+
+    <div class="episode-grid">
+
+
+      <div class="episode-box">
+
+        <div class="episode-label">
+          NAMA IBU
+        </div>
+
+        <div
+          id="namaIbu"
+          class="episode-value"
+        >
+          -
+        </div>
+
+      </div>
+
+
+      <div class="episode-box">
+
+        <div class="episode-label">
+          NO. RM
+        </div>
+
+        <div
+          id="noRM"
+          class="episode-value"
+        >
+          -
+        </div>
+
+      </div>
+
+
+      <div class="episode-box">
+
+        <div class="episode-label">
+          EPISODE ID
+        </div>
+
+        <div
+          id="episodeId"
+          class="episode-value"
+        >
+          -
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- LOADING -->
+
+  <section
+    id="loading"
+    class="loading"
+  >
+
+    <div class="spinner"></div>
+
+    <div>
+      Memeriksa kartu kontrol...
+    </div>
+
+  </section>
+
+
+  <!-- EMPTY -->
+
+  <section
+    id="emptyState"
+    class="empty"
+  >
+
+    <div class="empty-icon">
+      🏥
+    </div>
+
+    <h2>
+      Kartu Kontrol Belum Tersedia
+    </h2>
+
+    <p>
+      Data pendaftaran kontrol Ibu belum dimasukkan
+      oleh perawat.
+    </p>
+
+    <div class="waiting">
+      Silakan menunggu sampai perawat menyelesaikan
+      proses pendaftaran kontrol dan memasukkan
+      nomor antrean ke sistem WIN.
+    </div>
+
+  </section>
+
+
+  <!-- CONTROL CARD -->
+
+  <section
+    id="controlCard"
+    class="control-card"
+  >
+
+    <div class="control-head">
+
+      <div class="control-icon">
+        🏥
+      </div>
+
+      <h2>
+        Kartu Kontrol
+      </h2>
+
+      <p>
+        WIN — Discharge Planning Perinatologi
+      </p>
+
+    </div>
+
+
+    <div class="control-body">
+
+
+      <div class="control-status">
+        ✓ PENDAFTARAN KONTROL SELESAI
+      </div>
+
+
+      <div class="control-grid">
+
+
+        <div class="control-field">
+
+          <div class="control-label">
+            NAMA IBU
+          </div>
+
+          <div
+            id="cardNamaIbu"
+            class="control-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <div class="control-field">
+
+          <div class="control-label">
+            NO. RM
+          </div>
+
+          <div
+            id="cardNoRM"
+            class="control-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <div class="control-field full">
+
+          <div class="control-label">
+            FASILITAS PELAYANAN KESEHATAN
+          </div>
+
+          <div
+            id="cardFasilitas"
+            class="control-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <div class="control-field">
+
+          <div class="control-label">
+            JENIS KONTROL
+          </div>
+
+          <div
+            id="cardJenis"
+            class="control-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <div class="control-field">
+
+          <div class="control-label">
+            EPISODE ID
+          </div>
+
+          <div
+            id="cardEpisode"
+            class="control-value"
+          >
+            -
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="queue-box">
+
+        <div class="queue-label">
+          NOMOR ANTREAN
+        </div>
+
+        <div
+          id="cardAntrean"
+          class="queue-number"
+        >
+          -
+        </div>
+
+      </div>
+
+
+      <div class="control-note">
+
+        <b>Catatan:</b><br>
+
+        Kartu kontrol ini merupakan hasil
+        pendaftaran kontrol yang dilakukan oleh
+        perawat. Simpan kartu ini dan tunjukkan
+        kepada petugas fasilitas pelayanan kesehatan
+        saat diperlukan.
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ACTIONS -->
+
+  <div
+    id="actions"
+    class="actions"
+  >
+
+    <button
+      type="button"
+      class="action-button print-button"
+      onclick="cetakKartu()"
+    >
+      🖨️ Cetak / Simpan PDF
+    </button>
+
+
+    <button
+      type="button"
+      class="action-button refresh-button"
+      onclick="loadFollowUp()"
+    >
+      🔄 Perbarui Status
+    </button>
+
+  </div>
+
+
+  <div class="footer">
+
+    WIN — Discharge Planning Perinatologi
+
+    <br>
+
+    Kartu Kontrol Setelah Pulang
+
+  </div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================================
+   SESSION
+   ========================================================= */
+
+var WIN_SESSION = null;
+
+
+/* =========================================================
+   GET SESSION
+   ========================================================= */
+
+function getSession() {
+
+  try {
+
+    var raw =
+      sessionStorage.getItem(
+        'WIN_SESSION'
+      );
+
+
+    if (!raw) {
+
+      return null;
+
+    }
+
+
+    return JSON.parse(
+      raw
+    );
+
+  }
+
+  catch(error) {
+
+    console.log(
+      'Session error:',
+      error
+    );
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    WIN_SESSION =
+      getSession();
+
+
+    if (
+      !WIN_SESSION ||
+      WIN_SESSION.role !== 'IBU'
+    ) {
+
+      hideLoading();
+
+      showError(
+        'Data sesi Ibu belum tersedia. Silakan kembali ke Dashboard dan login kembali.'
+      );
+
+      return;
+
+    }
+
+
+    tampilkanSession();
+
+    loadFollowUp();
+
+  }
+);
+
+
+/* =========================================================
+   TAMPILKAN SESSION
+   ========================================================= */
+
+function tampilkanSession() {
+
+  document.getElementById(
+    'namaIbu'
+  ).textContent =
+    WIN_SESSION.namaIbu ||
+    '-';
+
+
+  document.getElementById(
+    'noRM'
+  ).textContent =
+    WIN_SESSION.noRM ||
+    '-';
+
+
+  document.getElementById(
+    'episodeId'
+  ).textContent =
+    WIN_SESSION.episodeId ||
+    '-';
+
+}
+
+
+/* =========================================================
+   LOAD FOLLOW UP
+   ========================================================= */
+
+function loadFollowUp() {
+
+  hideError();
+
+  showLoading();
+
+
+  if (
+    !WIN_SESSION ||
+    !WIN_SESSION.episodeId ||
+    !WIN_SESSION.noRM
+  ) {
+
+    hideLoading();
+
+    showError(
+      'Episode ID dan No. RM tidak tersedia pada session.'
+    );
+
+    return;
+
+  }
+
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(result) {
+
+        hideLoading();
+
+        prosesFollowUp(
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        hideLoading();
+
+        showError(
+          'Gagal memuat data Follow Up: ' +
+          (
+            error &&
+            error.message
+              ? error.message
+              : error
+          )
+        );
+
+      }
+    )
+
+    .WIN_FOLLOWUP_get(
+
+      WIN_SESSION.episodeId,
+
+      WIN_SESSION.noRM
+
+    );
+
+}
+
+
+/* =========================================================
+   PROSES DATA FOLLOW UP
+   ========================================================= */
+
+function prosesFollowUp(
+  result
+) {
+
+  /*
+   * Pastikan semua tampilan awal disembunyikan.
+   */
+
+  document.getElementById(
+    'emptyState'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'controlCard'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'actions'
+  ).style.display =
+    'none';
+
+
+  /*
+   * Backend gagal
+   */
+
+  if (
+    !result ||
+    result.success !== true
+  ) {
+
+    showError(
+      result &&
+      result.message
+        ? result.message
+        : 'Data Follow Up tidak dapat diperiksa.'
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * BELUM ADA DATA PERAWAT
+   */
+
+  if (
+    result.exists !== true ||
+    !result.data
+  ) {
+
+    document.getElementById(
+      'emptyState'
+    ).style.display =
+      'block';
+
+    return;
+
+  }
+
+
+  var data =
+    result.data;
+
+
+  /*
+   * Pastikan data benar-benar
+   * sudah lengkap.
+   */
+
+  var complete =
+
+    data.status === 'SELESAI' &&
+
+    !!data.jenisKontrol &&
+
+    !!data.fasilitasKontrol &&
+
+    !!data.noAntrean;
+
+
+  /*
+   * Data ada tetapi belum lengkap.
+   */
+
+  if (!complete) {
+
+    document.getElementById(
+      'emptyState'
+    ).style.display =
+      'block';
+
+    return;
+
+  }
+
+
+  /*
+   * DATA SUDAH LENGKAP
+   * → TAMPILKAN KARTU
+   */
+
+  tampilkanKartu(
+    data
+  );
+
+}
+
+
+/* =========================================================
+   TAMPILKAN KARTU KONTROL
+   ========================================================= */
+
+function tampilkanKartu(
+  data
+) {
+
+  var namaIbu =
+    data.namaIbu ||
+    WIN_SESSION.namaIbu ||
+    '-';
+
+
+  var noRM =
+    data.noRM ||
+    WIN_SESSION.noRM ||
+    '-';
+
+
+  var episodeId =
+    data.episodeId ||
+    WIN_SESSION.episodeId ||
+    '-';
+
+
+  var jenis =
+    normalisasiJenisTampilan(
+      data.jenisKontrol
+    );
+
+
+  var fasilitas =
+    data.fasilitasKontrol ||
+    '-';
+
+
+  var antrean =
+    data.noAntrean ||
+    '-';
+
+
+  /*
+   * HEADER EPISODE
+   */
+
+  document.getElementById(
+    'namaIbu'
+  ).textContent =
+    namaIbu;
+
+
+  document.getElementById(
+    'noRM'
+  ).textContent =
+    noRM;
+
+
+  document.getElementById(
+    'episodeId'
+  ).textContent =
+    episodeId;
+
+
+  /*
+   * KARTU
+   */
+
+  document.getElementById(
+    'cardNamaIbu'
+  ).textContent =
+    namaIbu;
+
+
+  document.getElementById(
+    'cardNoRM'
+  ).textContent =
+    noRM;
+
+
+  document.getElementById(
+    'cardFasilitas'
+  ).textContent =
+    fasilitas;
+
+
+  document.getElementById(
+    'cardJenis'
+  ).textContent =
+    jenis;
+
+
+  document.getElementById(
+    'cardEpisode'
+  ).textContent =
+    episodeId;
+
+
+  document.getElementById(
+    'cardAntrean'
+  ).textContent =
+    antrean;
+
+
+  /*
+   * TAMPILKAN
+   */
+
+  document.getElementById(
+    'controlCard'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'actions'
+  ).style.display =
+    'flex';
+
+}
+
+
+/* =========================================================
+   NORMALISASI JENIS TAMPILAN
+   ========================================================= */
+
+function normalisasiJenisTampilan(
+  jenis
+) {
+
+  var value =
+    String(
+      jenis || ''
+    )
+    .trim()
+    .toUpperCase();
+
+
+  if (
+    value === 'RS' ||
+    value === 'RUMAH SAKIT'
+  ) {
+
+    return 'Rumah Sakit';
+
+  }
+
+
+  if (
+    value === 'PUSKESMAS' ||
+    value === 'PKM'
+  ) {
+
+    return 'Puskesmas';
+
+  }
+
+
+  return (
+    jenis ||
+    '-'
+  );
+
+}
+
+
+/* =========================================================
+   CETAK / SIMPAN PDF
+   ========================================================= */
+
+function cetakKartu() {
+
+  window.print();
+
+}
+
+
+/* =========================================================
+   KEMBALI DASHBOARD
+   ========================================================= */
+
+function kembaliDashboard() {
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (!url) {
+
+          showError(
+            'URL Web App tidak ditemukan.'
+          );
+
+          return;
+
+        }
+
+
+        window.top.location.href =
+          url + '?page=dashboard';
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        showError(
+          'Gagal membuka Dashboard: ' +
+          (
+            error &&
+            error.message
+              ? error.message
+              : error
+          )
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+function showLoading() {
+
+  var element =
+    document.getElementById(
+      'loading'
+    );
+
+
+  if (element) {
+
+    element.style.display =
+      'block';
+
+  }
+
+}
+
+
+function hideLoading() {
+
+  var element =
+    document.getElementById(
+      'loading'
+    );
+
+
+  if (element) {
+
+    element.style.display =
+      'none';
+
+  }
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+function showError(
+  message
+) {
+
+  var box =
+    document.getElementById(
+      'errorBox'
+    );
+
+
+  if (!box) {
+
+    return;
+
+  }
+
+
+  box.textContent =
+    message;
+
+
+  box.style.display =
+    'block';
+
+}
+
+
+function hideError() {
+
+  var box =
+    document.getElementById(
+      'errorBox'
+    );
+
+
+  if (!box) {
+
+    return;
+
+  }
+
+
+  box.textContent =
+    '';
+
+
+  box.style.display =
+    'none';
+
+}
+
+</script>
+
+
+</body>
+
+</html>

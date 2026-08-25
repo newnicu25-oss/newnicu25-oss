@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>WIN — Sertifikat</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff8fb;
+      color: #333;
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .header {
+      background: linear-gradient(
+        135deg,
+        #d982a5,
+        #e6a5bc
+      );
+
+      color: white;
+
+      padding: 16px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.12);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      background: white;
+      color: #c66e91;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 21px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .back-btn {
+      border: none;
+      background: white;
+      color: #b95f82;
+
+      padding: 9px 14px;
+
+      border-radius: 20px;
+
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+
+    /* =====================================================
+       CONTAINER
+       ===================================================== */
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 18px;
+    }
+
+
+    /* =====================================================
+       WELCOME
+       ===================================================== */
+
+    .welcome {
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 20px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .welcome h2 {
+      margin: 0 0 7px;
+      color: #b95f82;
+    }
+
+    .welcome p {
+      margin: 0;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+      color: #666;
+    }
+
+
+    /* =====================================================
+       ALERT
+       ===================================================== */
+
+    .alert {
+      display: none;
+
+      padding: 13px 15px;
+
+      border-radius: 12px;
+
+      margin-bottom: 16px;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
+    .alert.success {
+      display: block;
+      background: #e6f7ef;
+      color: #287b5c;
+    }
+
+    .alert.error {
+      display: block;
+      background: #fde8ed;
+      color: #a43b55;
+    }
+
+    .alert.info {
+      display: block;
+      background: #f7edf2;
+      color: #8b5068;
+    }
+
+
+    /* =====================================================
+       FORM CARD
+       ===================================================== */
+
+    .form-card {
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 22px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .form-title {
+      font-size: 18px;
+      font-weight: bold;
+
+      color: #b95f82;
+
+      margin-bottom: 15px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+
+      font-size: 13px;
+
+      font-weight: bold;
+
+      color: #65545c;
+
+      margin-bottom: 7px;
+    }
+
+    .field input {
+      width: 100%;
+
+      border: 1px solid #e1d5db;
+
+      border-radius: 10px;
+
+      padding: 12px;
+
+      font-size: 14px;
+
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: #d982a5;
+
+      box-shadow:
+        0 0 0 3px rgba(
+          217,
+          130,
+          165,
+          .12
+        );
+    }
+
+
+    /* =====================================================
+       CERTIFICATE
+       ===================================================== */
+
+    .certificate-wrapper {
+      display: none;
+
+      margin-bottom: 20px;
+    }
+
+    .certificate {
+
+      background: white;
+
+      border: 10px solid #f1d9e2;
+
+      padding: 35px;
+
+      min-height: 570px;
+
+      position: relative;
+
+      text-align: center;
+
+      box-shadow:
+        0 6px 20px rgba(0,0,0,.10);
+    }
+
+    .certificate-inner {
+
+      border: 2px solid #d982a5;
+
+      min-height: 490px;
+
+      padding: 35px 25px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+    .certificate-logo {
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+
+    .certificate-app {
+      font-size: 13px;
+
+      letter-spacing: 1px;
+
+      color: #9c7080;
+
+      margin-bottom: 20px;
+    }
+
+    .certificate-title {
+
+      font-size: 34px;
+
+      font-weight: bold;
+
+      color: #b95f82;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 10px;
+    }
+
+    .certificate-subtitle {
+
+      font-size: 14px;
+
+      color: #777;
+
+      margin-bottom: 22px;
+    }
+
+    .certificate-name {
+
+      font-family: Georgia, serif;
+
+      font-size: 30px;
+
+      font-weight: bold;
+
+      color: #4d4146;
+
+      margin: 12px 0;
+
+      padding-bottom: 8px;
+
+      border-bottom: 2px solid #d982a5;
+
+      min-width: 300px;
+    }
+
+    .certificate-description {
+
+      max-width: 650px;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+      color: #555;
+
+      margin: 15px auto;
+    }
+
+    .certificate-meta {
+
+      margin-top: 18px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(180px, 1fr));
+
+      gap: 10px 25px;
+
+      width: 100%;
+
+      max-width: 600px;
+
+      text-align: left;
+    }
+
+    .meta-item {
+
+      padding: 9px;
+
+      background: #fff7fa;
+
+      border-radius: 8px;
+
+      font-size: 12px;
+    }
+
+    .meta-label {
+
+      color: #98727f;
+
+      margin-bottom: 3px;
+
+      font-weight: bold;
+    }
+
+    .meta-value {
+
+      color: #4e4448;
+
+      font-weight: bold;
+
+      word-break: break-word;
+    }
+
+    .certificate-footer {
+
+      margin-top: 25px;
+
+      font-size: 11px;
+
+      color: #999;
+
+    }
+
+
+    /* =====================================================
+       ACTION BUTTONS
+       ===================================================== */
+
+    .actions {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin: 18px 0;
+    }
+
+    .btn {
+
+      border: none;
+
+      padding: 12px 18px;
+
+      border-radius: 11px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #d982a5;
+      color: white;
+    }
+
+    .btn-success {
+      background: #55a982;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #eee7ea;
+      color: #68565e;
+    }
+
+    .btn:disabled {
+
+      opacity: .45;
+
+      cursor: not-allowed;
+
+    }
+
+
+    /* =====================================================
+       STATUS
+       ===================================================== */
+
+    .status-card {
+
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 24px;
+
+      text-align: center;
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,.08);
+
+      margin-bottom: 18px;
+    }
+
+    .status-icon {
+
+      width: 72px;
+      height: 72px;
+
+      border-radius: 50%;
+
+      background: #e3f5eb;
+
+      color: #4b9b78;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 34px;
+
+      margin: 0 auto 14px;
+
+    }
+
+    .status-title {
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+      color: #555;
+
+      margin-bottom: 8px;
+
+    }
+
+    .status-text {
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+      color: #777;
+
+    }
+
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    .loading {
+
+      text-align: center;
+
+      padding: 45px 20px;
+
+      color: #9a7a87;
+    }
+
+    .spinner {
+
+      width: 40px;
+      height: 40px;
+
+      border: 4px solid #f0dfe7;
+
+      border-top-color: #d982a5;
+
+      border-radius: 50%;
+
+      margin: 0 auto 15px;
+
+      animation:
+        spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+
+      text-align: center;
+
+      color: #999;
+
+      font-size: 11px;
+
+      padding: 25px 10px;
+
+    }
+
+
+    /* =====================================================
+       PRINT
+       ===================================================== */
+
+    @media print {
+
+      body {
+        background: white;
+      }
+
+      .header,
+      .welcome,
+      .alert,
+      .form-card,
+      .status-card,
+      .actions,
+      .footer {
+        display: none !important;
+      }
+
+      .container {
+        max-width: none;
+        padding: 0;
+      }
+
+      .certificate-wrapper {
+        display: block !important;
+        margin: 0;
+      }
+
+      .certificate {
+
+        box-shadow: none;
+
+        border: 8px solid #f1d9e2;
+
+        min-height: 100vh;
+
+        page-break-inside: avoid;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media(max-width:650px) {
+
+      .header {
+        padding: 13px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .subtitle {
+        font-size: 10px;
+      }
+
+      .container {
+        padding: 11px;
+      }
+
+      .certificate {
+        padding: 18px;
+        border-width: 6px;
+      }
+
+      .certificate-inner {
+        padding: 25px 12px;
+      }
+
+      .certificate-title {
+        font-size: 25px;
+      }
+
+      .certificate-name {
+        font-size: 23px;
+        min-width: 200px;
+      }
+
+      .certificate-meta {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<div class="header">
+
+  <div class="header-left">
+
+    <div class="header-icon">
+      🏆
+    </div>
+
+    <div>
+
+      <div class="title">
+        Sertifikat
+      </div>
+
+      <div class="subtitle">
+        WIN — Discharge Planning Perinatologi
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="back-btn"
+    onclick="goDashboard()">
+
+    ← Dashboard
+
+  </button>
+
+</div>
+
+
+
+<div class="container">
+
+
+  <!-- ===================================================
+       WELCOME
+       =================================================== -->
+
+  <div class="welcome">
+
+    <h2>
+      Sertifikat Penyelesaian
+    </h2>
+
+    <p>
+
+      Sertifikat diberikan setelah seluruh tahapan
+      discharge planning perinatologi diselesaikan
+      dan evaluasi dinyatakan lulus.
+
+    </p>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       ALERT
+       =================================================== -->
+
+  <div
+    id="alert"
+    class="alert">
+  </div>
+
+
+
+  <!-- ===================================================
+       LOADING
+       =================================================== -->
+
+  <div
+    id="loading"
+    class="loading">
+
+    <div class="spinner"></div>
+
+    Memeriksa status sertifikat...
+
+  </div>
+
+
+
+  <!-- ===================================================
+       FORM PENERBITAN
+       =================================================== -->
+
+  <div
+    id="issueForm"
+    class="form-card"
+    style="display:none;">
+
+    <div class="form-title">
+
+      Data Sertifikat
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="namaIbuInput">
+
+        Nama Ibu
+
+      </label>
+
+
+      <input
+        type="text"
+        id="namaIbuInput"
+        placeholder="Masukkan nama lengkap ibu">
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="noRMInput">
+
+        No. RM
+
+      </label>
+
+
+      <input
+        type="text"
+        id="noRMInput"
+        readonly>
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="episodeInput">
+
+        Episode ID
+
+      </label>
+
+
+      <input
+        type="text"
+        id="episodeInput"
+        readonly>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="btn btn-success"
+        onclick="issueCertificate()">
+
+        🏆 Terbitkan Sertifikat
+
+      </button>
+
+
+      <button
+        class="btn btn-secondary"
+        onclick="goDashboard()">
+
+        ← Kembali
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       STATUS
+       =================================================== -->
+
+  <div
+    id="statusCard"
+    class="status-card"
+    style="display:none;">
+
+    <div
+      id="statusIcon"
+      class="status-icon">
+
+      ✓
+
+    </div>
+
+
+    <div
+      id="statusTitle"
+      class="status-title">
+
+      Sertifikat
+
+    </div>
+
+
+    <div
+      id="statusText"
+      class="status-text">
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       CERTIFICATE
+       =================================================== -->
+
+  <div
+    id="certificateWrapper"
+    class="certificate-wrapper">
+
+
+    <div
+      id="certificate"
+      class="certificate">
+
+
+      <div class="certificate-inner">
+
+
+        <div class="certificate-logo">
+          🏆
+        </div>
+
+
+        <div class="certificate-app">
+
+          WIN — DISCHARGE PLANNING PERINATOLOGI
+
+        </div>
+
+
+        <div class="certificate-title">
+
+          SERTIFIKAT
+
+        </div>
+
+
+        <div class="certificate-subtitle">
+
+          Diberikan kepada
+
+        </div>
+
+
+        <div
+          id="certificateName"
+          class="certificate-name">
+
+          -
+
+        </div>
+
+
+        <div class="certificate-description">
+
+          Telah menyelesaikan rangkaian
+          <strong>
+            Discharge Planning Perinatologi
+          </strong>
+          yang meliputi edukasi, praktik,
+          dan evaluasi pemahaman sebagai bagian
+          dari persiapan perawatan ibu dan bayi
+          setelah pulang dari fasilitas pelayanan kesehatan.
+
+        </div>
+
+
+        <div class="certificate-meta">
+
+
+          <div class="meta-item">
+
+            <div class="meta-label">
+              No. Sertifikat
+            </div>
+
+            <div
+              id="certificateId"
+              class="meta-value">
+
+              -
+
+            </div>
+
+          </div>
+
+
+          <div class="meta-item">
+
+            <div class="meta-label">
+              Tanggal
+            </div>
+
+            <div
+              id="certificateDate"
+              class="meta-value">
+
+              -
+
+            </div>
+
+          </div>
+
+
+          <div class="meta-item">
+
+            <div class="meta-label">
+              No. RM
+            </div>
+
+            <div
+              id="certificateRM"
+              class="meta-value">
+
+              -
+
+            </div>
+
+          </div>
+
+
+          <div class="meta-item">
+
+            <div class="meta-label">
+              Episode ID
+            </div>
+
+            <div
+              id="certificateEpisode"
+              class="meta-value">
+
+              -
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="certificate-footer">
+
+          WIN — Discharge Planning Perinatologi
+
+          <br>
+
+          Sertifikat elektronik
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- ===================================================
+       CERTIFICATE ACTION
+       =================================================== -->
+
+  <div
+    id="certificateActions"
+    class="actions"
+    style="display:none;">
+
+
+    <button
+      class="btn btn-primary"
+      onclick="printCertificate()">
+
+      🖨️ Cetak / Simpan PDF
+
+    </button>
+
+
+    <button
+      class="btn btn-success"
+      onclick="goDashboard()">
+
+      ← Kembali ke Dashboard
+
+    </button>
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="footer">
+
+  WIN — Discharge Planning Perinatologi
+
+  <br>
+
+  Sistem edukasi dan discharge planning ibu dan bayi
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   SESSION
+   ===================================================== */
+
+let episodeId = '';
+
+let noRM = '';
+
+let namaIbu = '';
+
+let certificateData = null;
+
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    loadSession();
+
+    loadCertificate();
+
+  }
+);
+
+
+
+/* =====================================================
+   LOAD SESSION
+   ===================================================== */
+
+function loadSession() {
+
+  try {
+
+    episodeId =
+      localStorage.getItem(
+        'WIN_episodeId'
+      ) || '';
+
+    noRM =
+      localStorage.getItem(
+        'WIN_noRM'
+      ) || '';
+
+    namaIbu =
+      localStorage.getItem(
+        'WIN_namaIbu'
+      ) || '';
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+  }
+
+
+  document.getElementById(
+    'namaIbuInput'
+  ).value =
+    namaIbu;
+
+
+  document.getElementById(
+    'noRMInput'
+  ).value =
+    noRM;
+
+
+  document.getElementById(
+    'episodeInput'
+  ).value =
+    episodeId;
+
+}
+
+
+
+/* =====================================================
+   LOAD CERTIFICATE
+   ===================================================== */
+
+function loadCertificate() {
+
+  if (
+    !episodeId ||
+    !noRM
+  ) {
+
+    document.getElementById(
+      'loading'
+    ).style.display =
+      'none';
+
+
+    showAlert(
+      'Data sesi belum lengkap. Silakan kembali ke Dashboard dan login kembali.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'CERTIFICATE DATA:',
+          result
+        );
+
+
+        document.getElementById(
+          'loading'
+        ).style.display =
+          'none';
+
+
+        handleCertificateData(
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'CERTIFICATE LOAD ERROR:',
+          error
+        );
+
+
+        document.getElementById(
+          'loading'
+        ).style.display =
+          'none';
+
+
+        showAlert(
+          'Gagal memeriksa sertifikat: ' +
+          (
+            error.message ||
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getCertificate(
+      episodeId,
+      noRM
+    );
+
+}
+
+
+
+/* =====================================================
+   HANDLE CERTIFICATE DATA
+   ===================================================== */
+
+function handleCertificateData(
+  result
+) {
+
+  console.log(
+    'HANDLE CERTIFICATE:',
+    result
+  );
+
+
+  if (
+    !result ||
+    result.success === false
+  ) {
+
+    showAlert(
+      result &&
+      result.message
+        ? result.message
+        : 'Data sertifikat belum tersedia.',
+      'error'
+    );
+
+
+    showIssueForm();
+
+    return;
+
+  }
+
+
+  const certificate =
+    extractCertificate(
+      result
+    );
+
+
+  if (certificate) {
+
+    certificateData =
+      certificate;
+
+
+    showCertificate(
+      certificate
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+   * Jika belum ada sertifikat,
+   * tampilkan form penerbitan.
+   */
+
+  showIssueForm();
+
+
+  showAlert(
+    'Tahap evaluasi selesai. Sertifikat siap diterbitkan.',
+    'info'
+  );
+
+}
+
+
+
+/* =====================================================
+   EXTRACT CERTIFICATE
+   ===================================================== */
+
+function extractCertificate(
+  result
+) {
+
+  if (!result) {
+    return null;
+  }
+
+
+  if (
+    result.certificate &&
+    typeof result.certificate === 'object'
+  ) {
+
+    return result.certificate;
+
+  }
+
+
+  if (
+    result.data &&
+    result.data.certificate &&
+    typeof result.data.certificate === 'object'
+  ) {
+
+    return result.data.certificate;
+
+  }
+
+
+  /*
+   * Beberapa kemungkinan backend
+   * mengembalikan object certificate
+   * langsung melalui data.
+   */
+
+  if (
+    result.data &&
+    typeof result.data === 'object' &&
+    (
+      result.data.certificateId ||
+      result.data.id ||
+      result.data.nomor
+    )
+  ) {
+
+    return result.data;
+
+  }
+
+
+  if (
+    result.certificateId ||
+    result.nomorSertifikat ||
+    result.nomor
+  ) {
+
+    return result;
+
+  }
+
+
+  return null;
+
+}
+
+
+
+/* =====================================================
+   SHOW ISSUE FORM
+   ===================================================== */
+
+function showIssueForm() {
+
+  document.getElementById(
+    'issueForm'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'statusCard'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'statusIcon'
+  ).textContent =
+    '✓';
+
+
+  document.getElementById(
+    'statusTitle'
+  ).textContent =
+    'Siap untuk Sertifikat';
+
+
+  document.getElementById(
+    'statusText'
+  ).textContent =
+    'Pastikan nama ibu sudah benar sebelum sertifikat diterbitkan.';
+
+}
+
+
+
+/* =====================================================
+   ISSUE CERTIFICATE
+   ===================================================== */
+
+function issueCertificate() {
+
+  const input =
+    document.getElementById(
+      'namaIbuInput'
+    );
+
+
+  const nama =
+    String(
+      input.value || ''
+    ).trim();
+
+
+  if (!nama) {
+
+    showAlert(
+      'Nama ibu wajib diisi.',
+      'error'
+    );
+
+
+    input.focus();
+
+    return;
+
+  }
+
+
+  /*
+   * Simpan nama ke localStorage.
+   */
+
+  try {
+
+    localStorage.setItem(
+      'WIN_namaIbu',
+      nama
+    );
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+
+  showAlert(
+    'Menerbitkan sertifikat...',
+    'info'
+  );
+
+
+  const buttons =
+    document.querySelectorAll(
+      '#issueForm button'
+    );
+
+
+  buttons.forEach(
+    function(button) {
+
+      button.disabled =
+        true;
+
+    }
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'ISSUE CERTIFICATE RESULT:',
+          result
+        );
+
+
+        buttons.forEach(
+          function(button) {
+
+            button.disabled =
+              false;
+
+          }
+        );
+
+
+        handleIssueResult(
+          result,
+          nama
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'ISSUE CERTIFICATE ERROR:',
+          error
+        );
+
+
+        buttons.forEach(
+          function(button) {
+
+            button.disabled =
+              false;
+
+          }
+        );
+
+
+        showAlert(
+          'Gagal menerbitkan sertifikat: ' +
+          (
+            error.message ||
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_issueCertificate(
+      episodeId,
+      noRM,
+      nama,
+      '',
+      ''
+    );
+
+}
+
+
+
+/* =====================================================
+   HANDLE ISSUE RESULT
+   ===================================================== */
+
+function handleIssueResult(
+  result,
+  nama
+) {
+
+  if (
+    !result ||
+    result.success === false
+  ) {
+
+    showAlert(
+      result &&
+      result.message
+        ? result.message
+        : 'Sertifikat belum berhasil diterbitkan.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  const certificate =
+    extractCertificate(
+      result
+    );
+
+
+  if (certificate) {
+
+    certificateData =
+      certificate;
+
+  }
+
+  else {
+
+    certificateData = {
+
+      namaIbu:
+        nama,
+
+      certificateId:
+        result.certificateId ||
+        result.nomorSertifikat ||
+        result.nomor ||
+        '',
+
+      tanggal:
+        result.tanggal ||
+        result.date ||
+        new Date(),
+
+      noRM:
+        noRM,
+
+      episodeId:
+        episodeId
+
+    };
+
+  }
+
+
+  showCertificate(
+    certificateData
+  );
+
+
+  showAlert(
+    '✓ Sertifikat berhasil diterbitkan.',
+    'success'
+  );
+
+}
+
+
+
+/* =====================================================
+   SHOW CERTIFICATE
+   ===================================================== */
+
+function showCertificate(
+  certificate
+) {
+
+  document.getElementById(
+    'issueForm'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'statusCard'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'certificateWrapper'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'certificateActions'
+  ).style.display =
+    'flex';
+
+
+  document.getElementById(
+    'statusIcon'
+  ).textContent =
+    '✓';
+
+
+  document.getElementById(
+    'statusTitle'
+  ).textContent =
+    'Sertifikat Berhasil Diterbitkan';
+
+
+  document.getElementById(
+    'statusText'
+  ).textContent =
+    'Selamat. Sertifikat penyelesaian discharge planning telah tersedia.';
+
+
+  /*
+   * Nama
+   */
+
+  const name =
+    certificate.namaIbu ||
+    certificate.nama ||
+    certificate.name ||
+    namaIbu ||
+    '-';
+
+
+  document.getElementById(
+    'certificateName'
+  ).textContent =
+    name;
+
+
+  /*
+   * Certificate ID
+   */
+
+  const id =
+    certificate.certificateId ||
+    certificate.certificateID ||
+    certificate.nomorSertifikat ||
+    certificate.nomor ||
+    certificate.id ||
+    '-';
+
+
+  document.getElementById(
+    'certificateId'
+  ).textContent =
+    id;
+
+
+  /*
+   * Date
+   */
+
+  const date =
+    certificate.tanggal ||
+    certificate.date ||
+    certificate.issuedAt ||
+    certificate.tanggalTerbit ||
+    new Date();
+
+
+  document.getElementById(
+    'certificateDate'
+  ).textContent =
+    formatDate(
+      date
+    );
+
+
+  /*
+   * RM
+   */
+
+  document.getElementById(
+    'certificateRM'
+  ).textContent =
+    certificate.noRM ||
+    certificate.norm ||
+    noRM ||
+    '-';
+
+
+  /*
+   * Episode
+   */
+
+  document.getElementById(
+    'certificateEpisode'
+  ).textContent =
+    certificate.episodeId ||
+    certificate.episodeID ||
+    episodeId ||
+    '-';
+
+}
+
+
+
+/* =====================================================
+   PRINT
+   ===================================================== */
+
+function printCertificate() {
+
+  const certificate =
+    document.getElementById(
+      'certificate'
+    );
+
+
+  if (!certificate) {
+
+    showAlert(
+      'Sertifikat belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  window.print();
+
+}
+
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function goDashboard() {
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=dashboard';
+
+}
+
+
+
+/* =====================================================
+   WEB APP URL
+   ===================================================== */
+
+function getWebAppUrl() {
+
+  return 'https://script.google.com/macros/s/AKfycbwy8TG3BVMWbEsS0OUejMOamc8Bn4ewYXPNmG1B1P92S21YHa1id_YH__zFegsADVs2/exec';
+
+}
+
+
+
+/* =====================================================
+   FORMAT DATE
+   ===================================================== */
+
+function formatDate(
+  value
+) {
+
+  if (!value) {
+    return '-';
+  }
+
+
+  try {
+
+    const date =
+      new Date(value);
+
+
+    if (
+      isNaN(
+        date.getTime()
+      )
+    ) {
+
+      return String(
+        value
+      );
+
+    }
+
+
+    return date.toLocaleDateString(
+      'id-ID',
+      {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      }
+    );
+
+  }
+
+  catch(error) {
+
+    return String(
+      value
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   ALERT
+   ===================================================== */
+
+function showAlert(
+  message,
+  type
+) {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.textContent =
+    message;
+
+
+  el.className =
+    'alert ' +
+    (
+      type ||
+      'info'
+    );
+
+
+  el.style.display =
+    'block';
+
+}
+
+
+
+/* =====================================================
+   HIDE ALERT
+   ===================================================== */
+
+function hideAlert() {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.style.display =
+    'none';
+
+}
+
+</script>
+
+
+</body>
+
+</html>

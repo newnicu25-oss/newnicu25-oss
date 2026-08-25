@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    WIN — Discharge Planning Perinatologi
+  </title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    :root {
+
+      --pink:
+        #d84e7b;
+
+      --pink-dark:
+        #b94468;
+
+      --pink-light:
+        #fff0f5;
+
+      --teal:
+        #419991;
+
+      --teal-dark:
+        #317b75;
+
+      --teal-light:
+        #edf9f7;
+
+      --text:
+        #334155;
+
+      --muted:
+        #64748b;
+
+      --border:
+        #e2e8f0;
+
+      --white:
+        #ffffff;
+
+    }
+
+
+    html,
+    body {
+
+      margin:
+        0;
+
+      padding:
+        0;
+
+      width:
+        100%;
+
+      min-height:
+        100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        #fff7fa;
+
+      color:
+        var(--text);
+
+    }
+
+
+    body {
+
+      min-height:
+        100vh;
+
+    }
+
+
+    /* =====================================================
+       PAGE
+       ===================================================== */
+
+    .page {
+
+      min-height:
+        100vh;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        24px;
+
+    }
+
+
+    .card {
+
+      width:
+        100%;
+
+      max-width:
+        1050px;
+
+      min-height:
+        630px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        43% 57%;
+
+      background:
+        var(--white);
+
+      border-radius:
+        28px;
+
+      overflow:
+        hidden;
+
+      box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.12);
+
+    }
+
+
+    /* =====================================================
+       BRAND
+       ===================================================== */
+
+    .brand {
+
+      padding:
+        45px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f7d7e2,
+          #fcebf1,
+          #e8f7f5
+        );
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        center;
+
+    }
+
+
+    .logo-large {
+
+      width:
+        130px;
+
+      height:
+        130px;
+
+      border-radius:
+        32px;
+
+      background:
+        rgba(255,255,255,.92);
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      overflow:
+        hidden;
+
+      margin-bottom:
+        24px;
+
+      box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.10);
+
+    }
+
+
+    .logo-large img {
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        contain;
+
+      padding:
+        10px;
+
+    }
+
+
+    .brand h1 {
+
+      margin:
+        0;
+
+      font-size:
+        38px;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .brand h2 {
+
+      margin:
+        10px 0 0;
+
+      font-size:
+        19px;
+
+      font-weight:
+        normal;
+
+      color:
+        #6b5260;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    .brand-tagline {
+
+      margin-top:
+        7px;
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      color:
+        #a55b76;
+
+    }
+
+
+    .info {
+
+      margin-top:
+        27px;
+
+      padding:
+        18px;
+
+      border-radius:
+        17px;
+
+      background:
+        rgba(255,255,255,.60);
+
+      font-size:
+        13px;
+
+      line-height:
+        1.6;
+
+      color:
+        #6b5260;
+
+    }
+
+
+    /* =====================================================
+       PRE TEST
+       ===================================================== */
+
+    .pretest {
+
+      margin-top:
+        18px;
+
+      padding:
+        15px;
+
+      border-radius:
+        15px;
+
+      background:
+        rgba(255,255,255,.78);
+
+      border:
+        1px solid
+        rgba(216,78,123,.12);
+
+    }
+
+
+    .pretest-title {
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      color:
+        #8f4b67;
+
+      margin-bottom:
+        6px;
+
+    }
+
+
+    .pretest-text {
+
+      font-size:
+        11px;
+
+      color:
+        #6b5260;
+
+      line-height:
+        1.5;
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .pretest-button {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      gap:
+        7px;
+
+      width:
+        100%;
+
+      padding:
+        11px;
+
+      border-radius:
+        10px;
+
+      background:
+        #ffffff;
+
+      color:
+        #b94468;
+
+      text-decoration:
+        none;
+
+      font-size:
+        12px;
+
+      font-weight:
+        bold;
+
+      border:
+        1px solid
+        #f0cbd8;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .pretest-button:hover {
+
+      background:
+        #fff6f9;
+
+    }
+
+
+    /* =====================================================
+       LOGIN
+       ===================================================== */
+
+    .login {
+
+      padding:
+        42px;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        center;
+
+    }
+
+
+    .login-header h2 {
+
+      margin:
+        0;
+
+      font-size:
+        29px;
+
+      color:
+        #334155;
+
+    }
+
+
+    .login-header p {
+
+      margin:
+        8px 0 0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    /* =====================================================
+       ROLES
+       ===================================================== */
+
+    .roles {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        12px;
+
+      margin:
+        24px 0;
+
+    }
+
+
+    .role {
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        16px;
+
+      padding:
+        15px;
+
+      background:
+        #f8fafc;
+
+      cursor:
+        pointer;
+
+      text-align:
+        left;
+
+      transition:
+        .18s ease;
+
+    }
+
+
+    .role:hover {
+
+      transform:
+        translateY(-1px);
+
+    }
+
+
+    .role.active.ibu {
+
+      background:
+        #fff0f5;
+
+      border-color:
+        #e4a3b9;
+
+    }
+
+
+    .role.active.perawat {
+
+      background:
+        #edf9f7;
+
+      border-color:
+        #7bc4bc;
+
+    }
+
+
+    .role-icon {
+
+      font-size:
+        25px;
+
+      margin-bottom:
+        6px;
+
+    }
+
+
+    .role-title {
+
+      font-weight:
+        bold;
+
+      font-size:
+        14px;
+
+    }
+
+
+    .role-desc {
+
+      display:
+        block;
+
+      margin-top:
+        4px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      line-height:
+        1.4;
+
+    }
+
+
+    /* =====================================================
+       FORM
+       ===================================================== */
+
+    .form {
+
+      display:
+        none;
+
+    }
+
+
+    .form.active {
+
+      display:
+        block;
+
+    }
+
+
+    .field {
+
+      margin-bottom:
+        15px;
+
+    }
+
+
+    label {
+
+      display:
+        block;
+
+      margin-bottom:
+        7px;
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      color:
+        #475569;
+
+    }
+
+
+    input {
+
+      width:
+        100%;
+
+      padding:
+        14px;
+
+      border-radius:
+        12px;
+
+      border:
+        1px solid
+        #dbe2ea;
+
+      font-size:
+        15px;
+
+      outline:
+        none;
+
+      color:
+        #334155;
+
+      background:
+        white;
+
+    }
+
+
+    input:focus {
+
+      border-color:
+        #d783a0;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(215,131,160,.12);
+
+    }
+
+
+    .field-help {
+
+      margin-top:
+        5px;
+
+      font-size:
+        10px;
+
+      line-height:
+        1.4;
+
+      color:
+        #94a3b8;
+
+    }
+
+
+    /* =====================================================
+       BUTTON
+       ===================================================== */
+
+    .button {
+
+      width:
+        100%;
+
+      padding:
+        14px;
+
+      border:
+        none;
+
+      border-radius:
+        13px;
+
+      background:
+        #c96383;
+
+      color:
+        white;
+
+      font-size:
+        15px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .button:hover {
+
+      background:
+        #b95374;
+
+    }
+
+
+    .perawat-button {
+
+      background:
+        #419991;
+
+    }
+
+
+    .perawat-button:hover {
+
+      background:
+        #34877f;
+
+    }
+
+
+    .button:disabled {
+
+      opacity:
+        .55;
+
+      cursor:
+        not-allowed;
+
+    }
+
+
+    /* =====================================================
+       MESSAGE
+       ===================================================== */
+
+    .message {
+
+      display:
+        none;
+
+      margin-top:
+        14px;
+
+      padding:
+        12px;
+
+      border-radius:
+        10px;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    .message.show {
+
+      display:
+        block;
+
+    }
+
+
+    .error {
+
+      background:
+        #fff1f2;
+
+      color:
+        #be123c;
+
+    }
+
+
+    .success {
+
+      background:
+        #ecfdf5;
+
+      color:
+        #047857;
+
+    }
+
+
+    .info-message {
+
+      background:
+        #eff6ff;
+
+      color:
+        #35658f;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+
+      margin-top:
+        22px;
+
+      text-align:
+        center;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        10px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    .loading {
+
+      display:
+        none;
+
+      margin-top:
+        12px;
+
+      text-align:
+        center;
+
+      color:
+        #8f4b67;
+
+      font-size:
+        12px;
+
+    }
+
+
+    .loading.show {
+
+      display:
+        block;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media(max-width:760px) {
+
+      .page {
+
+        padding:
+          0;
+
+      }
+
+
+      .card {
+
+        min-height:
+          100vh;
+
+        grid-template-columns:
+          1fr;
+
+        border-radius:
+          0;
+
+      }
+
+
+      .brand {
+
+        padding:
+          30px;
+
+      }
+
+
+      .logo-large {
+
+        width:
+          95px;
+
+        height:
+          95px;
+
+      }
+
+
+      .brand h1 {
+
+        font-size:
+          31px;
+
+      }
+
+
+      .brand h2 {
+
+        font-size:
+          17px;
+
+      }
+
+
+      .login {
+
+        padding:
+          30px;
+
+      }
+
+    }
+
+
+    @media(max-width:470px) {
+
+      .roles {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+  <div class="card">
+
+
+    <!-- =================================================
+         BRAND / LOGO
+         ================================================= -->
+
+    <section class="brand">
+
+
+      <div class="logo-large">
+
+        <img
+          id="logoImage"
+          src="https://drive.google.com/thumbnail?id=1d_ON76DcZKqamjvFvznYo3-F_XWfwvzA&sz=w600"
+          alt="Logo WIN"
+          onerror="logoFallback()"
+        >
+
+      </div>
+
+
+      <h1>
+        WIN
+      </h1>
+
+
+      <h2>
+        Discharge Planning Perinatologi
+      </h2>
+
+
+      <div class="brand-tagline">
+        Wawasan • Informasi • Navigasi
+      </div>
+
+
+      <div class="info">
+
+        <b>
+          Sistem pendampingan ibu dan keluarga
+        </b>
+
+        <br>
+
+        dalam mempersiapkan perawatan
+        ibu dan bayi setelah pulang
+        dari fasilitas pelayanan kesehatan.
+
+
+        <!-- =================================================
+             PRE TEST
+             ================================================= -->
+
+        <div class="pretest">
+
+          <div class="pretest-title">
+
+            📝 Kuesioner Pre-Test
+
+          </div>
+
+
+          <div class="pretest-text">
+
+            Silakan isi kuesioner awal sebelum
+            mengikuti rangkaian discharge planning.
+
+          </div>
+
+
+          <a
+            id="pretestLink"
+            class="pretest-button"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="bukaPreTest(event)"
+          >
+
+            📝 Isi Kuesioner Pre-Test
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         LOGIN PANEL
+         ================================================= -->
+
+    <section class="login">
+
+
+      <div class="login-header">
+
+        <h2>
+          Selamat Datang
+        </h2>
+
+        <p>
+          Pilih akses untuk melanjutkan
+          discharge planning.
+        </p>
+
+      </div>
+
+
+      <!-- =================================================
+           ROLE
+           ================================================= -->
+
+      <div class="roles">
+
+
+        <button
+          type="button"
+          id="btnIbu"
+          class="role active ibu"
+          onclick="pilihRole('IBU')"
+        >
+
+          <div class="role-icon">
+            👩‍🍼
+          </div>
+
+          <div class="role-title">
+            Ibu / Keluarga
+          </div>
+
+          <span class="role-desc">
+            Mengikuti discharge planning
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          id="btnPerawat"
+          class="role"
+          onclick="pilihRole('PERAWAT')"
+        >
+
+          <div class="role-icon">
+            👩‍⚕️
+          </div>
+
+          <div class="role-title">
+            Perawat
+          </div>
+
+          <span class="role-desc">
+            Monitoring dan pengelolaan pasien
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+      <!-- =================================================
+           FORM IBU
+           ================================================= -->
+
+      <div
+        id="formIbu"
+        class="form active"
+      >
+
+
+        <div class="field">
+
+          <label>
+            Nomor Rekam Medis Bayi
+          </label>
+
+
+          <input
+            id="noRMIbu"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="Masukkan No. RM bayi"
+          >
+
+
+          <div class="field-help">
+
+            Ibu tidak perlu memasukkan Episode ID.
+            Sistem akan mencari episode secara otomatis.
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="btnLoginIbu"
+          type="button"
+          class="button"
+          onclick="loginIbu()"
+        >
+
+          Masuk sebagai Ibu
+
+        </button>
+
+
+        <div
+          id="loadingIbu"
+          class="loading"
+        >
+
+          Memeriksa data bayi...
+
+        </div>
+
+
+        <div
+          id="pesanIbu"
+          class="message"
+        ></div>
+
+
+      </div>
+
+
+      <!-- =================================================
+           FORM PERAWAT
+           ================================================= -->
+
+      <div
+        id="formPerawat"
+        class="form"
+      >
+
+
+        <div class="field">
+
+          <label>
+            Username
+          </label>
+
+
+          <input
+            id="usernamePerawat"
+            type="text"
+            autocomplete="username"
+            value="perawat"
+            placeholder="Username"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Password
+          </label>
+
+
+          <input
+            id="passwordPerawat"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Masukkan password"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Nama Perawat
+          </label>
+
+
+          <input
+            id="namaPerawat"
+            type="text"
+            autocomplete="name"
+            placeholder="Nama perawat yang sedang menggunakan sistem"
+          >
+
+
+          <div class="field-help">
+
+            Nama ini dicatat sebagai informasi
+            pengguna saat mengakses WIN.
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="btnLoginPerawat"
+          type="button"
+          class="button perawat-button"
+          onclick="loginPerawat()"
+        >
+
+          Masuk sebagai Perawat
+
+        </button>
+
+
+        <div
+          id="loadingPerawat"
+          class="loading"
+        >
+
+          Memeriksa akses perawat...
+
+        </div>
+
+
+        <div
+          id="pesanPerawat"
+          class="message"
+        ></div>
+
+
+      </div>
+
+
+      <div class="footer">
+
+        WIN — Discharge Planning Perinatologi
+
+        <br>
+
+        Sistem pendampingan ibu dan bayi
+
+      </div>
+
+
+    </section>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   KONFIGURASI
+   ===================================================== */
+
+
+/*
+ * ISI LINK GOOGLE FORM PRE-TEST DI SINI.
+ *
+ * Contoh:
+ *
+ * const PRETEST_URL =
+ *   'https://docs.google.com/forms/d/e/XXXXXXXX/viewform';
+ *
+ */
+
+const PRETEST_URL =
+  '';
+
+
+
+/*
+ * ID LOGO GOOGLE DRIVE
+ */
+
+const LOGO_FILE_ID =
+  '1d_ON76DcZKqamjvFvznYo3-F_XWfwvzA';
+
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    setupPreTest();
+
+    setupLogo();
+
+  }
+);
+
+
+
+/* =====================================================
+   PRE TEST
+   ===================================================== */
+
+function setupPreTest() {
+
+  const link =
+    document.getElementById(
+      'pretestLink'
+    );
+
+
+  if (
+    PRETEST_URL
+  ) {
+
+    link.href =
+      PRETEST_URL;
+
+    link.dataset.ready =
+      'true';
+
+  }
+
+  else {
+
+    link.href =
+      '#';
+
+    link.dataset.ready =
+      'false';
+
+  }
+
+}
+
+
+
+function bukaPreTest(
+  event
+) {
+
+  if (
+    !PRETEST_URL
+  ) {
+
+    event.preventDefault();
+
+    alert(
+      'Link Kuesioner Pre-Test belum dimasukkan.'
+    );
+
+    return;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+function setupLogo() {
+
+  const image =
+    document.getElementById(
+      'logoImage'
+    );
+
+
+  if (
+    !image
+  ) {
+
+    return;
+
+  }
+
+
+  image.src =
+    'https://drive.google.com/thumbnail?id=' +
+    LOGO_FILE_ID +
+    '&sz=w600';
+
+}
+
+
+
+function logoFallback() {
+
+  const container =
+    document.querySelector(
+      '.logo-large'
+    );
+
+
+  if (
+    !container
+  ) {
+
+    return;
+
+  }
+
+
+  /*
+   * Logo asli gagal dimuat.
+   *
+   * Kita tetap menampilkan identitas
+   * dengan teks kecil, bukan mengganti
+   * logo dengan desain lain.
+   */
+
+  container.innerHTML =
+
+    '<div style="' +
+
+    'text-align:center;' +
+
+    'font-weight:bold;' +
+
+    'font-size:16px;' +
+
+    'line-height:1.3;' +
+
+    'color:#d84e7b;' +
+
+    'padding:10px;' +
+
+    '">' +
+
+    'WIN' +
+
+    '</div>';
+
+}
+
+
+
+/* =====================================================
+   ROLE
+   ===================================================== */
+
+function pilihRole(
+  role
+) {
+
+  const formIbu =
+    document.getElementById(
+      'formIbu'
+    );
+
+
+  const formPerawat =
+    document.getElementById(
+      'formPerawat'
+    );
+
+
+  const btnIbu =
+    document.getElementById(
+      'btnIbu'
+    );
+
+
+  const btnPerawat =
+    document.getElementById(
+      'btnPerawat'
+    );
+
+
+  if (
+    role ===
+    'IBU'
+  ) {
+
+    formIbu.classList.add(
+      'active'
+    );
+
+    formPerawat.classList.remove(
+      'active'
+    );
+
+
+    btnIbu.classList.add(
+      'active'
+    );
+
+    btnPerawat.classList.remove(
+      'active',
+      'perawat'
+    );
+
+
+    clearMessage(
+      'pesanIbu'
+    );
+
+    clearMessage(
+      'pesanPerawat'
+    );
+
+  }
+
+
+  if (
+    role ===
+    'PERAWAT'
+  ) {
+
+    formIbu.classList.remove(
+      'active'
+    );
+
+    formPerawat.classList.add(
+      'active'
+    );
+
+
+    btnIbu.classList.remove(
+      'active'
+    );
+
+    btnPerawat.classList.add(
+      'active',
+      'perawat'
+    );
+
+
+    clearMessage(
+      'pesanIbu'
+    );
+
+    clearMessage(
+      'pesanPerawat'
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOGIN IBU
+   ===================================================== */
+
+function loginIbu() {
+
+  const noRM =
+    document
+      .getElementById(
+        'noRMIbu'
+      )
+      .value
+      .trim();
+
+
+  if (
+    !noRM
+  ) {
+
+    showMessage(
+      'pesanIbu',
+      'Nomor Rekam Medis bayi wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      'btnLoginIbu'
+    );
+
+
+  const loading =
+    document.getElementById(
+      'loadingIbu'
+    );
+
+
+  button.disabled =
+    true;
+
+
+  loading.classList.add(
+    'show'
+  );
+
+
+  showMessage(
+    'pesanIbu',
+    'Mencari data bayi...',
+    'info-message'
+  );
+
+
+  /*
+   * PENTING:
+   *
+   * Kita tidak meminta Episode ID dari ibu.
+   *
+   * Sistem mencari episode berdasarkan No. RM.
+   */
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          !result
+        ) {
+
+          gagalLoginIbu(
+            'Data bayi tidak ditemukan.'
+          );
+
+          return;
+
+        }
+
+
+        const episode =
+          extractEpisode(
+            result
+          );
+
+
+        if (
+          !episode
+        ) {
+
+          gagalLoginIbu(
+            'Belum ditemukan episode Discharge Planning untuk No. RM tersebut.'
+          );
+
+          return;
+
+        }
+
+
+        const episodeId =
+          extractEpisodeId(
+            episode
+          );
+
+
+        const foundRM =
+          extractNoRM(
+            episode
+          ) ||
+          noRM;
+
+
+        const namaIbu =
+          extractNamaIbu(
+            episode
+          );
+
+
+        if (
+          !episodeId
+        ) {
+
+          gagalLoginIbu(
+            'Episode pasien ditemukan, tetapi Episode ID belum tersedia.'
+          );
+
+          return;
+
+        }
+
+
+        /*
+         * Setelah episode ditemukan,
+         * gunakan login Ibu yang sudah ada.
+         */
+
+        google
+          .script
+          .run
+
+          .withSuccessHandler(
+            function(loginResult) {
+
+              if (
+                !loginResult ||
+                loginResult.success !== true
+              ) {
+
+                gagalLoginIbu(
+                  loginResult &&
+                  loginResult.message
+                    ? loginResult.message
+                    : 'Login Ibu gagal.'
+                );
+
+                return;
+
+              }
+
+
+              simpanSessionIbu({
+
+                role:
+                  'IBU',
+
+                noRM:
+                  foundRM,
+
+                episodeId:
+                  episodeId,
+
+                namaIbu:
+                  namaIbu
+
+              });
+
+
+              showMessage(
+                'pesanIbu',
+                '✓ Data ditemukan. Membuka Discharge Planning...',
+                'success'
+              );
+
+
+              setTimeout(
+                bukaDashboard,
+                500
+              );
+
+            }
+          )
+
+          .withFailureHandler(
+            function(error) {
+
+              gagalLoginIbu(
+                getErrorMessage(
+                  error
+                )
+              );
+
+            }
+          )
+
+          .WIN_WEBAPP_loginIbu(
+            foundRM,
+            episodeId
+          );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        gagalLoginIbu(
+          'Gagal mencari pasien: ' +
+          getErrorMessage(
+            error
+          )
+        );
+
+      }
+    )
+
+    .WIN_EPISODE_getByNoRM(
+      noRM
+    );
+
+}
+
+
+
+/* =====================================================
+   EXTRACT EPISODE
+   ===================================================== */
+
+function extractEpisode(
+  result
+) {
+
+  if (
+    !result
+  ) {
+
+    return null;
+
+  }
+
+
+  /*
+   * Kemungkinan bentuk response:
+   *
+   * result.episode
+   * result.data
+   * result.result
+   * result
+   */
+
+  if (
+    result.episode
+  ) {
+
+    return result.episode;
+
+  }
+
+
+  if (
+    result.data
+  ) {
+
+    if (
+      Array.isArray(
+        result.data
+      )
+    ) {
+
+      return (
+        result.data[0] ||
+        null
+      );
+
+    }
+
+
+    return result.data;
+
+  }
+
+
+  if (
+    result.result
+  ) {
+
+    return result.result;
+
+  }
+
+
+  if (
+    Array.isArray(
+      result
+    )
+  ) {
+
+    return (
+      result[0] ||
+      null
+    );
+
+  }
+
+
+  /*
+   * Kalau result sendiri sudah
+   * mengandung Episode ID.
+   */
+
+  if (
+    result.episodeId ||
+    result.episodeID ||
+    result.NO_EPISODE ||
+    result.noEpisode
+  ) {
+
+    return result;
+
+  }
+
+
+  return null;
+
+}
+
+
+
+/* =====================================================
+   EXTRACT EPISODE ID
+   ===================================================== */
+
+function extractEpisodeId(
+  data
+) {
+
+  if (
+    !data
+  ) {
+
+    return '';
+
+  }
+
+
+  return (
+
+    data.episodeId ||
+
+    data.episodeID ||
+
+    data.NO_EPISODE ||
+
+    data.noEpisode ||
+
+    data.NO_EPISODE_ID ||
+
+    ''
+
+  );
+
+}
+
+
+
+/* =====================================================
+   EXTRACT NO RM
+   ===================================================== */
+
+function extractNoRM(
+  data
+) {
+
+  if (
+    !data
+  ) {
+
+    return '';
+
+  }
+
+
+  return (
+
+    data.noRM ||
+
+    data.NO_RM ||
+
+    data.norm ||
+
+    ''
+
+  );
+
+}
+
+
+
+/* =====================================================
+   EXTRACT NAMA IBU
+   ===================================================== */
+
+function extractNamaIbu(
+  data
+) {
+
+  if (
+    !data
+  ) {
+
+    return '';
+
+  }
+
+
+  return (
+
+    data.namaIbu ||
+
+    data.NAMA_IBU ||
+
+    data.namaPasien ||
+
+    data.NAMA_PASIEN ||
+
+    ''
+
+  );
+
+}
+
+
+
+/* =====================================================
+   SIMPAN SESSION IBU
+   ===================================================== */
+
+function simpanSessionIbu(
+  data
+) {
+
+  try {
+
+    sessionStorage.setItem(
+      'WIN_SESSION',
+      JSON.stringify(
+        data
+      )
+    );
+
+
+    /*
+     * Kompatibilitas dengan halaman
+     * lama yang masih memakai localStorage.
+     */
+
+    if (
+      data.episodeId
+    ) {
+
+      localStorage.setItem(
+        'WIN_episodeId',
+        data.episodeId
+      );
+
+    }
+
+
+    if (
+      data.noRM
+    ) {
+
+      localStorage.setItem(
+        'WIN_noRM',
+        data.noRM
+      );
+
+    }
+
+
+    if (
+      data.namaIbu
+    ) {
+
+      localStorage.setItem(
+        'WIN_namaIbu',
+        data.namaIbu
+      );
+
+    }
+
+  }
+
+  catch(error) {
+
+    console.log(
+      'Session error:',
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   GAGAL LOGIN IBU
+   ===================================================== */
+
+function gagalLoginIbu(
+  message
+) {
+
+  document
+    .getElementById(
+      'btnLoginIbu'
+    )
+    .disabled =
+      false;
+
+
+  document
+    .getElementById(
+      'loadingIbu'
+    )
+    .classList.remove(
+      'show'
+    );
+
+
+  showMessage(
+    'pesanIbu',
+    message,
+    'error'
+  );
+
+}
+
+
+
+/* =====================================================
+   LOGIN PERAWAT
+   ===================================================== */
+
+function loginPerawat() {
+
+  const username =
+    document
+      .getElementById(
+        'usernamePerawat'
+      )
+      .value
+      .trim();
+
+
+  const password =
+    document
+      .getElementById(
+        'passwordPerawat'
+      )
+      .value
+      .trim();
+
+
+  const namaPerawat =
+    document
+      .getElementById(
+        'namaPerawat'
+      )
+      .value
+      .trim();
+
+
+  if (
+    !username
+  ) {
+
+    showMessage(
+      'pesanPerawat',
+      'Username wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !password
+  ) {
+
+    showMessage(
+      'pesanPerawat',
+      'Password wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !namaPerawat
+  ) {
+
+    showMessage(
+      'pesanPerawat',
+      'Nama perawat wajib diisi.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      'btnLoginPerawat'
+    );
+
+
+  const loading =
+    document.getElementById(
+      'loadingPerawat'
+    );
+
+
+  button.disabled =
+    true;
+
+
+  loading.classList.add(
+    'show'
+  );
+
+
+  showMessage(
+    'pesanPerawat',
+    'Memeriksa akses perawat...',
+    'info-message'
+  );
+
+
+  /*
+   * Login memakai engine WIN_ACCESS
+   * apabila tersedia.
+   */
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(result) {
+
+        if (
+          !result ||
+          result.success !== true
+        ) {
+
+          gagalLoginPerawat(
+            result &&
+            result.message
+              ? result.message
+              : 'Username atau password tidak sesuai.'
+          );
+
+          return;
+
+        }
+
+
+        simpanSessionPerawat({
+
+          role:
+            'PERAWAT',
+
+          userId:
+            username,
+
+          username:
+            username,
+
+          namaPerawat:
+            namaPerawat
+
+        });
+
+
+        showMessage(
+          'pesanPerawat',
+          '✓ Login berhasil. Membuka Dashboard Perawat...',
+          'success'
+        );
+
+
+        setTimeout(
+          function() {
+
+            bukaDashboardPerawat();
+
+          },
+          500
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        gagalLoginPerawat(
+          'Gagal memeriksa akses: ' +
+          getErrorMessage(
+            error
+          )
+        );
+
+      }
+    )
+
+    .WIN_LOGIN_loginPerawat(
+      username,
+      password,
+      namaPerawat
+    );
+}
+
+
+
+/* =====================================================
+   SIMPAN SESSION PERAWAT
+   ===================================================== */
+
+function simpanSessionPerawat(
+  data
+) {
+
+  try {
+
+    sessionStorage.setItem(
+      'WIN_SESSION',
+      JSON.stringify(
+        data
+      )
+    );
+
+  }
+
+  catch(error) {
+
+    console.log(
+      'Session perawat error:',
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   GAGAL LOGIN PERAWAT
+   ===================================================== */
+
+function gagalLoginPerawat(
+  message
+) {
+
+  document
+    .getElementById(
+      'btnLoginPerawat'
+    )
+    .disabled =
+      false;
+
+
+  document
+    .getElementById(
+      'loadingPerawat'
+    )
+    .classList.remove(
+      'show'
+    );
+
+
+  showMessage(
+    'pesanPerawat',
+    message,
+    'error'
+  );
+
+}
+
+
+
+/* =====================================================
+   BUKA DASHBOARD IBU
+   ===================================================== */
+
+function bukaDashboard() {
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (
+          !url
+        ) {
+
+          showMessage(
+            'pesanIbu',
+            'URL Web App tidak ditemukan.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        window.top.location.href =
+          url +
+          '?page=dashboard';
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        showMessage(
+          'pesanIbu',
+          'Gagal membuka Dashboard: ' +
+          getErrorMessage(
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+
+/* =====================================================
+   BUKA DASHBOARD PERAWAT
+   ===================================================== */
+
+function bukaDashboardPerawat() {
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (
+          !url
+        ) {
+
+          showMessage(
+            'pesanPerawat',
+            'URL Web App tidak ditemukan.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        window.top.location.href =
+          url +
+          '?page=nurse';
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        showMessage(
+          'pesanPerawat',
+          'Gagal membuka Dashboard Perawat: ' +
+          getErrorMessage(
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+function showMessage(
+  id,
+  text,
+  type
+) {
+
+  const element =
+    document.getElementById(
+      id
+    );
+
+
+  if (
+    !element
+  ) {
+
+    return;
+
+  }
+
+
+  element.textContent =
+    text;
+
+
+  element.className =
+    'message show ' +
+    (
+      type ||
+      'info-message'
+    );
+
+}
+
+
+
+function clearMessage(
+  id
+) {
+
+  const element =
+    document.getElementById(
+      id
+    );
+
+
+  if (
+    !element
+  ) {
+
+    return;
+
+  }
+
+
+  element.textContent =
+    '';
+
+
+  element.className =
+    'message';
+
+}
+
+
+
+/* =====================================================
+   ERROR MESSAGE
+   ===================================================== */
+
+function getErrorMessage(
+  error
+) {
+
+  if (
+    error &&
+    error.message
+  ) {
+
+    return error.message;
+
+  }
+
+
+  return String(
+    error ||
+    'Terjadi kesalahan.'
+  );
+
+}
+
+
+
+/* =====================================================
+   ENTER KEY
+   ===================================================== */
+
+document.addEventListener(
+  'keydown',
+  function(event) {
+
+    if (
+      event.key !==
+      'Enter'
+    ) {
+
+      return;
+
+    }
+
+
+    const ibuForm =
+      document.getElementById(
+        'formIbu'
+      );
+
+
+    const perawatForm =
+      document.getElementById(
+        'formPerawat'
+      );
+
+
+    if (
+      ibuForm.classList.contains(
+        'active'
+      )
+    ) {
+
+      loginIbu();
+
+    }
+
+    else if (
+      perawatForm.classList.contains(
+        'active'
+      )
+    ) {
+
+      loginPerawat();
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+
+</html>

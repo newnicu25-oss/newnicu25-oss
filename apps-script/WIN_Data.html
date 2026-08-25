@@ -1,0 +1,5168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <title>WIN — Data Ibu & Bayi</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+
+      --pink:
+        #d84e7b;
+
+      --pink-light:
+        #fde5ed;
+
+      --pink-soft:
+        #fff5f8;
+
+      --teal:
+        #419991;
+
+      --teal-light:
+        #e9f7f5;
+
+      --text:
+        #334155;
+
+      --muted:
+        #64748b;
+
+      --border:
+        #e5d8de;
+
+      --white:
+        #ffffff;
+
+    }
+
+
+    html,
+    body {
+
+      margin: 0;
+
+      padding: 0;
+
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        var(--pink-soft);
+
+      color:
+        var(--text);
+
+    }
+
+
+    body {
+      min-height: 100vh;
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    .header {
+
+      background:
+        linear-gradient(
+          135deg,
+          #f78fb3,
+          #f6a6c1,
+          #e8f7f5
+        );
+
+      color: white;
+
+      padding:
+        15px 20px;
+
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.10);
+
+    }
+
+
+    .header-inner {
+
+      max-width:
+        1100px;
+
+      margin:
+        auto;
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
+      gap:
+        15px;
+
+    }
+
+
+    .header-left {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+    }
+
+
+    .logo {
+
+      width:
+        54px;
+
+      height:
+        54px;
+
+      border-radius:
+        16px;
+
+      background:
+        rgba(255,255,255,.95);
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      overflow:
+        hidden;
+
+      box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.10);
+
+      flex-shrink:
+        0;
+
+    }
+
+
+    .logo img {
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        contain;
+
+      padding:
+        5px;
+
+    }
+
+
+    .header-title {
+
+      font-size:
+        19px;
+
+      font-weight:
+        bold;
+
+    }
+
+
+    .header-subtitle {
+
+      font-size:
+        11px;
+
+      margin-top:
+        3px;
+
+      opacity:
+        .95;
+
+    }
+
+
+    .header-actions {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+    }
+
+
+    .mode-badge {
+
+      padding:
+        8px 11px;
+
+      border-radius:
+        20px;
+
+      background:
+        rgba(255,255,255,.75);
+
+      color:
+        #7c3754;
+
+      font-size:
+        11px;
+
+      font-weight:
+        bold;
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .mode-badge.perawat {
+
+      color:
+        #287b74;
+
+    }
+
+
+    .home-btn {
+
+      border:
+        none;
+
+      background:
+        white;
+
+      color:
+        var(--pink);
+
+      padding:
+        9px 13px;
+
+      border-radius:
+        20px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .home-btn:hover {
+
+      opacity:
+        .92;
+
+    }
+
+
+    /* =====================================================
+       CONTAINER
+       ===================================================== */
+
+    .container {
+
+      max-width:
+        1100px;
+
+      margin:
+        auto;
+
+      padding:
+        20px 18px 45px;
+
+    }
+
+
+    /* =====================================================
+       WELCOME
+       ===================================================== */
+
+    .welcome {
+
+      background:
+        white;
+
+      border-radius:
+        20px;
+
+      padding:
+        22px;
+
+      margin-bottom:
+        18px;
+
+      box-shadow:
+        0 6px 22px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .welcome h1 {
+
+      margin:
+        0 0 7px;
+
+      color:
+        #a64063;
+
+      font-size:
+        25px;
+
+    }
+
+
+    .welcome p {
+
+      margin:
+        0;
+
+      font-size:
+        13px;
+
+      color:
+        var(--muted);
+
+      line-height:
+        1.6;
+
+    }
+
+
+    .source-note {
+
+      margin-top:
+        15px;
+
+      padding:
+        12px 14px;
+
+      border-radius:
+        12px;
+
+      background:
+        var(--teal-light);
+
+      color:
+        #287b74;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    /* =====================================================
+       ALERT
+       ===================================================== */
+
+    .alert {
+
+      display:
+        none;
+
+      padding:
+        13px 15px;
+
+      border-radius:
+        12px;
+
+      margin-bottom:
+        16px;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    .alert.show {
+      display:
+        block;
+    }
+
+
+    .alert.success {
+
+      background:
+        #e7f8ef;
+
+      color:
+        #21764f;
+
+    }
+
+
+    .alert.error {
+
+      background:
+        #fdecef;
+
+      color:
+        #a43755;
+
+    }
+
+
+    .alert.info {
+
+      background:
+        #eef6ff;
+
+      color:
+        #35658f;
+
+    }
+
+
+    /* =====================================================
+       EPISODE
+       ===================================================== */
+
+    .episode-card {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff0f5,
+          #f2fbfa
+        );
+
+      border:
+        1px solid #f0d7df;
+
+      border-radius:
+        18px;
+
+      padding:
+        17px;
+
+      margin-bottom:
+        18px;
+
+    }
+
+
+    .episode-title {
+
+      color:
+        #b54068;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        12px;
+
+    }
+
+
+    .episode-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0,1fr)
+        );
+
+      gap:
+        10px;
+
+    }
+
+
+    .episode-item {
+
+      background:
+        rgba(255,255,255,.75);
+
+      padding:
+        11px;
+
+      border-radius:
+        11px;
+
+      font-size:
+        10px;
+
+      color:
+        #94a3b8;
+
+    }
+
+
+    .episode-value {
+
+      display:
+        block;
+
+      margin-top:
+        4px;
+
+      color:
+        #334155;
+
+      font-size:
+        13px;
+
+      font-weight:
+        bold;
+
+      word-break:
+        break-word;
+
+    }
+
+
+    /* =====================================================
+       SECTION
+       ===================================================== */
+
+    .section {
+
+      background:
+        white;
+
+      border-radius:
+        20px;
+
+      margin-bottom:
+        18px;
+
+      overflow:
+        hidden;
+
+      box-shadow:
+        0 6px 22px
+        rgba(0,0,0,.055);
+
+    }
+
+
+    .section-header {
+
+      padding:
+        15px 19px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #fde0ea,
+          #fff7fa
+        );
+
+      color:
+        #b54068;
+
+      font-weight:
+        bold;
+
+      font-size:
+        16px;
+
+      border-bottom:
+        1px solid #f3dce4;
+
+    }
+
+
+    .section-header span {
+
+      margin-right:
+        7px;
+
+    }
+
+
+    .section-description {
+
+      padding:
+        13px 18px 0;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
+
+      color:
+        #94a3b8;
+
+    }
+
+
+    .section-body {
+
+      padding:
+        18px;
+
+    }
+
+
+    /* =====================================================
+       AUTO DATA NOTICE
+       ===================================================== */
+
+    .auto-notice {
+
+      display:
+        flex;
+
+      gap:
+        10px;
+
+      align-items:
+        flex-start;
+
+      padding:
+        12px 14px;
+
+      border-radius:
+        12px;
+
+      background:
+        #edf9f7;
+
+      border:
+        1px solid #cfe9e5;
+
+      color:
+        #287b74;
+
+      margin-bottom:
+        16px;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    .auto-notice-icon {
+
+      font-size:
+        19px;
+
+      flex-shrink:
+        0;
+
+    }
+
+
+    .perawat-notice {
+
+      display:
+        none;
+
+      gap:
+        10px;
+
+      align-items:
+        flex-start;
+
+      padding:
+        12px 14px;
+
+      border-radius:
+        12px;
+
+      background:
+        #eef6ff;
+
+      border:
+        1px solid #d5e5f5;
+
+      color:
+        #35658f;
+
+      margin-bottom:
+        16px;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    .perawat-notice.show {
+
+      display:
+        flex;
+
+    }
+
+
+    /* =====================================================
+       FORM GRID
+       ===================================================== */
+
+    .form-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0,1fr)
+        );
+
+      gap:
+        14px;
+
+    }
+
+
+    .form-group {
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      min-width:
+        0;
+
+    }
+
+
+    .form-group.full {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    label {
+
+      font-size:
+        12px;
+
+      font-weight:
+        bold;
+
+      color:
+        #475569;
+
+      margin-bottom:
+        6px;
+
+    }
+
+
+    .field-tag {
+
+      display:
+        inline-block;
+
+      margin-left:
+        5px;
+
+      padding:
+        2px 6px;
+
+      border-radius:
+        8px;
+
+      font-size:
+        9px;
+
+      font-weight:
+        bold;
+
+      vertical-align:
+        middle;
+
+    }
+
+
+    .field-tag.auto {
+
+      background:
+        #e8f7f5;
+
+      color:
+        #287b74;
+
+    }
+
+
+    .field-tag.perawat {
+
+      background:
+        #eef6ff;
+
+      color:
+        #35658f;
+
+    }
+
+
+    input,
+    select,
+    textarea {
+
+      width:
+        100%;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        10px;
+
+      padding:
+        11px 12px;
+
+      font-size:
+        13px;
+
+      font-family:
+        inherit;
+
+      outline:
+        none;
+
+      background:
+        white;
+
+      color:
+        #334155;
+
+    }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+
+      border-color:
+        #e85b8a;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(232,91,138,.09);
+
+    }
+
+
+    textarea {
+
+      min-height:
+        80px;
+
+      resize:
+        vertical;
+
+    }
+
+
+    input.auto-field,
+    select.auto-field,
+    textarea.auto-field {
+
+      background:
+        #f7fbfb;
+
+      border-color:
+        #d8ece9;
+
+      color:
+        #356f6a;
+
+    }
+
+
+    input:disabled,
+    select:disabled,
+    textarea:disabled {
+
+      background:
+        #f8fafc;
+
+      color:
+        #64748b;
+
+      cursor:
+        not-allowed;
+
+    }
+
+
+    .help {
+
+      font-size:
+        10px;
+
+      color:
+        #94a3b8;
+
+      margin-top:
+        4px;
+
+      line-height:
+        1.4;
+
+    }
+
+
+    /* =====================================================
+       EMPTY FIELD
+       ===================================================== */
+
+    .empty-field {
+
+      border-color:
+        #e9dce2 !important;
+
+      background:
+        #fffafb !important;
+
+    }
+
+
+    /* =====================================================
+       SAVE CARD
+       ===================================================== */
+
+    .action-card {
+
+      background:
+        white;
+
+      border-radius:
+        18px;
+
+      padding:
+        17px;
+
+      box-shadow:
+        0 6px 22px
+        rgba(0,0,0,.055);
+
+      margin-bottom:
+        18px;
+
+    }
+
+
+    .action-row {
+
+      display:
+        flex;
+
+      gap:
+        10px;
+
+      flex-wrap:
+        wrap;
+
+    }
+
+
+    .btn {
+
+      border:
+        none;
+
+      border-radius:
+        11px;
+
+      padding:
+        12px 18px;
+
+      font-weight:
+        bold;
+
+      font-size:
+        13px;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .btn-primary {
+
+      background:
+        #e85b8a;
+
+      color:
+        white;
+
+    }
+
+
+    .btn-primary:hover {
+
+      background:
+        #d94d7b;
+
+    }
+
+
+    .btn-teal {
+
+      background:
+        #419991;
+
+      color:
+        white;
+
+    }
+
+
+    .btn-teal:hover {
+
+      background:
+        #34877f;
+
+    }
+
+
+    .btn-secondary {
+
+      background:
+        #f2e8ed;
+
+      color:
+        #555;
+
+    }
+
+
+    .btn:disabled {
+
+      opacity:
+        .5;
+
+      cursor:
+        not-allowed;
+
+    }
+
+
+    /* =====================================================
+       STATUS
+       ===================================================== */
+
+    .completion-card {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff,
+          #f8fcfb
+        );
+
+      border:
+        1px solid #d8ece9;
+
+      border-radius:
+        18px;
+
+      padding:
+        18px;
+
+      margin-bottom:
+        18px;
+
+    }
+
+
+    .completion-title {
+
+      color:
+        #287b74;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .completion-text {
+
+      font-size:
+        12px;
+
+      color:
+        #64748b;
+
+      line-height:
+        1.6;
+
+    }
+
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    .loading-overlay {
+
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      background:
+        rgba(255,255,255,.88);
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      z-index:
+        9999;
+
+    }
+
+
+    .loading-overlay.hidden {
+
+      display:
+        none;
+
+    }
+
+
+    .loading-box {
+
+      background:
+        white;
+
+      border-radius:
+        18px;
+
+      padding:
+        24px 28px;
+
+      box-shadow:
+        0 12px 40px
+        rgba(0,0,0,.10);
+
+      text-align:
+        center;
+
+      color:
+        #a64063;
+
+      font-size:
+        13px;
+
+    }
+
+
+    .spinner {
+
+      width:
+        38px;
+
+      height:
+        38px;
+
+      border:
+        4px solid #f2dce4;
+
+      border-top-color:
+        #e85b8a;
+
+      border-radius:
+        50%;
+
+      animation:
+        spin 1s linear infinite;
+
+      margin:
+        0 auto 13px;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform:
+          rotate(360deg);
+      }
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+
+      text-align:
+        center;
+
+      padding:
+        22px 10px;
+
+      color:
+        #999;
+
+      font-size:
+        10px;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media(max-width:760px) {
+
+      .header-inner {
+
+        align-items:
+          flex-start;
+
+      }
+
+
+      .header-actions {
+
+        flex-direction:
+          column;
+
+        align-items:
+          flex-end;
+
+      }
+
+
+      .episode-grid {
+
+        grid-template-columns:
+          1fr 1fr;
+
+      }
+
+
+      .form-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .form-group.full {
+
+        grid-column:
+          auto;
+
+      }
+
+
+      .action-row {
+
+        flex-direction:
+          column;
+
+      }
+
+
+      .btn {
+
+        width:
+          100%;
+
+      }
+
+    }
+
+
+    @media(max-width:480px) {
+
+      .header {
+
+        padding:
+          12px;
+
+      }
+
+
+      .logo {
+
+        width:
+          45px;
+
+        height:
+          45px;
+
+      }
+
+
+      .header-title {
+
+        font-size:
+          15px;
+
+      }
+
+
+      .header-subtitle {
+
+        font-size:
+          9px;
+
+      }
+
+
+      .mode-badge {
+
+        font-size:
+          9px;
+
+      }
+
+
+      .home-btn {
+
+        font-size:
+          10px;
+
+        padding:
+          7px 10px;
+
+      }
+
+
+      .container {
+
+        padding:
+          12px 10px 30px;
+
+      }
+
+
+      .episode-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOADING
+     ===================================================== -->
+
+<div
+  id="loadingOverlay"
+  class="loading-overlay hidden"
+>
+
+  <div class="loading-box">
+
+    <div class="spinner"></div>
+
+    <div id="loadingText">
+      Memuat data WIN...
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="header">
+
+  <div class="header-inner">
+
+    <div class="header-left">
+
+      <div class="logo">
+
+        <img
+          src="https://drive.google.com/thumbnail?id=1d_ON76DcZKqamjvFvznYo3-F_XWfwvzA&sz=w300"
+          alt="Logo WIN"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<strong style=&quot;color:#d84e7b&quot;>WIN</strong>';"
+        >
+
+      </div>
+
+
+      <div>
+
+        <div class="header-title">
+          Data Ibu & Bayi
+        </div>
+
+        <div class="header-subtitle">
+          WIN — Discharge Planning Perinatologi
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+      <div
+        id="modeBadge"
+        class="mode-badge"
+      >
+        MODE IBU
+      </div>
+
+
+      <button
+        class="home-btn"
+        type="button"
+        onclick="goDashboard()"
+      >
+        ← Kembali
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="container">
+
+
+  <!-- ===================================================
+       WELCOME
+       =================================================== -->
+
+  <section class="welcome">
+
+    <h1>
+      Data Dasar Ibu & Bayi
+    </h1>
+
+    <p>
+      Data yang sudah tersedia dari sistem akan
+      ditampilkan otomatis. Data yang belum tersedia
+      dapat dilengkapi oleh Perawat.
+    </p>
+
+
+    <div class="source-note">
+
+      <strong>🔗 Sumber data:</strong>
+
+      Master Register / NICU_LEVEL_2 →
+      WIN Discharge Planning.
+
+      Data yang tersedia dari sistem tidak perlu
+      dimasukkan ulang.
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       ALERT
+       =================================================== -->
+
+  <div
+    id="alert"
+    class="alert"
+  ></div>
+
+
+  <!-- ===================================================
+       EPISODE
+       =================================================== -->
+
+  <section class="episode-card">
+
+    <div class="episode-title">
+
+      📋 Identitas Episode
+
+    </div>
+
+
+    <div class="episode-grid">
+
+
+      <div class="episode-item">
+
+        NO. RM
+
+        <span
+          id="displayNoRM"
+          class="episode-value"
+        >
+          -
+        </span>
+
+      </div>
+
+
+      <div class="episode-item">
+
+        EPISODE ID
+
+        <span
+          id="displayEpisode"
+          class="episode-value"
+        >
+          -
+        </span>
+
+      </div>
+
+
+      <div class="episode-item">
+
+        NAMA IBU
+
+        <span
+          id="displayNamaIbu"
+          class="episode-value"
+        >
+          -
+        </span>
+
+      </div>
+
+
+      <div class="episode-item">
+
+        KODE BAYI
+
+        <span
+          id="displayBabyId"
+          class="episode-value"
+        >
+          -
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       DATA IBU
+       =================================================== -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <span>👩</span>
+
+      DATA IBU
+
+    </div>
+
+
+    <div class="section-body">
+
+
+      <div class="auto-notice">
+
+        <div class="auto-notice-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <strong>
+            Data otomatis
+          </strong>
+
+          <br>
+
+          Identitas yang sudah tersedia dari sistem
+          akan ditampilkan otomatis.
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="ibuPerawatNotice"
+        class="perawat-notice"
+      >
+
+        <div class="auto-notice-icon">
+          ✎
+        </div>
+
+        <div>
+
+          <strong>
+            Mode Perawat
+          </strong>
+
+          <br>
+
+          Lengkapi data yang masih kosong.
+          Data yang sudah otomatis tersedia
+          tetap dipertahankan.
+
+        </div>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <!-- NAMA IBU -->
+
+        <div class="form-group">
+
+          <label>
+
+            Nama Ibu
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="namaIbu"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+        </div>
+
+
+        <!-- NIK -->
+
+        <div class="form-group">
+
+          <label>
+            NIK Ibu
+
+            <span class="field-tag perawat-field field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="nik"
+            type="text"
+            inputmode="numeric"
+            placeholder="Isi bila diperlukan"
+          >
+
+        </div>
+
+
+        <!-- TANGGAL LAHIR -->
+
+        <div class="form-group">
+
+          <label>
+
+            Tanggal Lahir Ibu
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="tanggalLahirIbu"
+            type="date"
+          >
+
+        </div>
+
+
+        <!-- USIA -->
+
+        <div class="form-group">
+
+          <label>
+
+            Usia Ibu
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="usiaIbu"
+            type="number"
+            min="10"
+            max="70"
+            placeholder="Tahun"
+          >
+
+        </div>
+
+
+        <!-- PENDIDIKAN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Pendidikan
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="pendidikan">
+
+            <option value="">
+              Pilih pendidikan
+            </option>
+
+            <option value="SD">
+              SD
+            </option>
+
+            <option value="SMP">
+              SMP
+            </option>
+
+            <option value="SMA/SMK">
+              SMA/SMK
+            </option>
+
+            <option value="D1/D2/D3">
+              D1/D2/D3
+            </option>
+
+            <option value="D4/S1">
+              D4/S1
+            </option>
+
+            <option value="S2">
+              S2
+            </option>
+
+            <option value="S3">
+              S3
+            </option>
+
+            <option value="Lainnya">
+              Lainnya
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- PEKERJAAN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Pekerjaan
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="pekerjaan"
+            type="text"
+            placeholder="Pekerjaan ibu"
+          >
+
+        </div>
+
+
+        <!-- PARITAS RAW -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Paritas
+
+            <span class="field-tag auto">
+              DARI MASTER REGISTER
+            </span>
+
+          </label>
+
+          <input
+            id="paritasRaw"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+          <div class="help">
+
+            Sumber: kolom <b>gxpx_uk</b> pada NICU_LEVEL_2.
+
+          </div>
+
+        </div>
+
+
+        <!-- GRAVIDA -->
+
+        <div class="form-group">
+
+          <label>
+
+            Gravida (G)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="gravida"
+            type="number"
+            min="0"
+          >
+
+        </div>
+
+
+        <!-- PARA -->
+
+        <div class="form-group">
+
+          <label>
+
+            Para (P)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="para"
+            type="number"
+            min="0"
+          >
+
+        </div>
+
+
+        <!-- ABORTUS -->
+
+        <div class="form-group">
+
+          <label>
+
+            Abortus (A)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="abortus"
+            type="number"
+            min="0"
+          >
+
+        </div>
+
+
+        <!-- PENGALAMAN MERAWAT -->
+
+        <div class="form-group">
+
+          <label>
+
+            Pengalaman Merawat Bayi
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="pengalamanMerawatBayi">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="Belum pernah">
+              Belum pernah
+            </option>
+
+            <option value="Pernah tetapi belum yakin">
+              Pernah tetapi belum yakin
+            </option>
+
+            <option value="Cukup berpengalaman">
+              Cukup berpengalaman
+            </option>
+
+            <option value="Sangat berpengalaman">
+              Sangat berpengalaman
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- PENGALAMAN MENYUSUI -->
+
+        <div class="form-group">
+
+          <label>
+
+            Pengalaman Menyusui
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="pengalamanMenyusui">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="Belum pernah">
+              Belum pernah
+            </option>
+
+            <option value="Pernah">
+              Pernah
+            </option>
+
+            <option value="Pernah tetapi masih mengalami kesulitan">
+              Pernah tetapi masih mengalami kesulitan
+            </option>
+
+            <option value="Lancar">
+              Lancar
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- DUKUNGAN KELUARGA -->
+
+        <div class="form-group">
+
+          <label>
+
+            Dukungan Keluarga
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="dukunganKeluarga">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="Tidak ada dukungan">
+              Tidak ada dukungan
+            </option>
+
+            <option value="Dukungan terbatas">
+              Dukungan terbatas
+            </option>
+
+            <option value="Dukungan cukup">
+              Dukungan cukup
+            </option>
+
+            <option value="Dukungan baik">
+              Dukungan baik
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- USIA KEHAMILAN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Usia Kehamilan
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="usiaKehamilan"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+        </div>
+
+
+        <!-- JENIS PERSALINAN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Jenis Persalinan
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="jenisPersalinan">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="Spontan / Pervaginam">
+              Spontan / Pervaginam
+            </option>
+
+            <option value="Seksio Sesarea">
+              Seksio Sesarea
+            </option>
+
+            <option value="Vakum">
+              Vakum
+            </option>
+
+            <option value="Forceps">
+              Forceps
+            </option>
+
+            <option value="Lainnya">
+              Lainnya
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TANGGAL PERSALINAN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Tanggal Persalinan
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="tanggalPersalinan"
+            type="date"
+          >
+
+        </div>
+
+
+        <!-- KONDISI IBU -->
+
+        <div class="form-group">
+
+          <label>
+
+            Kondisi Ibu Saat Ini
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="kondisiIbu">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="Stabil">
+              Stabil
+            </option>
+
+            <option value="Perlu Pemantauan">
+              Perlu Pemantauan
+            </option>
+
+            <option value="Perlu Intervensi">
+              Perlu Intervensi
+            </option>
+
+            <option value="Lainnya">
+              Lainnya
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- DIAGNOSIS IBU -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Diagnosis / Masalah Ibu
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <textarea
+            id="diagnosisIbu"
+            placeholder="Diagnosis atau masalah ibu"
+          ></textarea>
+
+        </div>
+
+
+        <!-- KEBUTUHAN EDUKASI IBU -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Kebutuhan Edukasi Khusus Ibu
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <textarea
+            id="kebutuhanIbu"
+            placeholder="Catatan kebutuhan edukasi khusus ibu"
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       DATA BAYI
+       =================================================== -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <span>👶</span>
+
+      DATA BAYI
+
+    </div>
+
+
+    <div class="section-body">
+
+
+      <div class="auto-notice">
+
+        <div class="auto-notice-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <strong>
+            Data bayi otomatis
+          </strong>
+
+          <br>
+
+          Data yang sudah tersedia di NICU_LEVEL_2
+          akan masuk otomatis.
+
+        </div>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <!-- BABY ID -->
+
+        <div class="form-group">
+
+          <label>
+
+            Kode Bayi
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="babyId"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+        </div>
+
+
+        <!-- NAMA BAYI -->
+
+        <div class="form-group">
+
+          <label>
+
+            Nama / Inisial Bayi
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="namaBayi"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+        </div>
+
+
+        <!-- JENIS KELAMIN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Jenis Kelamin
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="jenisKelamin"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+        </div>
+
+
+        <!-- TANGGAL LAHIR -->
+
+        <div class="form-group">
+
+          <label>
+
+            Tanggal Lahir Bayi
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="tanggalLahirBayi"
+            class="auto-field"
+            type="date"
+            readonly
+          >
+
+        </div>
+
+
+        <!-- JAM LAHIR -->
+
+        <div class="form-group">
+
+          <label>
+
+            Jam Lahir
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="jamLahir"
+            type="time"
+          >
+
+        </div>
+
+
+        <!-- USIA GESTASI -->
+
+        <div class="form-group">
+
+          <label>
+
+            Usia Gestasi
+
+            <span class="field-tag auto">
+              UK BALLARD
+            </span>
+
+          </label>
+
+          <input
+            id="usiaGestasi"
+            type="text"
+            placeholder="Contoh: 35 minggu"
+          >
+
+          <div class="help">
+
+            Sumber otomatis:
+            <b>uk_ballard</b>.
+            Bila kosong, Perawat dapat mengisi manual.
+
+          </div>
+
+        </div>
+
+
+        <!-- BB LAHIR -->
+
+        <div class="form-group">
+
+          <label>
+
+            Berat Lahir (gram)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="beratLahir"
+            type="number"
+            min="0"
+            placeholder="Gram"
+          >
+
+        </div>
+
+
+        <!-- BB KRS -->
+
+        <div class="form-group">
+
+          <label>
+
+            Berat Saat Pulang (gram)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="bbSaatKrs"
+            type="number"
+            min="0"
+            placeholder="Gram"
+          >
+
+        </div>
+
+
+        <!-- PANJANG -->
+
+        <div class="form-group">
+
+          <label>
+
+            Panjang Badan (cm)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="panjangBadan"
+            type="number"
+            min="0"
+            step="0.1"
+          >
+
+        </div>
+
+
+        <!-- LINGKAR KEPALA -->
+
+        <div class="form-group">
+
+          <label>
+
+            Lingkar Kepala (cm)
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="lingkarKepala"
+            type="number"
+            min="0"
+            step="0.1"
+          >
+
+        </div>
+
+
+        <!-- APGAR -->
+
+        <div class="form-group">
+
+          <label>
+
+            APGAR 1 Menit
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="apgar1"
+            type="number"
+            min="0"
+            max="10"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+
+            APGAR 5 Menit
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <input
+            id="apgar5"
+            type="number"
+            min="0"
+            max="10"
+          >
+
+        </div>
+
+
+        <!-- LAMA PERAWATAN -->
+
+        <div class="form-group">
+
+          <label>
+
+            Lama Perawatan
+
+            <span class="field-tag auto">
+              OTOMATIS
+            </span>
+
+          </label>
+
+          <input
+            id="lamaPerawatan"
+            class="auto-field"
+            type="text"
+            readonly
+          >
+
+          <div class="help">
+
+            Sumber otomatis:
+            <b>∑ TOTAL HARI RAWAT</b>.
+
+          </div>
+
+        </div>
+
+
+        <!-- KONDISI BAYI -->
+
+        <div class="form-group">
+
+          <label>
+
+            Kondisi Bayi
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="kondisiBayi">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="Stabil">
+              Stabil
+            </option>
+
+            <option value="Perlu Pemantauan">
+              Perlu Pemantauan
+            </option>
+
+            <option value="Risiko Tinggi">
+              Risiko Tinggi
+            </option>
+
+            <option value="Perlu Perawatan Khusus">
+              Perlu Perawatan Khusus
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- STATUS ASI -->
+
+        <div class="form-group">
+
+          <label>
+
+            Kondisi Pemberian ASI
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <select id="statusASI">
+
+            <option value="">
+              Pilih
+            </option>
+
+            <option value="ASI langsung">
+              ASI langsung
+            </option>
+
+            <option value="ASI perah">
+              ASI perah
+            </option>
+
+            <option value="Kombinasi">
+              Kombinasi
+            </option>
+
+            <option value="Belum optimal">
+              Belum optimal
+            </option>
+
+            <option value="Belum dapat menyusu">
+              Belum dapat menyusu
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- DIAGNOSIS BAYI -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Diagnosis / Risiko Tinggi Bayi
+
+            <span class="field-tag auto">
+              DARI SISTEM
+            </span>
+
+          </label>
+
+          <textarea
+            id="diagnosisBayi"
+            class="auto-field"
+            readonly
+          ></textarea>
+
+        </div>
+
+
+        <!-- KONDISI KHUSUS -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Kondisi Khusus
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <textarea
+            id="kondisiKhusus"
+            placeholder="Kondisi khusus yang perlu diperhatikan di rumah"
+          ></textarea>
+
+        </div>
+
+
+        <!-- NUTRISI -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Rencana Nutrisi Saat Pulang
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <textarea
+            id="rencanaNutrisiPulang"
+            placeholder="Contoh: ASI langsung sesuai kebutuhan, ASI perah, kombinasi, dll."
+          ></textarea>
+
+        </div>
+
+
+        <!-- KEBUTUHAN EDUKASI BAYI -->
+
+        <div class="form-group full">
+
+          <label>
+
+            Kebutuhan Edukasi Khusus Bayi
+
+            <span class="field-tag perawat">
+              PERAWAT
+            </span>
+
+          </label>
+
+          <textarea
+            id="kebutuhanBayi"
+            placeholder="Catatan kebutuhan edukasi khusus bayi"
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       CATATAN
+       =================================================== -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <span>💬</span>
+
+      CATATAN DISCHARGE PLANNING
+
+    </div>
+
+
+    <div class="section-body">
+
+
+      <div class="form-group">
+
+        <label>
+
+          Catatan Tambahan
+
+          <span class="field-tag perawat">
+            PERAWAT
+          </span>
+
+        </label>
+
+        <textarea
+          id="catatan"
+          placeholder="Catatan tambahan untuk discharge planning"
+        ></textarea>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       COMPLETION
+       =================================================== -->
+
+  <section class="completion-card">
+
+    <div class="completion-title">
+      ✓ Tahap 1 — Data Ibu & Bayi
+    </div>
+
+    <div
+      id="completionText"
+      class="completion-text"
+    >
+      Data sedang dimuat.
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       ACTION
+       =================================================== -->
+
+  <section
+    id="actionCard"
+    class="action-card"
+  >
+
+    <div class="action-row">
+
+
+      <button
+        id="btnSave"
+        type="button"
+        class="btn btn-teal"
+        onclick="saveData()"
+      >
+
+        💾 Simpan & Lanjut Assessment →
+
+      </button>
+
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="goDashboard()"
+      >
+
+        ← Kembali ke Dashboard
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <footer class="footer">
+
+    WIN — Discharge Planning Perinatologi
+
+    <br>
+
+    Wawasan • Informasi • Navigasi
+
+  </footer>
+
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   KONFIGURASI LOGO
+   ===================================================== */
+
+const WIN_LOGO_URL =
+  'https://drive.google.com/thumbnail?id=1d_ON76DcZKqamjvFvznYo3-F_XWfwvzA&sz=w600';
+
+
+/* =====================================================
+   SESSION
+   ===================================================== */
+
+let SESSION =
+  null;
+
+
+/* =====================================================
+   STATE
+   ===================================================== */
+
+let episodeId =
+  '';
+
+let noRM =
+  '';
+
+let mode =
+  'IBU';
+
+let loadedData =
+  null;
+
+
+/* =====================================================
+   FIELD YANG DAPAT DIISI PERAWAT
+   ===================================================== */
+
+const PERAWAT_FIELDS = [
+
+  'nik',
+
+  'tanggalLahirIbu',
+
+  'usiaIbu',
+
+  'pendidikan',
+
+  'pekerjaan',
+
+  'gravida',
+
+  'para',
+
+  'abortus',
+
+  'pengalamanMerawatBayi',
+
+  'pengalamanMenyusui',
+
+  'dukunganKeluarga',
+
+  'jenisPersalinan',
+
+  'tanggalPersalinan',
+
+  'kondisiIbu',
+
+  'diagnosisIbu',
+
+  'kebutuhanIbu',
+
+  'jamLahir',
+
+  'usiaGestasi',
+
+  'beratLahir',
+
+  'bbSaatKrs',
+
+  'panjangBadan',
+
+  'lingkarKepala',
+
+  'apgar1',
+
+  'apgar5',
+
+  'kondisiBayi',
+
+  'statusASI',
+
+  'kondisiKhusus',
+
+  'rencanaNutrisiPulang',
+
+  'kebutuhanBayi',
+
+  'catatan'
+
+];
+
+
+/* =====================================================
+   AUTO FIELD
+   ===================================================== */
+
+const AUTO_FIELDS = [
+
+  'namaIbu',
+
+  'paritasRaw',
+
+  'usiaKehamilan',
+
+  'babyId',
+
+  'namaBayi',
+
+  'jenisKelamin',
+
+  'tanggalLahirBayi',
+
+  'lamaPerawatan',
+
+  'diagnosisBayi'
+
+];
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    loadSession();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD SESSION
+   ===================================================== */
+
+function loadSession() {
+
+  try {
+
+    const raw =
+      sessionStorage.getItem(
+        'WIN_SESSION'
+      );
+
+
+    if (!raw) {
+
+      showAlert(
+        'Session WIN tidak ditemukan. Silakan login kembali.',
+        'error'
+      );
+
+      setTimeout(
+        goLogin,
+        1200
+      );
+
+      return;
+
+    }
+
+
+    SESSION =
+      JSON.parse(raw);
+
+
+  }
+
+  catch(error) {
+
+    console.error(
+      error
+    );
+
+    showAlert(
+      'Session tidak dapat dibaca.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  mode =
+    String(
+      SESSION.role ||
+      'IBU'
+    )
+      .toUpperCase();
+
+
+  episodeId =
+    String(
+      SESSION.episodeId ||
+      ''
+    )
+      .trim();
+
+
+  noRM =
+    String(
+      SESSION.noRM ||
+      ''
+    )
+      .trim();
+
+
+  updateModeUI();
+
+  updateEpisodeDisplay();
+
+
+  if (
+    !episodeId
+  ) {
+
+    showAlert(
+      'Episode ID belum tersedia pada session.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  loadServerData();
+
+}
+
+
+/* =====================================================
+   MODE UI
+   ===================================================== */
+
+function updateModeUI() {
+
+  const badge =
+    document.getElementById(
+      'modeBadge'
+    );
+
+
+  const notice =
+    document.getElementById(
+      'ibuPerawatNotice'
+    );
+
+
+  const saveButton =
+    document.getElementById(
+      'btnSave'
+    );
+
+
+  if (
+    mode ===
+    'PERAWAT'
+  ) {
+
+    badge.textContent =
+      'MODE PERAWAT';
+
+
+    badge.className =
+      'mode-badge perawat';
+
+
+    notice.classList.add(
+      'show'
+    );
+
+
+    enablePerawatFields(
+      true
+    );
+
+
+    saveButton.style.display =
+      'inline-block';
+
+
+    saveButton.textContent =
+      '💾 Simpan & Lanjut Assessment →';
+
+  }
+
+  else {
+
+    badge.textContent =
+      'MODE IBU';
+
+
+    badge.className =
+      'mode-badge';
+
+
+    notice.classList.remove(
+      'show'
+    );
+
+
+    enablePerawatFields(
+      false
+    );
+
+
+    saveButton.style.display =
+      'none';
+
+  }
+
+}
+
+
+/* =====================================================
+   ENABLE / DISABLE FIELD PERAWAT
+   ===================================================== */
+
+function enablePerawatFields(
+  enabled
+) {
+
+  PERAWAT_FIELDS.forEach(
+    function(id) {
+
+      const el =
+        document.getElementById(
+          id
+        );
+
+
+      if (!el) {
+        return;
+      }
+
+
+      el.disabled =
+        !enabled;
+
+
+      if (
+        enabled
+      ) {
+
+        el.classList.remove(
+          'auto-field'
+        );
+
+      }
+
+    }
+  );
+
+
+  /*
+   * Auto field tetap readonly
+   * walaupun mode Perawat.
+   */
+
+  AUTO_FIELDS.forEach(
+    function(id) {
+
+      const el =
+        document.getElementById(
+          id
+        );
+
+
+      if (!el) {
+        return;
+      }
+
+
+      el.readOnly =
+        true;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   UPDATE EPISODE
+   ===================================================== */
+
+function updateEpisodeDisplay() {
+
+  document.getElementById(
+    'displayNoRM'
+  ).textContent =
+    noRM ||
+    '-';
+
+
+  document.getElementById(
+    'displayEpisode'
+  ).textContent =
+    episodeId ||
+    '-';
+
+
+  document.getElementById(
+    'displayNamaIbu'
+  ).textContent =
+    (
+      SESSION &&
+      SESSION.namaIbu
+    ) ||
+    '-';
+
+
+  document.getElementById(
+    'displayBabyId'
+  ).textContent =
+    '-';
+
+}
+
+
+/* =====================================================
+   LOAD SERVER DATA
+   ===================================================== */
+
+function loadServerData() {
+
+  showLoading(
+    'Mengambil data Ibu & Bayi dari WIN...'
+  );
+
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(result) {
+
+        hideLoading();
+
+
+        if (
+          !result ||
+          result.success !== true
+        ) {
+
+          showAlert(
+            result &&
+            result.message
+              ? result.message
+              : 'Data belum dapat dimuat.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        loadedData =
+          result.data ||
+          {};
+
+
+        fillForm(
+          loadedData
+        );
+
+
+        updateCompletionStatus(
+          loadedData
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        hideLoading();
+
+
+        showAlert(
+          'Gagal mengambil data: ' +
+          getErrorMessage(
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getDataIbuBayi(
+      episodeId
+    );
+
+}
+
+
+/* =====================================================
+   FILL FORM
+   ===================================================== */
+
+function fillForm(
+  data
+) {
+
+  data =
+    data ||
+    {};
+
+
+  /* -----------------------------------------------------
+     IDENTITAS
+     ----------------------------------------------------- */
+
+  setValue(
+    'namaIbu',
+    firstValue(
+      data.NAMA_IBU,
+      data.namaIbu,
+      SESSION
+        ? SESSION.namaIbu
+        : ''
+    )
+  );
+
+
+  setValue(
+    'nik',
+    firstValue(
+      data.NIK_IBU,
+      data.nik
+    )
+  );
+
+
+  setDateValue(
+    'tanggalLahirIbu',
+    firstValue(
+      data.TANGGAL_LAHIR_IBU,
+      data.tanggalLahirIbu
+    )
+  );
+
+
+  setValue(
+    'usiaIbu',
+    firstValue(
+      data.USIA_IBU,
+      data.usiaIbu
+    )
+  );
+
+
+  setValue(
+    'pendidikan',
+    firstValue(
+      data.PENDIDIKAN,
+      data.pendidikan
+    )
+  );
+
+
+  setValue(
+    'pekerjaan',
+    firstValue(
+      data.PEKERJAAN,
+      data.pekerjaan
+    )
+  );
+
+
+  setValue(
+    'paritasRaw',
+    firstValue(
+      data.PARITAS_RAW,
+      data.PARA,
+      ''
+    )
+  );
+
+
+  setValue(
+    'gravida',
+    firstValue(
+      data.GRAVIDA,
+      data.gravida
+    )
+  );
+
+
+  setValue(
+    'para',
+    normalizeNumber(
+      firstValue(
+        data.PARA,
+        data.para
+      )
+    )
+  );
+
+
+  setValue(
+    'abortus',
+    normalizeNumber(
+      firstValue(
+        data.ABORTUS,
+        data.abortus
+      )
+    )
+  );
+
+
+  setValue(
+    'pengalamanMerawatBayi',
+    firstValue(
+      data.PENGALAMAN_MERAWAT_BAYI,
+      data.pengalamanMerawatBayi
+    )
+  );
+
+
+  setValue(
+    'pengalamanMenyusui',
+    firstValue(
+      data.PENGALAMAN_MENYUSUI,
+      data.pengalamanMenyusui
+    )
+  );
+
+
+  setValue(
+    'dukunganKeluarga',
+    firstValue(
+      data.DUKUNGAN_KELUARGA,
+      data.dukunganKeluarga
+    )
+  );
+
+
+  setValue(
+    'usiaKehamilan',
+    firstValue(
+      data.USIA_KEHAMILAN,
+      data.usiaKehamilan,
+      data.USIA_GESTASI_BAYI
+    )
+  );
+
+
+  setValue(
+    'jenisPersalinan',
+    firstValue(
+      data.JENIS_PERSALINAN,
+      data.jenisPersalinan
+    )
+  );
+
+
+  setDateValue(
+    'tanggalPersalinan',
+    firstValue(
+      data.TANGGAL_PERSALINAN,
+      data.tanggalPersalinan
+    )
+  );
+
+
+  setValue(
+    'kondisiIbu',
+    firstValue(
+      data.KONDISI_IBU,
+      data.kondisiIbu
+    )
+  );
+
+
+  setValue(
+    'diagnosisIbu',
+    firstValue(
+      data.DIAGNOSIS_IBU,
+      data.diagnosisIbu,
+      data.diagnosaIbu
+    )
+  );
+
+
+  setValue(
+    'kebutuhanIbu',
+    firstValue(
+      data.KEBUTUHAN_EDUKASI_IBU,
+      data.kebutuhanIbu
+    )
+  );
+
+
+  /* -----------------------------------------------------
+     BAYI
+     ----------------------------------------------------- */
+
+  setValue(
+    'babyId',
+    firstValue(
+      data.BABY_ID,
+      data.babyId
+    )
+  );
+
+
+  setValue(
+    'namaBayi',
+    firstValue(
+      data.NAMA_BAYI,
+      data.namaBayi
+    )
+  );
+
+
+  setValue(
+    'jenisKelamin',
+    firstValue(
+      data.JENIS_KELAMIN_BAYI,
+      data.jenisKelaminBayi,
+      data.jenisKelamin
+    )
+  );
+
+
+  setDateValue(
+    'tanggalLahirBayi',
+    firstValue(
+      data.TANGGAL_LAHIR_BAYI,
+      data.tanggalLahirBayi
+    )
+  );
+
+
+  setValue(
+    'jamLahir',
+    normalizeTimeValue(
+      firstValue(
+        data.JAM_LAHIR_BAYI,
+        data.jamLahirBayi,
+        data.jamLahir
+      )
+    )
+  );
+
+
+  setValue(
+    'usiaGestasi',
+    firstValue(
+      data.USIA_GESTASI_BAYI,
+      data.usiaGestasiBayi,
+      data.usiaGestasi
+    )
+  );
+
+
+  setValue(
+    'beratLahir',
+    normalizeNumber(
+      firstValue(
+        data.BB_LAHIR,
+        data.bbLahir,
+        data.beratLahir
+      )
+    )
+  );
+
+
+  setValue(
+    'bbSaatKrs',
+    normalizeNumber(
+      firstValue(
+        data.BB_SAAT_KRS,
+        data.bbSaatKrs
+      )
+    )
+  );
+
+
+  setValue(
+    'panjangBadan',
+    normalizeNumber(
+      firstValue(
+        data.PB_LAHIR,
+        data.pbLahir,
+        data.panjangBadan
+      )
+    )
+  );
+
+
+  setValue(
+    'lingkarKepala',
+    normalizeNumber(
+      firstValue(
+        data.LINGKAR_KEPALA,
+        data.lingkarKepala
+      )
+    )
+  );
+
+
+  setValue(
+    'apgar1',
+    normalizeNumber(
+      firstValue(
+        data.APGAR_1,
+        data.apgar1
+      )
+    )
+  );
+
+
+  setValue(
+    'apgar5',
+    normalizeNumber(
+      firstValue(
+        data.APGAR_5,
+        data.apgar5
+      )
+    )
+  );
+
+
+  setValue(
+    'lamaPerawatan',
+    firstValue(
+      data.LAMA_PERAWATAN,
+      data.lamaPerawatan
+    )
+  );
+
+
+  setValue(
+    'diagnosisBayi',
+    firstValue(
+      data.DIAGNOSIS_BAYI,
+      data.diagnosisBayi,
+      data.diagnosaBayi
+    )
+  );
+
+
+  setValue(
+    'kondisiBayi',
+    firstValue(
+      data.KONDISI_BAYI,
+      data.kondisiBayi
+    )
+  );
+
+
+  setValue(
+    'kondisiKhusus',
+    firstValue(
+      data.KONDISI_KHUSUS,
+      data.kondisiKhusus
+    )
+  );
+
+
+  setValue(
+    'statusASI',
+    firstValue(
+      data.STATUS_ASI,
+      data.statusASI,
+      data.statusAsi
+    )
+  );
+
+
+  setValue(
+    'rencanaNutrisiPulang',
+    firstValue(
+      data.RENCANA_NUTRISI_PULANG,
+      data.rencanaNutrisiPulang
+    )
+  );
+
+
+  setValue(
+    'kebutuhanBayi',
+    firstValue(
+      data.KEBUTUHAN_EDUKASI_BAYI,
+      data.kebutuhanBayi
+    )
+  );
+
+
+  setValue(
+    'catatan',
+    firstValue(
+      data.CATATAN_IBU_BAYI,
+      data.catatanIbuBayi,
+      data.catatan
+    )
+  );
+
+
+  updateEpisodeDisplay();
+
+
+  document.getElementById(
+    'displayNamaIbu'
+  ).textContent =
+    firstValue(
+      data.NAMA_IBU,
+      data.namaIbu,
+      SESSION
+        ? SESSION.namaIbu
+        : '-'
+    ) ||
+    '-';
+
+
+  document.getElementById(
+    'displayBabyId'
+  ).textContent =
+    firstValue(
+      data.BABY_ID,
+      data.babyId,
+      '-'
+    ) ||
+    '-';
+
+
+  /*
+   * Pastikan mode tetap sesuai session.
+   */
+
+  updateModeUI();
+
+}
+
+
+/* =====================================================
+   COLLECT DATA
+   ===================================================== */
+
+function collectData() {
+
+  return {
+
+    episodeId:
+      episodeId,
+
+    subjectId:
+      getValue(
+        'subjectId'
+      ),
+
+
+    noRM:
+      noRM,
+
+
+    namaIbu:
+      getValue(
+        'namaIbu'
+      ),
+
+
+    nik:
+      getValue(
+        'nik'
+      ),
+
+
+    tanggalLahirIbu:
+      getValue(
+        'tanggalLahirIbu'
+      ),
+
+
+    usiaIbu:
+      getValue(
+        'usiaIbu'
+      ),
+
+
+    pendidikan:
+      getValue(
+        'pendidikan'
+      ),
+
+
+    pekerjaan:
+      getValue(
+        'pekerjaan'
+      ),
+
+
+    gravida:
+      getValue(
+        'gravida'
+      ),
+
+
+    para:
+      getValue(
+        'para'
+      ),
+
+
+    abortus:
+      getValue(
+        'abortus'
+      ),
+
+
+    paritasRaw:
+      getValue(
+        'paritasRaw'
+      ),
+
+
+    pengalamanMerawatBayi:
+      getValue(
+        'pengalamanMerawatBayi'
+      ),
+
+
+    pengalamanMenyusui:
+      getValue(
+        'pengalamanMenyusui'
+      ),
+
+
+    dukunganKeluarga:
+      getValue(
+        'dukunganKeluarga'
+      ),
+
+
+    usiaKehamilan:
+      getValue(
+        'usiaKehamilan'
+      ),
+
+
+    jenisPersalinan:
+      getValue(
+        'jenisPersalinan'
+      ),
+
+
+    tanggalPersalinan:
+      getValue(
+        'tanggalPersalinan'
+      ),
+
+
+    diagnosisIbu:
+      getValue(
+        'diagnosisIbu'
+      ),
+
+
+    kondisiIbu:
+      getValue(
+        'kondisiIbu'
+      ),
+
+
+    kebutuhanIbu:
+      getValue(
+        'kebutuhanIbu'
+      ),
+
+
+    babyId:
+      getValue(
+        'babyId'
+      ),
+
+
+    namaBayi:
+      getValue(
+        'namaBayi'
+      ),
+
+
+    jenisKelaminBayi:
+      getValue(
+        'jenisKelamin'
+      ),
+
+
+    tanggalLahirBayi:
+      getValue(
+        'tanggalLahirBayi'
+      ),
+
+
+    jamLahirBayi:
+      getValue(
+        'jamLahir'
+      ),
+
+
+    usiaGestasiBayi:
+      getValue(
+        'usiaGestasi'
+      ),
+
+
+    bbLahir:
+      getValue(
+        'beratLahir'
+      ),
+
+
+    pbLahir:
+      getValue(
+        'panjangBadan'
+      ),
+
+
+    lingkarKepala:
+      getValue(
+        'lingkarKepala'
+      ),
+
+
+    apgar1:
+      getValue(
+        'apgar1'
+      ),
+
+
+    apgar5:
+      getValue(
+        'apgar5'
+      ),
+
+
+    bbSaatKrs:
+      getValue(
+        'bbSaatKrs'
+      ),
+
+
+    lamaPerawatan:
+      getValue(
+        'lamaPerawatan'
+      ),
+
+
+    diagnosisBayi:
+      getValue(
+        'diagnosisBayi'
+      ),
+
+
+    kondisiBayi:
+      getValue(
+        'kondisiBayi'
+      ),
+
+
+    kondisiKhusus:
+      getValue(
+        'kondisiKhusus'
+      ),
+
+
+    statusAsi:
+      getValue(
+        'statusASI'
+      ),
+
+
+    rencanaNutrisiPulang:
+      getValue(
+        'rencanaNutrisiPulang'
+      ),
+
+
+    kebutuhanBayi:
+      getValue(
+        'kebutuhanBayi'
+      ),
+
+
+    kesiapanPulang:
+      '',
+
+
+    topikPrioritas:
+      '',
+
+
+    catatanIbuBayi:
+      getValue(
+        'catatan'
+      ),
+
+
+    diisiOleh:
+      mode === 'PERAWAT'
+        ? (
+            SESSION &&
+            (
+              SESSION.namaPerawat ||
+              SESSION.userId
+            )
+              ? (
+                  SESSION.namaPerawat ||
+                  SESSION.userId
+                )
+              : 'PERAWAT'
+          )
+        : 'IBU'
+
+  };
+
+}
+
+
+/* =====================================================
+   SAVE DATA
+   ===================================================== */
+
+function saveData() {
+
+  if (
+    mode !==
+    'PERAWAT'
+  ) {
+
+    showAlert(
+      'Data Ibu & Bayi hanya dapat dilengkapi oleh Perawat.',
+      'info'
+    );
+
+    return;
+
+  }
+
+
+  const data =
+    collectData();
+
+
+  if (
+    !data.episodeId
+  ) {
+
+    showAlert(
+      'Episode ID tidak ditemukan.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !data.noRM
+  ) {
+
+    showAlert(
+      'No. RM belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !data.namaIbu
+  ) {
+
+    showAlert(
+      'Nama ibu belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !data.babyId &&
+    !data.namaBayi
+  ) {
+
+    showAlert(
+      'Kode/nama bayi belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      'btnSave'
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    'Menyimpan...';
+
+
+  showLoading(
+    'Menyimpan Data Ibu & Bayi...'
+  );
+
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(result) {
+
+        hideLoading();
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          '💾 Simpan & Lanjut Assessment →';
+
+
+        if (
+          !result ||
+          result.success !== true
+        ) {
+
+          showAlert(
+            result &&
+            result.message
+              ? result.message
+              : 'Data gagal disimpan.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        showAlert(
+          '✓ Data Ibu & Bayi berhasil disimpan.',
+          'success'
+        );
+
+
+        /*
+         * Simpan nama ibu ke session.
+         */
+
+        if (
+          SESSION
+        ) {
+
+          SESSION.namaIbu =
+            data.namaIbu;
+
+
+          sessionStorage.setItem(
+            'WIN_SESSION',
+            JSON.stringify(
+              SESSION
+            )
+          );
+
+        }
+
+
+        /*
+         * Buka assessment.
+         */
+
+        setTimeout(
+          function() {
+
+            bukaAssessment();
+
+          },
+          700
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        hideLoading();
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          '💾 Simpan & Lanjut Assessment →';
+
+
+        showAlert(
+          'Gagal menyimpan data: ' +
+          getErrorMessage(
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_saveDataIbuBayi(
+      data
+    );
+
+}
+
+
+/* =====================================================
+   BUKA ASSESSMENT
+   ===================================================== */
+
+function bukaAssessment() {
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (
+          !url
+        ) {
+
+          showAlert(
+            'URL Web App tidak ditemukan.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        window.top.location.href =
+          url +
+          '?page=assessment';
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        showAlert(
+          'Gagal membuka Assessment: ' +
+          getErrorMessage(
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =====================================================
+   COMPLETION STATUS
+   ===================================================== */
+
+function updateCompletionStatus(
+  data
+) {
+
+  data =
+    data ||
+    {};
+
+
+  const requiredForStage = [
+
+    data.NAMA_IBU,
+
+    data.BABY_ID ||
+    data.NAMA_BAYI,
+
+    data.USIA_IBU,
+
+    data.PENDIDIKAN,
+
+    data.PENGALAMAN_MERAWAT_BAYI,
+
+    data.PENGALAMAN_MENYUSUI,
+
+    data.DUKUNGAN_KELUARGA,
+
+    data.USIA_GESTASI_BAYI,
+
+    data.BB_LAHIR,
+
+    data.BB_SAAT_KRS,
+
+    data.KONDISI_KHUSUS,
+
+    data.RENCANA_NUTRISI_PULANG
+
+  ];
+
+
+  let complete =
+    0;
+
+
+  requiredForStage.forEach(
+    function(value) {
+
+      if (
+        value !==
+          undefined &&
+        value !==
+          null &&
+        String(
+          value
+        ).trim() !== ''
+      ) {
+
+        complete++;
+
+      }
+
+    }
+  );
+
+
+  const total =
+    requiredForStage.length;
+
+
+  const percentage =
+    Math.round(
+      (
+        complete /
+        total
+      ) *
+      100
+    );
+
+
+  const text =
+    document.getElementById(
+      'completionText'
+    );
+
+
+  if (
+    mode ===
+    'PERAWAT'
+  ) {
+
+    text.textContent =
+      complete +
+      ' dari ' +
+      total +
+      ' komponen utama sudah terisi (' +
+      percentage +
+      '%). Lengkapi data yang masih kosong sebelum melanjutkan Assessment.';
+
+  }
+
+  else {
+
+    text.textContent =
+      'Data dasar sedang ditampilkan. Pengisian data yang belum tersedia dilakukan oleh Perawat.';
+
+  }
+
+}
+
+
+/* =====================================================
+   SET VALUE
+   ===================================================== */
+
+function setValue(
+  id,
+  value
+) {
+
+  const el =
+    document.getElementById(
+      id
+    );
+
+
+  if (
+    !el
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    value ===
+      undefined ||
+    value ===
+      null
+  ) {
+
+    value =
+      '';
+
+  }
+
+
+  el.value =
+    String(
+      value
+    );
+
+
+  if (
+    String(
+      value
+    ).trim() === ''
+  ) {
+
+    el.classList.add(
+      'empty-field'
+    );
+
+  }
+
+  else {
+
+    el.classList.remove(
+      'empty-field'
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   GET VALUE
+   ===================================================== */
+
+function getValue(
+  id
+) {
+
+  const el =
+    document.getElementById(
+      id
+    );
+
+
+  if (
+    !el
+  ) {
+
+    return '';
+
+  }
+
+
+  return String(
+    el.value ||
+    ''
+  ).trim();
+
+}
+
+
+/* =====================================================
+   FIRST VALUE
+   ===================================================== */
+
+function firstValue() {
+
+  const values =
+    Array.prototype.slice.call(
+      arguments
+    );
+
+
+  for (
+    let i = 0;
+    i < values.length;
+    i++
+  ) {
+
+    const value =
+      values[i];
+
+
+    if (
+      value !==
+        undefined &&
+      value !==
+        null &&
+      String(
+        value
+      ).trim() !== ''
+    ) {
+
+      return value;
+
+    }
+
+  }
+
+
+  return '';
+
+}
+
+
+/* =====================================================
+   NORMALIZE NUMBER
+   ===================================================== */
+
+function normalizeNumber(
+  value
+) {
+
+  if (
+    value ===
+      undefined ||
+    value ===
+      null ||
+    value === ''
+  ) {
+
+    return '';
+
+  }
+
+
+  return String(
+    value
+  );
+
+}
+
+
+/* =====================================================
+   DATE VALUE
+   ===================================================== */
+
+function setDateValue(
+  id,
+  value
+) {
+
+  const el =
+    document.getElementById(
+      id
+    );
+
+
+  if (
+    !el
+  ) {
+
+    return;
+
+  }
+
+
+  const formatted =
+    formatDateInput(
+      value
+    );
+
+
+  el.value =
+    formatted;
+
+}
+
+
+/* =====================================================
+   FORMAT DATE INPUT
+   ===================================================== */
+
+function formatDateInput(
+  value
+) {
+
+  if (
+    !value
+  ) {
+
+    return '';
+
+  }
+
+
+  if (
+    typeof value ===
+    'string' &&
+    /^\d{4}-\d{2}-\d{2}$/.test(
+      value
+    )
+  ) {
+
+    return value;
+
+  }
+
+
+  try {
+
+    const date =
+      new Date(
+        value
+      );
+
+
+    if (
+      isNaN(
+        date.getTime()
+      )
+    ) {
+
+      return '';
+
+    }
+
+
+    const year =
+      date.getFullYear();
+
+
+    const month =
+      String(
+        date.getMonth() + 1
+      )
+        .padStart(
+          2,
+          '0'
+        );
+
+
+    const day =
+      String(
+        date.getDate()
+      )
+        .padStart(
+          2,
+          '0'
+        );
+
+
+    return (
+      year +
+      '-' +
+      month +
+      '-' +
+      day
+    );
+
+  }
+
+  catch(error) {
+
+    return '';
+
+  }
+
+}
+
+
+/* =====================================================
+   NORMALIZE TIME
+   ===================================================== */
+
+function normalizeTimeValue(
+  value
+) {
+
+  if (
+    !value
+  ) {
+
+    return '';
+
+  }
+
+
+  if (
+    typeof value ===
+    'string' &&
+    /^\d{2}:\d{2}$/.test(
+      value
+    )
+  ) {
+
+    return value;
+
+  }
+
+
+  try {
+
+    const date =
+      new Date(
+        value
+      );
+
+
+    if (
+      isNaN(
+        date.getTime()
+      )
+    ) {
+
+      return String(
+        value
+      );
+
+    }
+
+
+    return (
+      String(
+        date.getHours()
+      )
+        .padStart(
+          2,
+          '0'
+        ) +
+      ':' +
+      String(
+        date.getMinutes()
+      )
+        .padStart(
+          2,
+          '0'
+        )
+    );
+
+  }
+
+  catch(error) {
+
+    return String(
+      value
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   GO DASHBOARD
+   ===================================================== */
+
+function goDashboard() {
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (
+          !url
+        ) {
+
+          showAlert(
+            'URL Web App tidak ditemukan.',
+            'error'
+          );
+
+          return;
+
+        }
+
+
+        window.top.location.href =
+          url +
+          '?page=dashboard';
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        showAlert(
+          'Gagal kembali ke Dashboard: ' +
+          getErrorMessage(
+            error
+          ),
+          'error'
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =====================================================
+   GO LOGIN
+   ===================================================== */
+
+function goLogin() {
+
+  google
+    .script
+    .run
+
+    .withSuccessHandler(
+      function(url) {
+
+        if (
+          url
+        ) {
+
+          window.top.location.href =
+            url +
+            '?page=login';
+
+        }
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+function showLoading(
+  text
+) {
+
+  const overlay =
+    document.getElementById(
+      'loadingOverlay'
+    );
+
+
+  document.getElementById(
+    'loadingText'
+  ).textContent =
+    text ||
+    'Memuat data WIN...';
+
+
+  overlay.classList.remove(
+    'hidden'
+  );
+
+}
+
+
+function hideLoading() {
+
+  const overlay =
+    document.getElementById(
+      'loadingOverlay'
+    );
+
+
+  overlay.classList.add(
+    'hidden'
+  );
+
+}
+
+
+/* =====================================================
+   ALERT
+   ===================================================== */
+
+function showAlert(
+  message,
+  type
+) {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  el.textContent =
+    message;
+
+
+  el.className =
+    'alert show ' +
+    (
+      type ||
+      'info'
+    );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+
+  if (
+    type !==
+    'error'
+  ) {
+
+    setTimeout(
+      function() {
+
+        el.className =
+          'alert';
+
+      },
+      5000
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+   ===================================================== */
+
+function getErrorMessage(
+  error
+) {
+
+  if (
+    error &&
+    error.message
+  ) {
+
+    return error.message;
+
+  }
+
+
+  return String(
+    error ||
+    'Terjadi kesalahan.'
+  );
+
+}
+
+</script>
+
+</body>
+
+</html>

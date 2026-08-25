@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>WIN — Data Ibu & Bayi</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+
+      margin: 0;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        #fff7fa;
+
+      color:
+        #475569;
+
+    }
+
+
+    .header {
+
+      background:
+        linear-gradient(
+          135deg,
+          #f7d7e2,
+          #fdeff4
+        );
+
+      padding:
+        18px 22px;
+
+      border-bottom:
+        1px solid #f1d6df;
+
+    }
+
+
+    .header-inner {
+
+      max-width:
+        1000px;
+
+      margin:
+        auto;
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
+    }
+
+
+    .brand {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+    }
+
+
+    .logo {
+
+      width:
+        48px;
+
+      height:
+        48px;
+
+      border-radius:
+        14px;
+
+      background:
+        white;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-weight:
+        bold;
+
+      color:
+        #c45d7d;
+
+    }
+
+
+    .title {
+
+      font-weight:
+        bold;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .subtitle {
+
+      font-size:
+        11px;
+
+      color:
+        #7c6470;
+
+      margin-top:
+        3px;
+
+    }
+
+
+    .container {
+
+      max-width:
+        1000px;
+
+      margin:
+        auto;
+
+      padding:
+        25px 18px 50px;
+
+    }
+
+
+    .step {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        20px;
+
+    }
+
+
+    .step-number {
+
+      width:
+        35px;
+
+      height:
+        35px;
+
+      border-radius:
+        50%;
+
+      background:
+        #cf7190;
+
+      color:
+        white;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-weight:
+        bold;
+
+    }
+
+
+    .step-text {
+
+      font-size:
+        13px;
+
+      color:
+        #8f4b67;
+
+      font-weight:
+        bold;
+
+    }
+
+
+    .card {
+
+      background:
+        white;
+
+      border-radius:
+        20px;
+
+      padding:
+        23px;
+
+      margin-bottom:
+        18px;
+
+      box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.06);
+
+    }
+
+
+    .card h2 {
+
+      margin:
+        0 0 5px;
+
+      font-size:
+        19px;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .card-description {
+
+      font-size:
+        12px;
+
+      color:
+        #94a3b8;
+
+      margin-bottom:
+        20px;
+
+    }
+
+
+    .grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap:
+        14px;
+
+    }
+
+
+    .field {
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      gap:
+        6px;
+
+    }
+
+
+    .field.full {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    label {
+
+      font-size:
+        12px;
+
+      font-weight:
+        bold;
+
+      color:
+        #64748b;
+
+    }
+
+
+    input,
+    select,
+    textarea {
+
+      width:
+        100%;
+
+      border:
+        1px solid #e5d7dd;
+
+      border-radius:
+        10px;
+
+      padding:
+        11px 12px;
+
+      font-size:
+        13px;
+
+      background:
+        #fffafd;
+
+      color:
+        #475569;
+
+      outline:
+        none;
+
+    }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+
+      border-color:
+        #cf7190;
+
+      background:
+        white;
+
+    }
+
+
+    textarea {
+
+      min-height:
+        80px;
+
+      resize:
+        vertical;
+
+    }
+
+
+    .readonly {
+
+      background:
+        #f8fafc;
+
+      color:
+        #64748b;
+
+    }
+
+
+    .actions {
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      gap:
+        12px;
+
+      margin-top:
+        20px;
+
+    }
+
+
+    button {
+
+      border:
+        none;
+
+      border-radius:
+        11px;
+
+      padding:
+        12px 18px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .secondary {
+
+      background:
+        #f1e7eb;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    .primary {
+
+      background:
+        #c96383;
+
+      color:
+        white;
+
+      flex: 1;
+
+    }
+
+
+    .message {
+
+      display:
+        none;
+
+      padding:
+        13px;
+
+      border-radius:
+        10px;
+
+      margin-bottom:
+        18px;
+
+      font-size:
+        13px;
+
+    }
+
+
+    .success {
+
+      background:
+        #ecfdf5;
+
+      color:
+        #047857;
+
+    }
+
+
+    .error {
+
+      background:
+        #fff1f2;
+
+      color:
+        #be123c;
+
+    }
+
+
+    .loading {
+
+      display:
+        none;
+
+      text-align:
+        center;
+
+      padding:
+        15px;
+
+      color:
+        #8f4b67;
+
+    }
+
+
+    @media(max-width:700px) {
+
+      .grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .field.full {
+
+        grid-column:
+          auto;
+
+      }
+
+      .actions {
+
+        flex-direction:
+          column;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">
+        WIN
+      </div>
+
+      <div>
+
+        <div class="title">
+          Digital Discharge Planning
+        </div>
+
+        <div class="subtitle">
+          Data Ibu & Bayi
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+
+  <div class="step">
+
+    <div class="step-number">
+      3
+    </div>
+
+    <div class="step-text">
+      Data Ibu & Bayi
+    </div>
+
+  </div>
+
+
+  <div
+    id="message"
+    class="message"
+  ></div>
+
+
+  <div
+    id="loading"
+    class="loading"
+  >
+    Menyimpan data...
+  </div>
+
+
+  <!-- =================================================
+       DATA IBU
+       ================================================= -->
+
+  <section class="card">
+
+    <h2>
+      Data Ibu
+    </h2>
+
+    <div class="card-description">
+      Lengkapi data yang diperlukan untuk proses
+      discharge planning.
+    </div>
+
+
+    <div class="grid">
+
+
+      <div class="field">
+
+        <label>
+          Subject ID
+        </label>
+
+        <input
+          id="subjectId"
+          placeholder="Contoh: SUBJ-001"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Nomor Rekam Medis
+        </label>
+
+        <input
+          id="noRM"
+          class="readonly"
+          readonly
+        >
+
+      </div>
+
+
+      <div class="field full">
+
+        <label>
+          Nama Ibu
+        </label>
+
+        <input
+          id="namaIbu"
+          placeholder="Nama lengkap ibu"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Usia Ibu
+        </label>
+
+        <input
+          id="usiaIbu"
+          type="number"
+          min="10"
+          max="70"
+          placeholder="Tahun"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Pendidikan
+        </label>
+
+        <select id="pendidikan">
+
+          <option value="">
+            Pilih pendidikan
+          </option>
+
+          <option>SD</option>
+          <option>SMP</option>
+          <option>SMA/SMK</option>
+          <option>D3</option>
+          <option>S1</option>
+          <option>S2/S3</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Pekerjaan
+        </label>
+
+        <input
+          id="pekerjaan"
+          placeholder="Pekerjaan"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Gravida
+        </label>
+
+        <input
+          id="gravida"
+          placeholder="G"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Para
+        </label>
+
+        <input
+          id="para"
+          placeholder="P"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Abortus
+        </label>
+
+        <input
+          id="abortus"
+          placeholder="A"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Usia Kehamilan
+        </label>
+
+        <input
+          id="usiaKehamilan"
+          placeholder="Contoh: 35 minggu"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Jenis Persalinan
+        </label>
+
+        <select id="jenisPersalinan">
+
+          <option value="">
+            Pilih
+          </option>
+
+          <option>Spontan</option>
+          <option>SC</option>
+          <option>Vakum</option>
+          <option>Forceps</option>
+          <option>Lainnya</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Tanggal Persalinan
+        </label>
+
+        <input
+          id="tanggalPersalinan"
+          type="date"
+        >
+
+      </div>
+
+
+      <div class="field full">
+
+        <label>
+          Diagnosis / Kondisi Ibu
+        </label>
+
+        <textarea
+          id="diagnosisIbu"
+          placeholder="Diagnosis atau kondisi yang relevan"
+        ></textarea>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       DATA BAYI
+       ================================================= -->
+
+  <section class="card">
+
+    <h2>
+      Data Bayi
+    </h2>
+
+    <div class="card-description">
+      Data bayi yang berkaitan dengan perawatan
+      dan persiapan pulang.
+    </div>
+
+
+    <div class="grid">
+
+
+      <div class="field">
+
+        <label>
+          Baby ID
+        </label>
+
+        <input
+          id="babyId"
+          placeholder="Contoh: BABY-001"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Nama / Kode Bayi
+        </label>
+
+        <input
+          id="namaBayi"
+          placeholder="Nama atau kode bayi"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Jenis Kelamin
+        </label>
+
+        <select id="jenisKelaminBayi">
+
+          <option value="">
+            Pilih
+          </option>
+
+          <option>Laki-laki</option>
+          <option>Perempuan</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Tanggal Lahir
+        </label>
+
+        <input
+          id="tanggalLahirBayi"
+          type="date"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Jam Lahir
+        </label>
+
+        <input
+          id="jamLahirBayi"
+          type="time"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Usia Gestasi
+        </label>
+
+        <input
+          id="usiaGestasiBayi"
+          placeholder="Contoh: 35 minggu"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Berat Badan Lahir
+        </label>
+
+        <input
+          id="bbLahir"
+          type="number"
+          placeholder="gram"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Panjang Badan
+        </label>
+
+        <input
+          id="pbLahir"
+          type="number"
+          placeholder="cm"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          APGAR 1 Menit
+        </label>
+
+        <input
+          id="apgar1"
+          type="number"
+          min="0"
+          max="10"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          APGAR 5 Menit
+        </label>
+
+        <input
+          id="apgar5"
+          type="number"
+          min="0"
+          max="10"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Berat Badan Saat KRS
+        </label>
+
+        <input
+          id="bbSaatKrs"
+          type="number"
+          placeholder="gram"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Status ASI
+        </label>
+
+        <select id="statusAsi">
+
+          <option value="">
+            Pilih
+          </option>
+
+          <option>ASI Eksklusif</option>
+          <option>ASI + Tambahan</option>
+          <option>Belum Optimal</option>
+          <option>Lainnya</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field full">
+
+        <label>
+          Diagnosis / Kondisi Bayi
+        </label>
+
+        <textarea
+          id="diagnosisBayi"
+          placeholder="Diagnosis atau kondisi bayi"
+        ></textarea>
+
+      </div>
+
+
+      <div class="field full">
+
+        <label>
+          Catatan Ibu & Bayi
+        </label>
+
+        <textarea
+          id="catatanIbuBayi"
+          placeholder="Catatan tambahan"
+        ></textarea>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="secondary"
+        onclick="kembali()"
+      >
+        ← Kembali
+      </button>
+
+      <button
+        class="primary"
+        onclick="simpanData()"
+      >
+        Simpan & Lanjut →
+      </button>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<script>
+
+
+var SESSION = null;
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    SESSION =
+      ambilSession();
+
+
+    if (!SESSION) {
+
+      tampilkanError(
+        'Session tidak ditemukan. Silakan login kembali.'
+      );
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      'noRM'
+    ).value =
+      SESSION.noRM || '';
+
+
+    document.getElementById(
+      'namaIbu'
+    ).value =
+      SESSION.namaIbu || '';
+
+
+    if (
+      SESSION.subjectId
+    ) {
+
+      document.getElementById(
+        'subjectId'
+      ).value =
+        SESSION.subjectId;
+
+    }
+
+
+    loadData();
+
+  }
+);
+
+
+/* =========================================================
+   SESSION
+   ========================================================= */
+
+function ambilSession() {
+
+  try {
+
+    var raw =
+      sessionStorage.getItem(
+        'WIN_SESSION'
+      );
+
+
+    if (!raw) {
+      return null;
+    }
+
+
+    return JSON.parse(raw);
+
+  }
+
+  catch(e) {
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   LOAD DATA
+   ========================================================= */
+
+function loadData() {
+
+  document.getElementById(
+    'loading'
+  ).style.display =
+    'block';
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        document.getElementById(
+          'loading'
+        ).style.display =
+          'none';
+
+
+        console.log(
+          'HASIL LOAD DATA:',
+          result
+        );
+
+
+        /*
+         * Kalau API berhasil
+         * dan membawa data
+         */
+
+        if (
+          result &&
+          result.success &&
+          result.data
+        ) {
+
+          isiForm(
+            result.data
+          );
+
+
+          /*
+           * Simpan ID penting ke SESSION
+           */
+
+          if (
+            result.data.NO_RM
+          ) {
+
+            SESSION.noRM =
+              result.data.NO_RM;
+
+          }
+
+
+          if (
+            result.data.NAMA_IBU
+          ) {
+
+            SESSION.namaIbu =
+              result.data.NAMA_IBU;
+
+          }
+
+
+          if (
+            result.data.BABY_ID
+          ) {
+
+            SESSION.idBayi =
+              result.data.BABY_ID;
+
+          }
+
+
+          sessionStorage.setItem(
+            'WIN_SESSION',
+            JSON.stringify(
+              SESSION
+            )
+          );
+
+
+          /*
+           * Informasi sumber data
+           */
+
+          if (
+            result.found
+          ) {
+
+            tampilkanInfo(
+              'Data WIN berhasil dimuat.'
+            );
+
+          }
+
+          else {
+
+            tampilkanInfo(
+              'Data awal berhasil diambil dari Master Register / NICU Level 2. Silakan lengkapi data yang masih kosong.'
+            );
+
+          }
+
+
+          return;
+
+        }
+
+
+        /*
+         * Data tidak ditemukan
+         */
+
+        tampilkanError(
+          result &&
+          result.message
+            ? result.message
+            : 'Data pasien tidak ditemukan.'
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        document.getElementById(
+          'loading'
+        ).style.display =
+          'none';
+
+
+        console.error(
+          error
+        );
+
+
+        tampilkanError(
+          'Gagal mengambil data: ' +
+          (
+            error.message ||
+            error
+          )
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_getDataIbuBayi(
+      SESSION.episodeId
+    );
+
+}
+
+/* =========================================================
+   ISI FORM
+   ========================================================= */
+
+function isiForm(d) {
+
+  var map = {
+
+    subjectId:
+      'SUBJECT_ID',
+
+    noRM:
+      'NO_RM',
+
+    namaIbu:
+      'NAMA_IBU',
+
+    usiaIbu:
+      'USIA_IBU',
+
+    pendidikan:
+      'PENDIDIKAN',
+
+    pekerjaan:
+      'PEKERJAAN',
+
+    gravida:
+      'GRAVIDA',
+
+    para:
+      'PARA',
+
+    abortus:
+      'ABORTUS',
+
+    usiaKehamilan:
+      'USIA_KEHAMILAN',
+
+    jenisPersalinan:
+      'JENIS_PERSALINAN',
+
+    tanggalPersalinan:
+      'TANGGAL_PERSALINAN',
+
+    diagnosisIbu:
+      'DIAGNOSIS_IBU',
+
+    babyId:
+      'BABY_ID',
+
+    namaBayi:
+      'NAMA_BAYI',
+
+    jenisKelaminBayi:
+      'JENIS_KELAMIN_BAYI',
+
+    tanggalLahirBayi:
+      'TANGGAL_LAHIR_BAYI',
+
+    jamLahirBayi:
+      'JAM_LAHIR_BAYI',
+
+    usiaGestasiBayi:
+      'USIA_GESTASI_BAYI',
+
+    bbLahir:
+      'BB_LAHIR',
+
+    pbLahir:
+      'PB_LAHIR',
+
+    apgar1:
+      'APGAR_1',
+
+    apgar5:
+      'APGAR_5',
+
+    diagnosisBayi:
+      'DIAGNOSIS_BAYI',
+
+    bbSaatKrs:
+      'BB_SAAT_KRS',
+
+    statusAsi:
+      'STATUS_ASI',
+
+    catatanIbuBayi:
+      'CATATAN_IBU_BAYI'
+
+  };
+
+
+  Object.keys(map)
+    .forEach(
+      function(id) {
+
+        var element =
+          document.getElementById(
+            id
+          );
+
+
+        if (
+          element &&
+          d[map[id]] !== undefined &&
+          d[map[id]] !== null
+        ) {
+
+          var value =
+            d[map[id]];
+
+
+          if (
+            value instanceof Date
+          ) {
+
+            value =
+              formatDateInput(
+                value
+              );
+
+          }
+
+
+          element.value =
+            value;
+
+        }
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   SIMPAN
+   ========================================================= */
+
+function simpanData() {
+
+  var data = {
+
+    episodeId:
+      SESSION.episodeId,
+
+    subjectId:
+      value('subjectId'),
+
+    noRM:
+      SESSION.noRM,
+
+    namaIbu:
+      value('namaIbu'),
+
+    usiaIbu:
+      value('usiaIbu'),
+
+    pendidikan:
+      value('pendidikan'),
+
+    pekerjaan:
+      value('pekerjaan'),
+
+    gravida:
+      value('gravida'),
+
+    para:
+      value('para'),
+
+    abortus:
+      value('abortus'),
+
+    usiaKehamilan:
+      value('usiaKehamilan'),
+
+    jenisPersalinan:
+      value('jenisPersalinan'),
+
+    tanggalPersalinan:
+      value('tanggalPersalinan'),
+
+    diagnosisIbu:
+      value('diagnosisIbu'),
+
+    kondisiIbu:
+      '',
+
+    babyId:
+      value('babyId'),
+
+    namaBayi:
+      value('namaBayi'),
+
+    jenisKelaminBayi:
+      value('jenisKelaminBayi'),
+
+    tanggalLahirBayi:
+      value('tanggalLahirBayi'),
+
+    jamLahirBayi:
+      value('jamLahirBayi'),
+
+    usiaGestasiBayi:
+      value('usiaGestasiBayi'),
+
+    bbLahir:
+      value('bbLahir'),
+
+    pbLahir:
+      value('pbLahir'),
+
+    apgar1:
+      value('apgar1'),
+
+    apgar5:
+      value('apgar5'),
+
+    diagnosisBayi:
+      value('diagnosisBayi'),
+
+    bbSaatKrs:
+      value('bbSaatKrs'),
+
+    kondisiBayi:
+      '',
+
+    statusAsi:
+      value('statusAsi'),
+
+    kesiapanPulang:
+      '',
+
+    catatanIbuBayi:
+      value('catatanIbuBayi'),
+
+    diisiOleh:
+      'IBU'
+
+  };
+
+
+  if (
+    !data.namaIbu
+  ) {
+
+    tampilkanError(
+      'Nama Ibu wajib diisi.'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !data.babyId &&
+    !data.namaBayi
+  ) {
+
+    tampilkanError(
+      'Baby ID atau Nama/Kode Bayi wajib diisi.'
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    'loading'
+  ).style.display =
+    'block';
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        document.getElementById(
+          'loading'
+        ).style.display =
+          'none';
+
+
+        if (
+          !result ||
+          !result.success
+        ) {
+
+          tampilkanError(
+            result &&
+            result.message
+              ? result.message
+              : 'Data gagal disimpan.'
+          );
+
+          return;
+
+        }
+
+
+        tampilkanSuccess(
+          'Data Ibu & Bayi berhasil disimpan.'
+        );
+
+
+        /*
+         * Simpan Subject ID ke session
+         */
+
+        SESSION.subjectId =
+          data.subjectId;
+
+
+        sessionStorage.setItem(
+          'WIN_SESSION',
+          JSON.stringify(
+            SESSION
+          )
+        );
+
+
+        /*
+         * Lanjut ke Assessment Awal
+         */
+
+        setTimeout(
+          function() {
+
+            bukaAssessment();
+
+          },
+          700
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        document.getElementById(
+          'loading'
+        ).style.display =
+          'none';
+
+
+        tampilkanError(
+          'Gagal menyimpan: ' +
+          (
+            error.message ||
+            error
+          )
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_saveDataIbuBayi(
+      data
+    );
+
+}
+
+
+/* =========================================================
+   NAVIGASI
+   ========================================================= */
+
+function bukaAssessment() {
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(url) {
+
+        window.top.location.href =
+          url +
+          '?page=assessment';
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+function kembali() {
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(url) {
+
+        window.top.location.href =
+          url +
+          '?page=dashboard';
+
+      }
+    )
+
+    .WIN_WEBAPP_getUrl();
+
+}
+
+
+/* =========================================================
+   UTIL
+   ========================================================= */
+
+function value(id) {
+
+  var el =
+    document.getElementById(id);
+
+
+  return el
+    ? String(
+        el.value || ''
+      ).trim()
+    : '';
+
+}
+
+
+function formatDateInput(date) {
+
+  var d =
+    new Date(date);
+
+
+  if (
+    isNaN(
+      d.getTime()
+    )
+  ) {
+
+    return '';
+
+  }
+
+
+  return d.getFullYear() +
+    '-' +
+    String(
+      d.getMonth() + 1
+    ).padStart(2, '0') +
+    '-' +
+    String(
+      d.getDate()
+    ).padStart(2, '0');
+
+}
+
+
+function tampilkanError(
+  message
+) {
+
+  var box =
+    document.getElementById(
+      'message'
+    );
+
+
+  box.className =
+    'message error';
+
+
+  box.textContent =
+    message;
+
+
+  box.style.display =
+    'block';
+
+}
+
+
+function tampilkanSuccess(
+  message
+) {
+
+  var box =
+    document.getElementById(
+      'message'
+    );
+
+
+  box.className =
+    'message success';
+
+
+  box.textContent =
+    message;
+
+
+  box.style.display =
+    'block';
+
+}
+
+function tampilkanInfo(
+  message
+) {
+
+  var box =
+    document.getElementById(
+      'message'
+    );
+
+
+  box.className =
+    'message';
+
+
+  box.style.background =
+    '#eff6ff';
+
+
+  box.style.color =
+    '#1d4ed8';
+
+
+  box.textContent =
+    message;
+
+
+  box.style.display =
+    'block';
+
+}
+
+</script>
+
+</body>
+
+</html>

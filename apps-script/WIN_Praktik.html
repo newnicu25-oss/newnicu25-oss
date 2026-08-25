@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>WIN — Praktik</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2fbfa;
+      color: #333;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .header {
+      background: linear-gradient(135deg, #55b9ae, #78c9c0);
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: white;
+      color: #3f9e94;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .back-btn {
+      border: none;
+      background: white;
+      color: #3f938a;
+      padding: 9px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* =========================
+       CONTAINER
+       ========================= */
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    /* =========================
+       WELCOME
+       ========================= */
+
+    .welcome {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .welcome h2 {
+      margin: 0 0 7px;
+      color: #318d84;
+    }
+
+    .welcome p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    /* =========================
+       PROGRESS
+       ========================= */
+
+    .progress-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      height: 12px;
+      background: #e3efed;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #4fae9f;
+      border-radius: 20px;
+      transition: width .3s ease;
+    }
+
+    /* =========================
+       ALERT
+       ========================= */
+
+    .alert {
+      display: none;
+      padding: 13px 15px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .alert.success {
+      display: block;
+      background: #e5f7ef;
+      color: #287b5c;
+    }
+
+    .alert.error {
+      display: block;
+      background: #fde8ed;
+      color: #a43b55;
+    }
+
+    .alert.info {
+      display: block;
+      background: #eaf6f5;
+      color: #347d76;
+    }
+
+    /* =========================
+       PRAKTIK CARD
+       ========================= */
+
+    .praktik-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .praktik-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      border: 2px solid transparent;
+    }
+
+    .praktik-card.active {
+      border-color: #8bcfc7;
+    }
+
+    .praktik-card.completed {
+      border-color: #91ceb0;
+      background: #fbfffd;
+    }
+
+    .praktik-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .praktik-number {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: #dff3f0;
+      color: #338f85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .praktik-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .praktik-category {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #3f978e;
+    }
+
+    .praktik-instruction {
+      margin-top: 13px;
+      padding: 13px;
+      background: #f4faf9;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .praktik-status {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .status-belum {
+      background: #edf1f1;
+      color: #888;
+    }
+
+    .status-proses {
+      background: #fff1da;
+      color: #a56a1a;
+    }
+
+    .status-selesai {
+      background: #e1f5eb;
+      color: #347a5b;
+    }
+
+    .praktik-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    /* =========================
+       BUTTON
+       ========================= */
+
+    .btn {
+      border: none;
+      padding: 11px 16px;
+      border-radius: 11px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #4fae9f;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #e9f1f0;
+      color: #52716e;
+    }
+
+    .btn-success {
+      background: #55a982;
+      color: white;
+    }
+
+    .btn-warning {
+      background: #e8a84d;
+      color: white;
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    /* =========================
+       CATATAN
+       ========================= */
+
+    .note-box {
+      display: none;
+      margin-top: 13px;
+    }
+
+    .note-box textarea {
+      width: 100%;
+      min-height: 85px;
+      resize: vertical;
+      border: 1px solid #d6e5e3;
+      border-radius: 11px;
+      padding: 11px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .note-box textarea:focus {
+      border-color: #65b8ae;
+    }
+
+    /* =========================
+       BOTTOM
+       ========================= */
+
+    .bottom-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .next-box {
+      background: #f0faf8;
+      border: 1px solid #cee9e5;
+      border-radius: 14px;
+      padding: 15px;
+      color: #397a74;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 11px;
+      padding: 25px 10px;
+    }
+
+    @media(max-width:650px) {
+
+      .header {
+        padding: 13px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .subtitle {
+        font-size: 10px;
+      }
+
+      .container {
+        padding: 11px;
+      }
+
+      .praktik-actions {
+        flex-direction: column;
+      }
+
+      .praktik-actions .btn {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<div class="header">
+
+  <div class="header-left">
+
+    <div class="header-icon">
+      👐
+    </div>
+
+    <div>
+
+      <div class="title">
+        Praktik Ibu
+      </div>
+
+      <div class="subtitle">
+        WIN — Discharge Planning Perinatologi
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="back-btn"
+    onclick="goDashboard()">
+
+    ← Dashboard
+
+  </button>
+
+</div>
+
+
+
+<div class="container">
+
+
+  <!-- ===================================================
+       WELCOME
+       =================================================== -->
+
+  <div class="welcome">
+
+    <h2>
+      Praktik Keterampilan
+    </h2>
+
+    <p>
+
+      Pada tahap ini Ibu mempraktikkan keterampilan
+      yang telah dipelajari pada materi edukasi.
+      Ikuti setiap instruksi dan lakukan satu per satu.
+
+    </p>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       ALERT
+       =================================================== -->
+
+  <div
+    id="alert"
+    class="alert">
+  </div>
+
+
+
+  <!-- ===================================================
+       PROGRESS
+       =================================================== -->
+
+  <div class="progress-card">
+
+    <div class="progress-top">
+
+      <span>
+        Progress Praktik
+      </span>
+
+      <span id="progressText">
+        0 / 0
+      </span>
+
+    </div>
+
+
+    <div class="progress-track">
+
+      <div
+        id="progressBar"
+        class="progress-bar">
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ===================================================
+       LIST PRAKTIK
+       =================================================== -->
+
+  <div
+    id="praktikList"
+    class="praktik-list">
+
+  </div>
+
+
+
+  <!-- ===================================================
+       BOTTOM
+       =================================================== -->
+
+  <div class="bottom-card">
+
+    <div class="next-box">
+
+      <strong>
+        Tahap berikutnya
+      </strong>
+
+      <br>
+
+      Setelah seluruh praktik selesai,
+      Ibu dapat melanjutkan ke tahap
+      <strong>Evaluasi</strong>.
+
+    </div>
+
+
+    <button
+      id="btnLanjutEvaluasi"
+      class="btn btn-success"
+      onclick="continueToEvaluasi()"
+      disabled>
+
+      Lanjut ke Evaluasi →
+
+    </button>
+
+  </div>
+
+
+</div>
+
+
+
+<div class="footer">
+
+  WIN — Discharge Planning Perinatologi
+
+  <br>
+
+  Praktik Keterampilan Ibu
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   SESSION
+   ===================================================== */
+
+let episodeId = '';
+
+let noRM = '';
+
+let namaIbu = '';
+
+let praktikList = [];
+
+let completedPraktik = [];
+
+
+
+/* =====================================================
+   INIT
+   ===================================================== */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+
+    loadSession();
+
+    loadCompletion();
+
+    loadPraktik();
+
+  }
+);
+
+
+
+/* =====================================================
+   SESSION
+   ===================================================== */
+
+function loadSession() {
+
+  try {
+
+    episodeId =
+      localStorage.getItem(
+        'WIN_episodeId'
+      ) || '';
+
+    noRM =
+      localStorage.getItem(
+        'WIN_noRM'
+      ) || '';
+
+    namaIbu =
+      localStorage.getItem(
+        'WIN_namaIbu'
+      ) || '';
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOAD PRAKTIK
+   ===================================================== */
+
+function loadPraktik() {
+
+  showAlert(
+    'Memuat daftar praktik...',
+    'info'
+  );
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'WIN PRAKTIK RESULT:',
+          result
+        );
+
+
+        if (
+          result &&
+          result.success
+        ) {
+
+          if (
+            Array.isArray(
+              result.praktik
+            )
+          ) {
+
+            praktikList =
+              result.praktik;
+
+          }
+
+          else if (
+            Array.isArray(
+              result.data
+            )
+          ) {
+
+            praktikList =
+              result.data;
+
+          }
+
+          else if (
+            Array.isArray(
+              result.items
+            )
+          ) {
+
+            praktikList =
+              result.items;
+
+          }
+
+          else {
+
+            praktikList =
+              [];
+
+          }
+
+
+          /*
+           * Kalau backend berhasil tetapi
+           * array tidak terbaca, gunakan fallback.
+           */
+
+          if (
+            praktikList.length === 0
+          ) {
+
+            useFallbackPraktik();
+
+          }
+
+          else {
+
+            renderPraktik();
+
+            hideAlert();
+
+          }
+
+        }
+
+        else {
+
+          useFallbackPraktik();
+
+        }
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          'WIN PRAKTIK ERROR:',
+          error
+        );
+
+
+        useFallbackPraktik();
+
+      }
+    )
+
+    .WIN_WEBAPP_getPraktik(
+      episodeId,
+      noRM
+    );
+
+}
+
+
+
+/* =====================================================
+   FALLBACK
+   ===================================================== */
+
+function useFallbackPraktik() {
+
+  praktikList = [
+
+    {
+      urutan: 1,
+      kategori: 'MENYUSUI',
+      praktikId: 'PRAK_001',
+      item:
+        'Mempraktikkan posisi menyusui yang benar',
+      instruksi:
+        'Ibu menunjukkan posisi tubuh dan bayi yang nyaman serta benar saat menyusui.'
+    },
+
+    {
+      urutan: 2,
+      kategori: 'MENYUSUI',
+      praktikId: 'PRAK_002',
+      item:
+        'Mempraktikkan pelekatan bayi yang benar',
+      instruksi:
+        'Ibu menunjukkan pelekatan bayi pada payudara dengan benar.'
+    },
+
+    {
+      urutan: 3,
+      kategori: 'PERAWATAN_BAYI',
+      praktikId: 'PRAK_003',
+      item:
+        'Mempraktikkan perawatan tali pusat',
+      instruksi:
+        'Ibu menunjukkan cara menjaga kebersihan dan perawatan tali pusat bayi.'
+    },
+
+    {
+      urutan: 4,
+      kategori: 'PERAWATAN_BAYI',
+      praktikId: 'PRAK_004',
+      item:
+        'Mempraktikkan perawatan bayi baru lahir',
+      instruksi:
+        'Ibu menunjukkan langkah dasar perawatan bayi baru lahir.'
+    },
+
+    {
+      urutan: 5,
+      kategori: 'PERAWATAN_IBU',
+      praktikId: 'PRAK_005',
+      item:
+        'Menunjukkan cara menjaga kebersihan diri setelah persalinan',
+      instruksi:
+        'Ibu menjelaskan dan mempraktikkan kebersihan diri sesuai edukasi.'
+    },
+
+    {
+      urutan: 6,
+      kategori: 'TANDA_BAHAYA',
+      praktikId: 'PRAK_006',
+      item:
+        'Mengidentifikasi tanda bahaya pada ibu',
+      instruksi:
+        'Ibu dapat menyebutkan tanda bahaya yang membutuhkan pertolongan segera.'
+    },
+
+    {
+      urutan: 7,
+      kategori: 'TANDA_BAHAYA',
+      praktikId: 'PRAK_007',
+      item:
+        'Mengidentifikasi tanda bahaya pada bayi',
+      instruksi:
+        'Ibu dapat menyebutkan tanda bahaya pada bayi yang membutuhkan pertolongan.'
+    },
+
+    {
+      urutan: 8,
+      kategori: 'PERSIAPAN_PULANG',
+      praktikId: 'PRAK_008',
+      item:
+        'Menjelaskan rencana perawatan di rumah',
+      instruksi:
+        'Ibu mampu menjelaskan kembali rencana perawatan ibu dan bayi di rumah.'
+    }
+
+  ];
+
+
+  renderPraktik();
+
+
+  showAlert(
+    'Daftar praktik siap digunakan.',
+    'info'
+  );
+
+}
+
+
+
+/* =====================================================
+   RENDER
+   ===================================================== */
+
+function renderPraktik() {
+
+  const container =
+    document.getElementById(
+      'praktikList'
+    );
+
+
+  container.innerHTML = '';
+
+
+  if (
+    praktikList.length === 0
+  ) {
+
+    container.innerHTML = `
+
+      <div class="praktik-card">
+
+        <div class="praktik-title">
+          Praktik belum tersedia
+        </div>
+
+        <div class="praktik-instruction">
+          Daftar praktik belum tersedia.
+        </div>
+
+      </div>
+
+    `;
+
+    updateProgress();
+
+    return;
+
+  }
+
+
+  praktikList.sort(
+    function(a,b) {
+
+      return (
+        Number(a.urutan || 0) -
+        Number(b.urutan || 0)
+      );
+
+    }
+  );
+
+
+  praktikList.forEach(
+    function(praktik,index) {
+
+      const id =
+        getPraktikId(
+          praktik,
+          index
+        );
+
+
+      const selesai =
+        completedPraktik
+          .indexOf(id) !== -1;
+
+
+      const card =
+        document.createElement(
+          'div'
+        );
+
+
+      card.className =
+        'praktik-card ' +
+        (
+          selesai
+            ? 'completed'
+            : ''
+        );
+
+
+      const item =
+        praktik.item ||
+        praktik.judul ||
+        praktik.namaPraktik ||
+        (
+          'Praktik ' +
+          (index + 1)
+        );
+
+
+      const kategori =
+        praktik.kategori ||
+        praktik.category ||
+        'PRAKTIK';
+
+
+      const instruksi =
+        praktik.instruksi ||
+        praktik.instruction ||
+        praktik.deskripsi ||
+        'Ikuti instruksi praktik.';
+
+
+      card.innerHTML = `
+
+        <div class="praktik-head">
+
+          <div class="praktik-number">
+            ${index + 1}
+          </div>
+
+          <div>
+
+            <div class="praktik-title">
+              ${escapeHtml(item)}
+            </div>
+
+            <div class="praktik-category">
+              ${escapeHtml(kategori)}
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="praktik-instruction">
+
+          <strong>
+            Instruksi:
+          </strong>
+
+          <br>
+
+          ${escapeHtml(instruksi)}
+
+        </div>
+
+
+        <div
+          id="status_${index}"
+          class="praktik-status ${
+            selesai
+              ? 'status-selesai'
+              : 'status-belum'
+          }">
+
+          ${
+            selesai
+              ? 'SELESAI'
+              : 'BELUM DIPRAKTIKKAN'
+          }
+
+        </div>
+
+
+        <div class="praktik-actions">
+
+          <button
+            id="start_${index}"
+            class="btn btn-primary"
+            onclick="startPraktik(${index})"
+            ${
+              selesai
+                ? 'disabled'
+                : ''
+            }>
+
+            ▶ Mulai Praktik
+
+          </button>
+
+
+          <button
+            id="complete_${index}"
+            class="btn btn-success"
+            onclick="completePraktik(${index})"
+            ${
+              selesai
+                ? 'disabled'
+                : ''
+            }>
+
+            ✓ Tandai Selesai
+
+          </button>
+
+        </div>
+
+
+        <div
+          id="noteBox_${index}"
+          class="note-box">
+
+          <textarea
+            id="note_${index}"
+            placeholder="Catatan tambahan Ibu (opsional)...">
+          </textarea>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(card);
+
+    }
+  );
+
+
+  updateProgress();
+
+}
+
+
+
+/* =====================================================
+   ID
+   ===================================================== */
+
+function getPraktikId(
+  praktik,
+  index
+) {
+
+  return String(
+
+    praktik.praktikId ||
+    praktik.id ||
+    praktik.kode ||
+    (
+      'PRAK_' +
+      String(index + 1)
+        .padStart(3,'0')
+    )
+
+  );
+
+}
+
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+function startPraktik(index) {
+
+  const praktik =
+    praktikList[index];
+
+
+  const id =
+    getPraktikId(
+      praktik,
+      index
+    );
+
+
+  const status =
+    document.getElementById(
+      'status_' + index
+    );
+
+
+  if (status) {
+
+    status.className =
+      'praktik-status status-proses';
+
+    status.textContent =
+      'SEDANG DIPRAKTIKKAN';
+
+  }
+
+
+  const noteBox =
+    document.getElementById(
+      'noteBox_' + index
+    );
+
+
+  if (noteBox) {
+
+    noteBox.style.display =
+      'block';
+
+  }
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'START PRAKTIK:',
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.log(
+          'START PRAKTIK ERROR:',
+          error
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_startPraktik(
+      episodeId,
+      noRM,
+      id
+    );
+
+
+  showAlert(
+    'Praktik dimulai. Silakan lakukan sesuai instruksi.',
+    'info'
+  );
+
+}
+
+
+
+/* =====================================================
+   COMPLETE
+   ===================================================== */
+
+function completePraktik(index) {
+
+  const praktik =
+    praktikList[index];
+
+
+  const id =
+    getPraktikId(
+      praktik,
+      index
+    );
+
+
+  if (
+    completedPraktik
+      .indexOf(id) !== -1
+  ) {
+
+    return;
+
+  }
+
+
+  const noteElement =
+    document.getElementById(
+      'note_' + index
+    );
+
+
+  const catatanIbu =
+    noteElement
+      ? noteElement.value.trim()
+      : '';
+
+
+  google.script.run
+
+    .withSuccessHandler(
+      function(result) {
+
+        console.log(
+          'COMPLETE PRAKTIK:',
+          result
+        );
+
+      }
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.log(
+          'COMPLETE PRAKTIK ERROR:',
+          error
+        );
+
+      }
+    )
+
+    .WIN_WEBAPP_completePraktik(
+      episodeId,
+      noRM,
+      id,
+      catatanIbu
+    );
+
+
+  completedPraktik.push(id);
+
+
+  try {
+
+    localStorage.setItem(
+      getCompletionKey(),
+      JSON.stringify(
+        completedPraktik
+      )
+    );
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+
+  const startButton =
+    document.getElementById(
+      'start_' + index
+    );
+
+
+  const completeButton =
+    document.getElementById(
+      'complete_' + index
+    );
+
+
+  if (startButton) {
+
+    startButton.disabled =
+      true;
+
+  }
+
+
+  if (completeButton) {
+
+    completeButton.disabled =
+      true;
+
+    completeButton.textContent =
+      '✓ Sudah Selesai';
+
+  }
+
+
+  const status =
+    document.getElementById(
+      'status_' + index
+    );
+
+
+  if (status) {
+
+    status.className =
+      'praktik-status status-selesai';
+
+    status.textContent =
+      'SELESAI';
+
+  }
+
+
+  const card =
+    completeButton
+      ? completeButton.closest(
+          '.praktik-card'
+        )
+      : null;
+
+
+  if (card) {
+
+    card.classList.add(
+      'completed'
+    );
+
+  }
+
+
+  updateProgress();
+
+
+  showAlert(
+    '✓ Praktik berhasil diselesaikan.',
+    'success'
+  );
+
+}
+
+
+
+/* =====================================================
+   LOAD COMPLETION
+   ===================================================== */
+
+function loadCompletion() {
+
+  try {
+
+    const raw =
+      localStorage.getItem(
+        getCompletionKey()
+      );
+
+
+    if (raw) {
+
+      const data =
+        JSON.parse(raw);
+
+
+      if (
+        Array.isArray(data)
+      ) {
+
+        completedPraktik =
+          data;
+
+      }
+
+    }
+
+  }
+
+  catch(error) {
+
+    console.log(error);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   COMPLETION KEY
+   ===================================================== */
+
+function getCompletionKey() {
+
+  return (
+
+    'WIN_PRAKTIK_COMPLETED_' +
+
+    (
+      episodeId ||
+      noRM ||
+      'DEFAULT'
+    )
+
+  );
+
+}
+
+
+
+/* =====================================================
+   PROGRESS
+   ===================================================== */
+
+function updateProgress() {
+
+  const total =
+    praktikList.length;
+
+
+  const selesai =
+    completedPraktik.length;
+
+
+  const percentage =
+    total > 0
+      ? Math.round(
+          (
+            selesai /
+            total
+          ) * 100
+        )
+      : 0;
+
+
+  const bar =
+    document.getElementById(
+      'progressBar'
+    );
+
+
+  const text =
+    document.getElementById(
+      'progressText'
+    );
+
+
+  if (bar) {
+
+    bar.style.width =
+      percentage + '%';
+
+  }
+
+
+  if (text) {
+
+    text.textContent =
+      selesai +
+      ' / ' +
+      total +
+      ' (' +
+      percentage +
+      '%)';
+
+  }
+
+
+  const button =
+    document.getElementById(
+      'btnLanjutEvaluasi'
+    );
+
+
+  if (button) {
+
+    button.disabled =
+      !(
+        total > 0 &&
+        selesai >= total
+      );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LANJUT EVALUASI
+   ===================================================== */
+
+function continueToEvaluasi() {
+
+  if (
+    praktikList.length === 0
+  ) {
+
+    showAlert(
+      'Daftar praktik belum tersedia.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    completedPraktik.length <
+    praktikList.length
+  ) {
+
+    showAlert(
+      'Selesaikan seluruh praktik terlebih dahulu.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=evaluasi';
+
+}
+
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function goDashboard() {
+
+  window.top.location.href =
+    getWebAppUrl() +
+    '?page=dashboard';
+
+}
+
+
+
+/* =====================================================
+   URL WEB APP
+   ===================================================== */
+
+function getWebAppUrl() {
+
+  return 'https://script.google.com/macros/s/AKfycbwy8TG3BVMWbEsS0OUejMOAmc8Bn4ewYXPNmG1B1P92S21YHa1id_YH__zFegsADVs2/exec';
+
+}
+
+
+
+/* =====================================================
+   ALERT
+   ===================================================== */
+
+function showAlert(
+  message,
+  type
+) {
+
+  const el =
+    document.getElementById(
+      'alert'
+    );
+
+
+  if (!el) {
+    return;
+  }
+
+
+  el.textContent =
+    message;
+
+
+  el.className =
+    'alert ' +
+    (
+      type ||
+      'info'
+    );
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHtml(value) {
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+  .replace(
+    /&/g,
+    '&amp;'
+  )
+  .replace(
+    /</g,
+    '&lt;'
+  )
+  .replace(
+    />/g,
+    '&gt;'
+  )
+  .replace(
+    /"/g,
+    '&quot;'
+  )
+  .replace(
+    /'/g,
+    '&#039;'
+  );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
